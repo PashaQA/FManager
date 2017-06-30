@@ -29,196 +29,152 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FManager));
-            this.info4 = new System.Windows.Forms.TextBox();
-            this.btnExpensesNList = new System.Windows.Forms.Button();
-            this.info3 = new System.Windows.Forms.TextBox();
-            this.info2 = new System.Windows.Forms.TextBox();
-            this.info1 = new System.Windows.Forms.TextBox();
-            this.btnExpensesTList = new System.Windows.Forms.Button();
-            this.btnProfitList = new System.Windows.Forms.Button();
-            this.btnChooseDaysList = new System.Windows.Forms.Button();
             this.btnChooseData = new System.Windows.Forms.Button();
             this.cbMonths = new System.Windows.Forms.ComboBox();
             this.numericYears = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
-            this.info8 = new System.Windows.Forms.TextBox();
-            this.btnExpensesNSum = new System.Windows.Forms.Button();
-            this.info7 = new System.Windows.Forms.TextBox();
-            this.info6 = new System.Windows.Forms.TextBox();
-            this.info5 = new System.Windows.Forms.TextBox();
-            this.btnExpensesTSum = new System.Windows.Forms.Button();
-            this.btnProfitSum = new System.Windows.Forms.Button();
-            this.btnExpensesSum = new System.Windows.Forms.Button();
-            this.infoParamT = new System.Windows.Forms.Label();
-            this.infoParamN = new System.Windows.Forms.Label();
-            this.textBoxList = new System.Windows.Forms.TextBox();
-            this.textBoxSum = new System.Windows.Forms.TextBox();
-            this.info9 = new System.Windows.Forms.TextBox();
-            this.btnExpensesPersonList = new System.Windows.Forms.Button();
-            this.info10 = new System.Windows.Forms.TextBox();
-            this.btnExpensesPersonSum = new System.Windows.Forms.Button();
-            this.infoCategoryPerson1 = new System.Windows.Forms.Label();
-            this.infoCategoryPerson2 = new System.Windows.Forms.Label();
-            this.tabControlButtons = new System.Windows.Forms.TabControl();
-            this.tabPageList = new System.Windows.Forms.TabPage();
-            this.infoAboutExpenses = new System.Windows.Forms.TextBox();
-            this.btnAboutExpenses = new System.Windows.Forms.Button();
-            this.tabPageSum = new System.Windows.Forms.TabPage();
-            this.info11 = new System.Windows.Forms.TextBox();
-            this.btnProfitAfterExpenses = new System.Windows.Forms.Button();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.info15 = new System.Windows.Forms.TextBox();
-            this.btnExpensesCigarettesListAllTimes = new System.Windows.Forms.Button();
-            this.info14 = new System.Windows.Forms.TextBox();
-            this.btnExpensesCigarettesAllTimes = new System.Windows.Forms.Button();
-            this.info13 = new System.Windows.Forms.TextBox();
-            this.btnCigarettesCountAllTimes = new System.Windows.Forms.Button();
-            this.info12 = new System.Windows.Forms.TextBox();
-            this.btnAboutCigarettes = new System.Windows.Forms.Button();
-            this.textBoxAboutExpenses = new System.Windows.Forms.TextBox();
             this.btnUpdate = new System.Windows.Forms.Button();
-            this.labelUpdateSucceful = new System.Windows.Forms.Label();
-            this.btnLookUpdate = new System.Windows.Forms.Button();
             this.panelChooseData = new System.Windows.Forms.Panel();
-            this.panelUpdate = new System.Windows.Forms.Panel();
-            this.labelBatCreated = new System.Windows.Forms.Label();
             this.radioButtonCreateBat = new System.Windows.Forms.RadioButton();
-            this.btnClosePanelGit = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.btnOpenPanelGit = new System.Windows.Forms.Button();
-            this.radioButtonHe = new System.Windows.Forms.RadioButton();
-            this.radioButtonShe = new System.Windows.Forms.RadioButton();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
-            this.labelVisible = new System.Windows.Forms.Label();
-            this.tabControlButtonsHe = new System.Windows.Forms.TabControl();
-            this.tabPageListHe = new System.Windows.Forms.TabPage();
-            this.checkBoxDopQuery = new System.Windows.Forms.CheckBox();
-            this.btnCandle = new System.Windows.Forms.Button();
-            this.btnRelax = new System.Windows.Forms.Button();
-            this.btnAllListHe = new System.Windows.Forms.Button();
-            this.btnSheAlListHe = new System.Windows.Forms.Button();
-            this.btnNAllListHe = new System.Windows.Forms.Button();
-            this.btnTAllListHe = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.btnMonthListHe = new System.Windows.Forms.Button();
-            this.btnSheMonthListHe = new System.Windows.Forms.Button();
-            this.btnNMonthListHe = new System.Windows.Forms.Button();
-            this.btnTMonthListHe = new System.Windows.Forms.Button();
-            this.infoMonthList = new System.Windows.Forms.Label();
-            this.infoSheMonthListHe = new System.Windows.Forms.Label();
-            this.infoNMonthListHe = new System.Windows.Forms.Label();
-            this.infoTMonthListHe = new System.Windows.Forms.Label();
-            this.labelAnswerToUpdate = new System.Windows.Forms.Label();
-            this.labelLastUpdate = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.panelWorkGit = new System.Windows.Forms.Panel();
-            this.labelForStatusGitInstall = new System.Windows.Forms.Label();
-            this.btnDontCheck = new System.Windows.Forms.Button();
             this.btnInstallGit = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.btnCheckGit = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.panelEnableGit = new System.Windows.Forms.Panel();
             this.statsDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataDop = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.date_expense = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.event_type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.count = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.count_expenses = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.full_line = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panelModuleADM = new System.Windows.Forms.Panel();
+            this.checkBoxHeBigADM = new System.Windows.Forms.CheckBox();
+            this.checkBoxHeGiftsADM = new System.Windows.Forms.CheckBox();
+            this.checkBoxHeADM = new System.Windows.Forms.CheckBox();
+            this.checkBoxSheADM = new System.Windows.Forms.CheckBox();
+            this.buttonExecuteCMDADM = new System.Windows.Forms.Button();
+            this.buttonShowFieldPassword = new System.Windows.Forms.Button();
+            this.buttonBlock = new System.Windows.Forms.Button();
+            this.buttonExecuteSQLQuery = new System.Windows.Forms.Button();
+            this.comboBoxCMDsADM = new System.Windows.Forms.ComboBox();
+            this.radioButtonOutputInOsn = new System.Windows.Forms.RadioButton();
+            this.radioButtonOutputInDop = new System.Windows.Forms.RadioButton();
+            this.labelHeaderSQLQuery = new System.Windows.Forms.Label();
+            this.textBoxSQLQuery = new System.Windows.Forms.TextBox();
+            this.dataOsn = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panelModuleUpdate = new System.Windows.Forms.Panel();
+            this.labelHeaderIsUpdate = new System.Windows.Forms.Label();
+            this.textBoxIsUpdate = new System.Windows.Forms.TextBox();
+            this.labelHeaderWindowTextBoxUpdate = new System.Windows.Forms.Label();
+            this.textBoxUpdate = new System.Windows.Forms.TextBox();
+            this.labelHeaderModuleUpdate = new System.Windows.Forms.Label();
+            this.panelInfo = new System.Windows.Forms.Panel();
+            this.labelHeaderWindowErrors = new System.Windows.Forms.Label();
+            this.textBoxInfoMessage = new System.Windows.Forms.TextBox();
+            this.textBoxInfoErrors = new System.Windows.Forms.TextBox();
+            this.textBoxWindowExpensesAll = new System.Windows.Forms.TextBox();
+            this.labelHeaderWindowInfo = new System.Windows.Forms.Label();
+            this.panelAnalitics = new System.Windows.Forms.Panel();
+            this.tabControlStats = new System.Windows.Forms.TabControl();
+            this.tabPageExpenses = new System.Windows.Forms.TabPage();
+            this.labelHeaderWindowExpensesAll = new System.Windows.Forms.Label();
+            this.labelHeaderWindowExpensesCurrent = new System.Windows.Forms.Label();
+            this.labelHeaderWindowPreviusYear = new System.Windows.Forms.Label();
+            this.panelExpensesCurrentYear = new System.Windows.Forms.Panel();
+            this.labelHeaderWindowExpensesCurrentYear = new System.Windows.Forms.Label();
+            this.labelHeaderWindowExpensesCurrentMonth = new System.Windows.Forms.Label();
+            this.textBoxWindowExpensesCurrentYear = new System.Windows.Forms.TextBox();
+            this.textBoxWindowExpensesCurrentMonth = new System.Windows.Forms.TextBox();
+            this.panelExpensesPreviusYear = new System.Windows.Forms.Panel();
+            this.labelHeaderWindowExpensesPreviusYear = new System.Windows.Forms.Label();
+            this.textBoxWindowExpensesPreviusYear = new System.Windows.Forms.TextBox();
+            this.labelHeaderWindowExpensesPreviusMonth = new System.Windows.Forms.Label();
+            this.textBoxWindowExpensesPreviusMonth = new System.Windows.Forms.TextBox();
+            this.labelHeaderWindowExpensesAVG = new System.Windows.Forms.Label();
+            this.textBoxExpensesAVG = new System.Windows.Forms.TextBox();
+            this.tabPageCigarettes = new System.Windows.Forms.TabPage();
+            this.labelHeaderWindowCigarettesAll = new System.Windows.Forms.Label();
+            this.textBoxCigarettesAll = new System.Windows.Forms.TextBox();
+            this.labelHEaderWindowCigarettesCurrentYear = new System.Windows.Forms.Label();
+            this.labelHeaderWindowCigarettesPreviusYear = new System.Windows.Forms.Label();
+            this.panelCigarettesCurrentYear = new System.Windows.Forms.Panel();
+            this.labelHeaderWindowCigarettesCurrentYearYear = new System.Windows.Forms.Label();
+            this.labelHeaderWindowCigarettesCurrentYearMonth = new System.Windows.Forms.Label();
+            this.textBoxCigarettesCurrentYearYear = new System.Windows.Forms.TextBox();
+            this.textBoxCigarettesCurrentYearMonth = new System.Windows.Forms.TextBox();
+            this.panelCigarettesPreviusYear = new System.Windows.Forms.Panel();
+            this.labelHeaderWindowCigarettesPreviusYearYear = new System.Windows.Forms.Label();
+            this.textBoxCigarettesPreviusYearYear = new System.Windows.Forms.TextBox();
+            this.labelHeaderWindowCigarettesPreviusYearMonth = new System.Windows.Forms.Label();
+            this.textBoxCigarettesPreviusYearMonth = new System.Windows.Forms.TextBox();
+            this.labelHeaderWindowCigarettesAVG = new System.Windows.Forms.Label();
+            this.textBoxCigarettesAVG = new System.Windows.Forms.TextBox();
+            this.tabPageCandles = new System.Windows.Forms.TabPage();
+            this.dataCandles = new System.Windows.Forms.DataGridView();
+            this.labelHeaderWindowCandles = new System.Windows.Forms.Label();
+            this.textBoxCandles = new System.Windows.Forms.TextBox();
+            this.tabPageRelax = new System.Windows.Forms.TabPage();
+            this.dataRelax = new System.Windows.Forms.DataGridView();
+            this.labelHeaderRelax = new System.Windows.Forms.Label();
+            this.textBoxRelax = new System.Windows.Forms.TextBox();
+            this.labelHeaderModuleAnalitics = new System.Windows.Forms.Label();
+            this.panelMode = new System.Windows.Forms.Panel();
+            this.radioButtonReadFromFile = new System.Windows.Forms.RadioButton();
+            this.radioButtonModeHeBig = new System.Windows.Forms.RadioButton();
+            this.radioButtonModeHeGifts = new System.Windows.Forms.RadioButton();
+            this.radioButtonModeHe = new System.Windows.Forms.RadioButton();
+            this.radioButtonModeShe = new System.Windows.Forms.RadioButton();
+            this.labelHeaderMode = new System.Windows.Forms.Label();
+            this.panelSpecial = new System.Windows.Forms.Panel();
+            this.buttonInfoInSpesialParams = new System.Windows.Forms.Button();
+            this.checkBoxExpenses = new System.Windows.Forms.CheckBox();
+            this.checkBoxShe = new System.Windows.Forms.CheckBox();
+            this.checkBoxWithoutParams = new System.Windows.Forms.CheckBox();
+            this.checkBoxN = new System.Windows.Forms.CheckBox();
+            this.checkBoxT = new System.Windows.Forms.CheckBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.panelDopInstrumental = new System.Windows.Forms.Panel();
+            this.comboBoxDopInstrumental = new System.Windows.Forms.ComboBox();
+            this.buttonExecuteDopInstrumental = new System.Windows.Forms.Button();
+            this.labelHeaderModuleDopInstrumental = new System.Windows.Forms.Label();
+            this.labelHeaderModuleAdm = new System.Windows.Forms.Label();
+            this.textBoxList = new System.Windows.Forms.TextBox();
+            this.buttonAccessUpdate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericYears)).BeginInit();
-            this.tabControlButtons.SuspendLayout();
-            this.tabPageList.SuspendLayout();
-            this.tabPageSum.SuspendLayout();
-            this.tabPage1.SuspendLayout();
             this.panelChooseData.SuspendLayout();
-            this.panelUpdate.SuspendLayout();
-            this.tabControlButtonsHe.SuspendLayout();
-            this.tabPageListHe.SuspendLayout();
-            this.panelWorkGit.SuspendLayout();
-            this.panelEnableGit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.statsDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataDop)).BeginInit();
+            this.panelModuleADM.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataOsn)).BeginInit();
+            this.panelModuleUpdate.SuspendLayout();
+            this.panelInfo.SuspendLayout();
+            this.panelAnalitics.SuspendLayout();
+            this.tabControlStats.SuspendLayout();
+            this.tabPageExpenses.SuspendLayout();
+            this.panelExpensesCurrentYear.SuspendLayout();
+            this.panelExpensesPreviusYear.SuspendLayout();
+            this.tabPageCigarettes.SuspendLayout();
+            this.panelCigarettesCurrentYear.SuspendLayout();
+            this.panelCigarettesPreviusYear.SuspendLayout();
+            this.tabPageCandles.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataCandles)).BeginInit();
+            this.tabPageRelax.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataRelax)).BeginInit();
+            this.panelMode.SuspendLayout();
+            this.panelSpecial.SuspendLayout();
+            this.panelDopInstrumental.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // info4
-            // 
-            this.info4.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.info4.Location = new System.Drawing.Point(394, 6);
-            this.info4.Multiline = true;
-            this.info4.Name = "info4";
-            this.info4.ReadOnly = true;
-            this.info4.Size = new System.Drawing.Size(189, 50);
-            this.info4.TabIndex = 13;
-            this.info4.Text = "Список всех затрат по параметру (н) - необходимые затраты\r\n в течение выбранного " +
-    "месяца";
-            // 
-            // btnExpensesNList
-            // 
-            this.btnExpensesNList.Location = new System.Drawing.Point(313, 21);
-            this.btnExpensesNList.Name = "btnExpensesNList";
-            this.btnExpensesNList.Size = new System.Drawing.Size(75, 23);
-            this.btnExpensesNList.TabIndex = 12;
-            this.btnExpensesNList.Text = "Отобразить";
-            this.btnExpensesNList.UseVisualStyleBackColor = true;
-            this.btnExpensesNList.Click += new System.EventHandler(this.btnExpensesNList_Click);
-            // 
-            // info3
-            // 
-            this.info3.Location = new System.Drawing.Point(97, 68);
-            this.info3.Multiline = true;
-            this.info3.Name = "info3";
-            this.info3.ReadOnly = true;
-            this.info3.Size = new System.Drawing.Size(189, 50);
-            this.info3.TabIndex = 11;
-            this.info3.Text = "Список всех затрат по параметру (т) - тусы в течение выбранного месяца";
-            // 
-            // info2
-            // 
-            this.info2.Location = new System.Drawing.Point(394, 126);
-            this.info2.Multiline = true;
-            this.info2.Name = "info2";
-            this.info2.ReadOnly = true;
-            this.info2.Size = new System.Drawing.Size(189, 50);
-            this.info2.TabIndex = 10;
-            this.info2.Text = "Список всех дней с прибыльную в течение выбранного месяца";
-            // 
-            // info1
-            // 
-            this.info1.Location = new System.Drawing.Point(99, 12);
-            this.info1.Multiline = true;
-            this.info1.Name = "info1";
-            this.info1.ReadOnly = true;
-            this.info1.Size = new System.Drawing.Size(187, 50);
-            this.info1.TabIndex = 8;
-            this.info1.Text = "Список всех операций в течение выбранного месяца";
-            // 
-            // btnExpensesTList
-            // 
-            this.btnExpensesTList.Location = new System.Drawing.Point(10, 77);
-            this.btnExpensesTList.Name = "btnExpensesTList";
-            this.btnExpensesTList.Size = new System.Drawing.Size(75, 23);
-            this.btnExpensesTList.TabIndex = 3;
-            this.btnExpensesTList.Text = "Отобразить";
-            this.btnExpensesTList.UseVisualStyleBackColor = true;
-            this.btnExpensesTList.Click += new System.EventHandler(this.btnExpensesTList_Click);
-            // 
-            // btnProfitList
-            // 
-            this.btnProfitList.Location = new System.Drawing.Point(313, 136);
-            this.btnProfitList.Name = "btnProfitList";
-            this.btnProfitList.Size = new System.Drawing.Size(75, 23);
-            this.btnProfitList.TabIndex = 2;
-            this.btnProfitList.Text = "Отобразить";
-            this.btnProfitList.UseVisualStyleBackColor = true;
-            this.btnProfitList.Click += new System.EventHandler(this.btnProfitList_Click);
-            // 
-            // btnChooseDaysList
-            // 
-            this.btnChooseDaysList.Location = new System.Drawing.Point(10, 21);
-            this.btnChooseDaysList.Name = "btnChooseDaysList";
-            this.btnChooseDaysList.Size = new System.Drawing.Size(75, 23);
-            this.btnChooseDaysList.TabIndex = 0;
-            this.btnChooseDaysList.Text = "Отобразить";
-            this.btnChooseDaysList.UseVisualStyleBackColor = true;
-            this.btnChooseDaysList.Click += new System.EventHandler(this.btnChooseDaysList_Click);
             // 
             // btnChooseData
             // 
@@ -233,19 +189,6 @@
             // cbMonths
             // 
             this.cbMonths.FormattingEnabled = true;
-            this.cbMonths.Items.AddRange(new object[] {
-            "Январь",
-            "Февраль",
-            "Март",
-            "Апрель",
-            "Май",
-            "Июнь",
-            "Июль",
-            "Август",
-            "Сентябрь",
-            "Октябрь",
-            "Ноябрь",
-            "Декабрь"});
             this.cbMonths.Location = new System.Drawing.Point(3, 24);
             this.cbMonths.Name = "cbMonths";
             this.cbMonths.Size = new System.Drawing.Size(108, 21);
@@ -257,6 +200,7 @@
             this.numericYears.Name = "numericYears";
             this.numericYears.Size = new System.Drawing.Size(73, 20);
             this.numericYears.TabIndex = 4;
+            this.numericYears.ValueChanged += new System.EventHandler(this.numericYears_ValueChanged);
             this.numericYears.Click += new System.EventHandler(this.numericYears_Click);
             // 
             // label1
@@ -268,392 +212,9 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Выберите месяц и год для просмотра статистики";
             // 
-            // info8
-            // 
-            this.info8.Location = new System.Drawing.Point(394, 12);
-            this.info8.Multiline = true;
-            this.info8.Name = "info8";
-            this.info8.ReadOnly = true;
-            this.info8.Size = new System.Drawing.Size(189, 50);
-            this.info8.TabIndex = 13;
-            this.info8.Text = "Суммарное число затрат по параметру (н)";
-            // 
-            // btnExpensesNSum
-            // 
-            this.btnExpensesNSum.Location = new System.Drawing.Point(313, 21);
-            this.btnExpensesNSum.Name = "btnExpensesNSum";
-            this.btnExpensesNSum.Size = new System.Drawing.Size(75, 23);
-            this.btnExpensesNSum.TabIndex = 12;
-            this.btnExpensesNSum.Text = "Отобразить";
-            this.btnExpensesNSum.UseVisualStyleBackColor = true;
-            this.btnExpensesNSum.Click += new System.EventHandler(this.btnExpensesNSum_Click);
-            // 
-            // info7
-            // 
-            this.info7.Location = new System.Drawing.Point(97, 68);
-            this.info7.Multiline = true;
-            this.info7.Name = "info7";
-            this.info7.ReadOnly = true;
-            this.info7.Size = new System.Drawing.Size(189, 50);
-            this.info7.TabIndex = 11;
-            this.info7.Text = "Суммарное число затрат по параметру (т)";
-            // 
-            // info6
-            // 
-            this.info6.Location = new System.Drawing.Point(394, 68);
-            this.info6.Multiline = true;
-            this.info6.Name = "info6";
-            this.info6.ReadOnly = true;
-            this.info6.Size = new System.Drawing.Size(189, 50);
-            this.info6.TabIndex = 10;
-            this.info6.Text = "Суммарное число прибыли за выбранный месяц";
-            // 
-            // info5
-            // 
-            this.info5.Location = new System.Drawing.Point(99, 12);
-            this.info5.Multiline = true;
-            this.info5.Name = "info5";
-            this.info5.ReadOnly = true;
-            this.info5.Size = new System.Drawing.Size(187, 50);
-            this.info5.TabIndex = 8;
-            this.info5.Text = "Суммарное число затрат за выбранный месяц";
-            // 
-            // btnExpensesTSum
-            // 
-            this.btnExpensesTSum.Location = new System.Drawing.Point(10, 77);
-            this.btnExpensesTSum.Name = "btnExpensesTSum";
-            this.btnExpensesTSum.Size = new System.Drawing.Size(75, 23);
-            this.btnExpensesTSum.TabIndex = 3;
-            this.btnExpensesTSum.Text = "Отобразить";
-            this.btnExpensesTSum.UseVisualStyleBackColor = true;
-            this.btnExpensesTSum.Click += new System.EventHandler(this.btnExpensesTSum_Click);
-            // 
-            // btnProfitSum
-            // 
-            this.btnProfitSum.Location = new System.Drawing.Point(313, 78);
-            this.btnProfitSum.Name = "btnProfitSum";
-            this.btnProfitSum.Size = new System.Drawing.Size(75, 23);
-            this.btnProfitSum.TabIndex = 2;
-            this.btnProfitSum.Text = "Отобразить";
-            this.btnProfitSum.UseVisualStyleBackColor = true;
-            this.btnProfitSum.Click += new System.EventHandler(this.btnProfitSum_Click);
-            // 
-            // btnExpensesSum
-            // 
-            this.btnExpensesSum.Location = new System.Drawing.Point(10, 21);
-            this.btnExpensesSum.Name = "btnExpensesSum";
-            this.btnExpensesSum.Size = new System.Drawing.Size(75, 23);
-            this.btnExpensesSum.TabIndex = 0;
-            this.btnExpensesSum.Text = "Отобразить";
-            this.btnExpensesSum.UseVisualStyleBackColor = true;
-            this.btnExpensesSum.Click += new System.EventHandler(this.btnExpensesSum_Click);
-            // 
-            // infoParamT
-            // 
-            this.infoParamT.AutoSize = true;
-            this.infoParamT.Location = new System.Drawing.Point(20, 113);
-            this.infoParamT.Name = "infoParamT";
-            this.infoParamT.Size = new System.Drawing.Size(252, 13);
-            this.infoParamT.TabIndex = 15;
-            this.infoParamT.Text = "Параметер (т) - затраты на тусах, либо для тусы";
-            // 
-            // infoParamN
-            // 
-            this.infoParamN.AutoSize = true;
-            this.infoParamN.Location = new System.Drawing.Point(20, 130);
-            this.infoParamN.Name = "infoParamN";
-            this.infoParamN.Size = new System.Drawing.Size(353, 13);
-            this.infoParamN.TabIndex = 16;
-            this.infoParamN.Text = "Параметер (н) - необходимое затраты, которых просто не избежать";
-            // 
-            // textBoxList
-            // 
-            this.textBoxList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxList.Location = new System.Drawing.Point(8, 412);
-            this.textBoxList.Multiline = true;
-            this.textBoxList.Name = "textBoxList";
-            this.textBoxList.ReadOnly = true;
-            this.textBoxList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxList.Size = new System.Drawing.Size(294, 487);
-            this.textBoxList.TabIndex = 17;
-            // 
-            // textBoxSum
-            // 
-            this.textBoxSum.Location = new System.Drawing.Point(308, 412);
-            this.textBoxSum.Multiline = true;
-            this.textBoxSum.Name = "textBoxSum";
-            this.textBoxSum.ReadOnly = true;
-            this.textBoxSum.Size = new System.Drawing.Size(157, 279);
-            this.textBoxSum.TabIndex = 18;
-            // 
-            // info9
-            // 
-            this.info9.Location = new System.Drawing.Point(97, 126);
-            this.info9.Multiline = true;
-            this.info9.Name = "info9";
-            this.info9.ReadOnly = true;
-            this.info9.Size = new System.Drawing.Size(189, 50);
-            this.info9.TabIndex = 15;
-            this.info9.Text = "Список всех затрат за свои деньги (--)";
-            // 
-            // btnExpensesPersonList
-            // 
-            this.btnExpensesPersonList.Location = new System.Drawing.Point(10, 135);
-            this.btnExpensesPersonList.Name = "btnExpensesPersonList";
-            this.btnExpensesPersonList.Size = new System.Drawing.Size(75, 23);
-            this.btnExpensesPersonList.TabIndex = 14;
-            this.btnExpensesPersonList.Text = "Отобразить";
-            this.btnExpensesPersonList.UseVisualStyleBackColor = true;
-            this.btnExpensesPersonList.Click += new System.EventHandler(this.btnExpensesPersonList_Click);
-            // 
-            // info10
-            // 
-            this.info10.Location = new System.Drawing.Point(97, 124);
-            this.info10.Multiline = true;
-            this.info10.Name = "info10";
-            this.info10.ReadOnly = true;
-            this.info10.Size = new System.Drawing.Size(189, 50);
-            this.info10.TabIndex = 15;
-            this.info10.Text = "Суммарное число затрат за свои деньги (--)";
-            // 
-            // btnExpensesPersonSum
-            // 
-            this.btnExpensesPersonSum.Location = new System.Drawing.Point(10, 133);
-            this.btnExpensesPersonSum.Name = "btnExpensesPersonSum";
-            this.btnExpensesPersonSum.Size = new System.Drawing.Size(75, 23);
-            this.btnExpensesPersonSum.TabIndex = 14;
-            this.btnExpensesPersonSum.Text = "Отобразить";
-            this.btnExpensesPersonSum.UseVisualStyleBackColor = true;
-            this.btnExpensesPersonSum.Click += new System.EventHandler(this.btnExpensesPersonSum_Click);
-            // 
-            // infoCategoryPerson1
-            // 
-            this.infoCategoryPerson1.AutoSize = true;
-            this.infoCategoryPerson1.Location = new System.Drawing.Point(20, 147);
-            this.infoCategoryPerson1.Name = "infoCategoryPerson1";
-            this.infoCategoryPerson1.Size = new System.Drawing.Size(506, 13);
-            this.infoCategoryPerson1.TabIndex = 19;
-            this.infoCategoryPerson1.Text = "Категория (--) - сегодня мама дала 100р, завтра это твои деньги. Если ты что-то к" +
-    "упила за деньги";
-            // 
-            // infoCategoryPerson2
-            // 
-            this.infoCategoryPerson2.AutoSize = true;
-            this.infoCategoryPerson2.Location = new System.Drawing.Point(20, 165);
-            this.infoCategoryPerson2.Name = "infoCategoryPerson2";
-            this.infoCategoryPerson2.Size = new System.Drawing.Size(517, 13);
-            this.infoCategoryPerson2.TabIndex = 20;
-            this.infoCategoryPerson2.Text = "которые тебе дали вчера, которые ты накопила за вчера, будет считаться затратой н" +
-    "а твои деньги.";
-            // 
-            // tabControlButtons
-            // 
-            this.tabControlButtons.Controls.Add(this.tabPageList);
-            this.tabControlButtons.Controls.Add(this.tabPageSum);
-            this.tabControlButtons.Controls.Add(this.tabPage1);
-            this.tabControlButtons.Location = new System.Drawing.Point(8, 186);
-            this.tabControlButtons.Name = "tabControlButtons";
-            this.tabControlButtons.SelectedIndex = 0;
-            this.tabControlButtons.Size = new System.Drawing.Size(809, 215);
-            this.tabControlButtons.TabIndex = 21;
-            // 
-            // tabPageList
-            // 
-            this.tabPageList.Controls.Add(this.info9);
-            this.tabPageList.Controls.Add(this.infoAboutExpenses);
-            this.tabPageList.Controls.Add(this.info1);
-            this.tabPageList.Controls.Add(this.info4);
-            this.tabPageList.Controls.Add(this.btnAboutExpenses);
-            this.tabPageList.Controls.Add(this.btnExpensesNList);
-            this.tabPageList.Controls.Add(this.btnExpensesPersonList);
-            this.tabPageList.Controls.Add(this.btnChooseDaysList);
-            this.tabPageList.Controls.Add(this.btnProfitList);
-            this.tabPageList.Controls.Add(this.btnExpensesTList);
-            this.tabPageList.Controls.Add(this.info3);
-            this.tabPageList.Controls.Add(this.info2);
-            this.tabPageList.Location = new System.Drawing.Point(4, 22);
-            this.tabPageList.Name = "tabPageList";
-            this.tabPageList.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageList.Size = new System.Drawing.Size(801, 189);
-            this.tabPageList.TabIndex = 0;
-            this.tabPageList.Text = "Список";
-            this.tabPageList.UseVisualStyleBackColor = true;
-            // 
-            // infoAboutExpenses
-            // 
-            this.infoAboutExpenses.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.infoAboutExpenses.Location = new System.Drawing.Point(394, 70);
-            this.infoAboutExpenses.Multiline = true;
-            this.infoAboutExpenses.Name = "infoAboutExpenses";
-            this.infoAboutExpenses.ReadOnly = true;
-            this.infoAboutExpenses.Size = new System.Drawing.Size(189, 50);
-            this.infoAboutExpenses.TabIndex = 19;
-            this.infoAboutExpenses.Text = "Описание результирующей суммы затрат.";
-            // 
-            // btnAboutExpenses
-            // 
-            this.btnAboutExpenses.Location = new System.Drawing.Point(313, 79);
-            this.btnAboutExpenses.Name = "btnAboutExpenses";
-            this.btnAboutExpenses.Size = new System.Drawing.Size(75, 23);
-            this.btnAboutExpenses.TabIndex = 18;
-            this.btnAboutExpenses.Text = "Отобразить";
-            this.btnAboutExpenses.UseVisualStyleBackColor = true;
-            this.btnAboutExpenses.Click += new System.EventHandler(this.btnAboutExpenses_Click);
-            // 
-            // tabPageSum
-            // 
-            this.tabPageSum.Controls.Add(this.info11);
-            this.tabPageSum.Controls.Add(this.btnProfitAfterExpenses);
-            this.tabPageSum.Controls.Add(this.info10);
-            this.tabPageSum.Controls.Add(this.info6);
-            this.tabPageSum.Controls.Add(this.btnExpensesPersonSum);
-            this.tabPageSum.Controls.Add(this.btnExpensesSum);
-            this.tabPageSum.Controls.Add(this.info8);
-            this.tabPageSum.Controls.Add(this.btnProfitSum);
-            this.tabPageSum.Controls.Add(this.btnExpensesNSum);
-            this.tabPageSum.Controls.Add(this.btnExpensesTSum);
-            this.tabPageSum.Controls.Add(this.info7);
-            this.tabPageSum.Controls.Add(this.info5);
-            this.tabPageSum.Location = new System.Drawing.Point(4, 22);
-            this.tabPageSum.Name = "tabPageSum";
-            this.tabPageSum.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageSum.Size = new System.Drawing.Size(801, 189);
-            this.tabPageSum.TabIndex = 1;
-            this.tabPageSum.Text = "Сумма";
-            this.tabPageSum.UseVisualStyleBackColor = true;
-            // 
-            // info11
-            // 
-            this.info11.Location = new System.Drawing.Point(394, 124);
-            this.info11.Multiline = true;
-            this.info11.Name = "info11";
-            this.info11.ReadOnly = true;
-            this.info11.Size = new System.Drawing.Size(189, 50);
-            this.info11.TabIndex = 17;
-            this.info11.Text = "Конечное финансовое положение (в плюсе за месяц или в минусе).";
-            // 
-            // btnProfitAfterExpenses
-            // 
-            this.btnProfitAfterExpenses.Location = new System.Drawing.Point(313, 133);
-            this.btnProfitAfterExpenses.Name = "btnProfitAfterExpenses";
-            this.btnProfitAfterExpenses.Size = new System.Drawing.Size(75, 23);
-            this.btnProfitAfterExpenses.TabIndex = 16;
-            this.btnProfitAfterExpenses.Text = "Отобразить";
-            this.btnProfitAfterExpenses.UseVisualStyleBackColor = true;
-            this.btnProfitAfterExpenses.Click += new System.EventHandler(this.btnProfitAfterExpenses_Click);
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.info15);
-            this.tabPage1.Controls.Add(this.btnExpensesCigarettesListAllTimes);
-            this.tabPage1.Controls.Add(this.info14);
-            this.tabPage1.Controls.Add(this.btnExpensesCigarettesAllTimes);
-            this.tabPage1.Controls.Add(this.info13);
-            this.tabPage1.Controls.Add(this.btnCigarettesCountAllTimes);
-            this.tabPage1.Controls.Add(this.info12);
-            this.tabPage1.Controls.Add(this.btnAboutCigarettes);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(801, 189);
-            this.tabPage1.TabIndex = 3;
-            this.tabPage1.Text = "Запросы по сигам";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // info15
-            // 
-            this.info15.Location = new System.Drawing.Point(387, 12);
-            this.info15.Multiline = true;
-            this.info15.Name = "info15";
-            this.info15.ReadOnly = true;
-            this.info15.Size = new System.Drawing.Size(187, 50);
-            this.info15.TabIndex = 25;
-            this.info15.Text = "Список всех операций с сигами";
-            // 
-            // btnExpensesCigarettesListAllTimes
-            // 
-            this.btnExpensesCigarettesListAllTimes.Location = new System.Drawing.Point(298, 21);
-            this.btnExpensesCigarettesListAllTimes.Name = "btnExpensesCigarettesListAllTimes";
-            this.btnExpensesCigarettesListAllTimes.Size = new System.Drawing.Size(75, 23);
-            this.btnExpensesCigarettesListAllTimes.TabIndex = 24;
-            this.btnExpensesCigarettesListAllTimes.Text = "Отобразить";
-            this.btnExpensesCigarettesListAllTimes.UseVisualStyleBackColor = true;
-            this.btnExpensesCigarettesListAllTimes.Click += new System.EventHandler(this.btnExpensesCigarettesListAllTimes_Click);
-            // 
-            // info14
-            // 
-            this.info14.Location = new System.Drawing.Point(99, 126);
-            this.info14.Multiline = true;
-            this.info14.Name = "info14";
-            this.info14.ReadOnly = true;
-            this.info14.Size = new System.Drawing.Size(187, 50);
-            this.info14.TabIndex = 23;
-            this.info14.Text = "Суммарное количество денег потраченых на сиги за все время";
-            // 
-            // btnExpensesCigarettesAllTimes
-            // 
-            this.btnExpensesCigarettesAllTimes.Location = new System.Drawing.Point(10, 135);
-            this.btnExpensesCigarettesAllTimes.Name = "btnExpensesCigarettesAllTimes";
-            this.btnExpensesCigarettesAllTimes.Size = new System.Drawing.Size(75, 23);
-            this.btnExpensesCigarettesAllTimes.TabIndex = 22;
-            this.btnExpensesCigarettesAllTimes.Text = "Отобразить";
-            this.btnExpensesCigarettesAllTimes.UseVisualStyleBackColor = true;
-            this.btnExpensesCigarettesAllTimes.Click += new System.EventHandler(this.btnExpensesCigarettesAllTimes_Click);
-            // 
-            // info13
-            // 
-            this.info13.Location = new System.Drawing.Point(99, 68);
-            this.info13.Multiline = true;
-            this.info13.Name = "info13";
-            this.info13.ReadOnly = true;
-            this.info13.Size = new System.Drawing.Size(187, 50);
-            this.info13.TabIndex = 21;
-            this.info13.Text = "Суммарное количество пачек сиг за все время";
-            // 
-            // btnCigarettesCountAllTimes
-            // 
-            this.btnCigarettesCountAllTimes.Location = new System.Drawing.Point(10, 77);
-            this.btnCigarettesCountAllTimes.Name = "btnCigarettesCountAllTimes";
-            this.btnCigarettesCountAllTimes.Size = new System.Drawing.Size(75, 23);
-            this.btnCigarettesCountAllTimes.TabIndex = 20;
-            this.btnCigarettesCountAllTimes.Text = "Отобразить";
-            this.btnCigarettesCountAllTimes.UseVisualStyleBackColor = true;
-            this.btnCigarettesCountAllTimes.Click += new System.EventHandler(this.btnCigarettesCountAllTimes_Click);
-            // 
-            // info12
-            // 
-            this.info12.Location = new System.Drawing.Point(99, 12);
-            this.info12.Multiline = true;
-            this.info12.Name = "info12";
-            this.info12.ReadOnly = true;
-            this.info12.Size = new System.Drawing.Size(187, 50);
-            this.info12.TabIndex = 19;
-            this.info12.Text = "Всю информацию о сигах за выбранный месяц";
-            // 
-            // btnAboutCigarettes
-            // 
-            this.btnAboutCigarettes.Location = new System.Drawing.Point(10, 21);
-            this.btnAboutCigarettes.Name = "btnAboutCigarettes";
-            this.btnAboutCigarettes.Size = new System.Drawing.Size(75, 23);
-            this.btnAboutCigarettes.TabIndex = 18;
-            this.btnAboutCigarettes.Text = "Отобразить";
-            this.btnAboutCigarettes.UseVisualStyleBackColor = true;
-            this.btnAboutCigarettes.Click += new System.EventHandler(this.btnAboutCigarettes_Click);
-            // 
-            // textBoxAboutExpenses
-            // 
-            this.textBoxAboutExpenses.Location = new System.Drawing.Point(471, 412);
-            this.textBoxAboutExpenses.Multiline = true;
-            this.textBoxAboutExpenses.Name = "textBoxAboutExpenses";
-            this.textBoxAboutExpenses.ReadOnly = true;
-            this.textBoxAboutExpenses.Size = new System.Drawing.Size(157, 279);
-            this.textBoxAboutExpenses.TabIndex = 22;
-            // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(233, 8);
+            this.btnUpdate.Location = new System.Drawing.Point(13, 50);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(140, 27);
             this.btnUpdate.TabIndex = 23;
@@ -661,67 +222,24 @@
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // labelUpdateSucceful
-            // 
-            this.labelUpdateSucceful.AutoSize = true;
-            this.labelUpdateSucceful.Location = new System.Drawing.Point(232, 41);
-            this.labelUpdateSucceful.Name = "labelUpdateSucceful";
-            this.labelUpdateSucceful.Size = new System.Drawing.Size(141, 13);
-            this.labelUpdateSucceful.TabIndex = 24;
-            this.labelUpdateSucceful.Text = "\"Обновление завершено.\"";
-            // 
-            // btnLookUpdate
-            // 
-            this.btnLookUpdate.Location = new System.Drawing.Point(3, 3);
-            this.btnLookUpdate.Name = "btnLookUpdate";
-            this.btnLookUpdate.Size = new System.Drawing.Size(80, 55);
-            this.btnLookUpdate.TabIndex = 25;
-            this.btnLookUpdate.Text = "Проверить обновление";
-            this.btnLookUpdate.UseVisualStyleBackColor = true;
-            this.btnLookUpdate.Click += new System.EventHandler(this.btnLookUpdate_Click);
-            // 
             // panelChooseData
             // 
-            this.panelChooseData.BackColor = System.Drawing.Color.White;
+            this.panelChooseData.BackColor = System.Drawing.Color.Ivory;
             this.panelChooseData.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.panelChooseData.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelChooseData.Controls.Add(this.cbMonths);
             this.panelChooseData.Controls.Add(this.btnChooseData);
             this.panelChooseData.Controls.Add(this.numericYears);
             this.panelChooseData.Controls.Add(this.label1);
-            this.panelChooseData.Location = new System.Drawing.Point(4, 45);
+            this.panelChooseData.Location = new System.Drawing.Point(3, 11);
             this.panelChooseData.Name = "panelChooseData";
             this.panelChooseData.Size = new System.Drawing.Size(303, 54);
             this.panelChooseData.TabIndex = 29;
-            this.panelChooseData.Visible = false;
-            // 
-            // panelUpdate
-            // 
-            this.panelUpdate.BackColor = System.Drawing.Color.White;
-            this.panelUpdate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelUpdate.Controls.Add(this.labelBatCreated);
-            this.panelUpdate.Controls.Add(this.radioButtonCreateBat);
-            this.panelUpdate.Controls.Add(this.btnLookUpdate);
-            this.panelUpdate.Controls.Add(this.btnUpdate);
-            this.panelUpdate.Controls.Add(this.labelUpdateSucceful);
-            this.panelUpdate.Location = new System.Drawing.Point(439, 41);
-            this.panelUpdate.Name = "panelUpdate";
-            this.panelUpdate.Size = new System.Drawing.Size(382, 62);
-            this.panelUpdate.TabIndex = 30;
-            // 
-            // labelBatCreated
-            // 
-            this.labelBatCreated.AutoSize = true;
-            this.labelBatCreated.Location = new System.Drawing.Point(85, 29);
-            this.labelBatCreated.Name = "labelBatCreated";
-            this.labelBatCreated.Size = new System.Drawing.Size(147, 13);
-            this.labelBatCreated.TabIndex = 27;
-            this.labelBatCreated.Text = "Батник для отладки создан";
             // 
             // radioButtonCreateBat
             // 
             this.radioButtonCreateBat.AutoSize = true;
-            this.radioButtonCreateBat.Location = new System.Drawing.Point(89, 6);
+            this.radioButtonCreateBat.Location = new System.Drawing.Point(159, 18);
             this.radioButtonCreateBat.Name = "radioButtonCreateBat";
             this.radioButtonCreateBat.Size = new System.Drawing.Size(105, 17);
             this.radioButtonCreateBat.TabIndex = 26;
@@ -730,428 +248,1295 @@
             this.radioButtonCreateBat.UseVisualStyleBackColor = true;
             this.radioButtonCreateBat.CheckedChanged += new System.EventHandler(this.radioButtonCreateBat_CheckedChanged);
             // 
-            // btnClosePanelGit
-            // 
-            this.btnClosePanelGit.Location = new System.Drawing.Point(284, 3);
-            this.btnClosePanelGit.Name = "btnClosePanelGit";
-            this.btnClosePanelGit.Size = new System.Drawing.Size(88, 33);
-            this.btnClosePanelGit.TabIndex = 30;
-            this.btnClosePanelGit.Text = "Выключить";
-            this.btnClosePanelGit.UseVisualStyleBackColor = true;
-            this.btnClosePanelGit.Click += new System.EventHandler(this.btnClosePanelGit_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(94, 6);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(193, 26);
-            this.label7.TabIndex = 29;
-            this.label7.Text = "Включить панель проверки наличия \r\nинструмента обновления";
-            // 
-            // btnOpenPanelGit
-            // 
-            this.btnOpenPanelGit.Location = new System.Drawing.Point(2, 3);
-            this.btnOpenPanelGit.Name = "btnOpenPanelGit";
-            this.btnOpenPanelGit.Size = new System.Drawing.Size(88, 33);
-            this.btnOpenPanelGit.TabIndex = 28;
-            this.btnOpenPanelGit.Text = "Включить";
-            this.btnOpenPanelGit.UseVisualStyleBackColor = true;
-            this.btnOpenPanelGit.Click += new System.EventHandler(this.btnOpenPanelGit_Click);
-            // 
-            // radioButtonHe
-            // 
-            this.radioButtonHe.AutoSize = true;
-            this.radioButtonHe.Location = new System.Drawing.Point(11, 13);
-            this.radioButtonHe.Name = "radioButtonHe";
-            this.radioButtonHe.Size = new System.Drawing.Size(39, 17);
-            this.radioButtonHe.TabIndex = 32;
-            this.radioButtonHe.TabStop = true;
-            this.radioButtonHe.Text = "Он";
-            this.radioButtonHe.UseVisualStyleBackColor = true;
-            this.radioButtonHe.CheckedChanged += new System.EventHandler(this.radioButtonhe_CheckedChanged);
-            // 
-            // radioButtonShe
-            // 
-            this.radioButtonShe.AutoSize = true;
-            this.radioButtonShe.Location = new System.Drawing.Point(62, 13);
-            this.radioButtonShe.Name = "radioButtonShe";
-            this.radioButtonShe.Size = new System.Drawing.Size(45, 17);
-            this.radioButtonShe.TabIndex = 33;
-            this.radioButtonShe.TabStop = true;
-            this.radioButtonShe.Text = "Она";
-            this.radioButtonShe.UseVisualStyleBackColor = true;
-            this.radioButtonShe.CheckedChanged += new System.EventHandler(this.radioButtonShe_CheckedChanged);
-            // 
             // textBoxPassword
             // 
-            this.textBoxPassword.Location = new System.Drawing.Point(218, 13);
+            this.textBoxPassword.Location = new System.Drawing.Point(8, 12);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(10, 20);
             this.textBoxPassword.TabIndex = 34;
             this.textBoxPassword.TextChanged += new System.EventHandler(this.textBoxPassword_TextChanged);
             // 
-            // labelVisible
-            // 
-            this.labelVisible.AutoSize = true;
-            this.labelVisible.Location = new System.Drawing.Point(123, 17);
-            this.labelVisible.Name = "labelVisible";
-            this.labelVisible.Size = new System.Drawing.Size(91, 13);
-            this.labelVisible.TabIndex = 35;
-            this.labelVisible.Text = "Введите пароль:";
-            // 
-            // tabControlButtonsHe
-            // 
-            this.tabControlButtonsHe.Controls.Add(this.tabPageListHe);
-            this.tabControlButtonsHe.Location = new System.Drawing.Point(8, 204);
-            this.tabControlButtonsHe.Name = "tabControlButtonsHe";
-            this.tabControlButtonsHe.SelectedIndex = 0;
-            this.tabControlButtonsHe.Size = new System.Drawing.Size(796, 191);
-            this.tabControlButtonsHe.TabIndex = 20;
-            // 
-            // tabPageListHe
-            // 
-            this.tabPageListHe.Controls.Add(this.checkBoxDopQuery);
-            this.tabPageListHe.Controls.Add(this.btnCandle);
-            this.tabPageListHe.Controls.Add(this.btnRelax);
-            this.tabPageListHe.Controls.Add(this.btnAllListHe);
-            this.tabPageListHe.Controls.Add(this.btnSheAlListHe);
-            this.tabPageListHe.Controls.Add(this.btnNAllListHe);
-            this.tabPageListHe.Controls.Add(this.btnTAllListHe);
-            this.tabPageListHe.Controls.Add(this.label2);
-            this.tabPageListHe.Controls.Add(this.label3);
-            this.tabPageListHe.Controls.Add(this.label4);
-            this.tabPageListHe.Controls.Add(this.label5);
-            this.tabPageListHe.Controls.Add(this.btnMonthListHe);
-            this.tabPageListHe.Controls.Add(this.btnSheMonthListHe);
-            this.tabPageListHe.Controls.Add(this.btnNMonthListHe);
-            this.tabPageListHe.Controls.Add(this.btnTMonthListHe);
-            this.tabPageListHe.Controls.Add(this.infoMonthList);
-            this.tabPageListHe.Controls.Add(this.infoSheMonthListHe);
-            this.tabPageListHe.Controls.Add(this.infoNMonthListHe);
-            this.tabPageListHe.Controls.Add(this.infoTMonthListHe);
-            this.tabPageListHe.Location = new System.Drawing.Point(4, 22);
-            this.tabPageListHe.Name = "tabPageListHe";
-            this.tabPageListHe.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageListHe.Size = new System.Drawing.Size(788, 165);
-            this.tabPageListHe.TabIndex = 0;
-            this.tabPageListHe.Text = "Список";
-            this.tabPageListHe.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxDopQuery
-            // 
-            this.checkBoxDopQuery.AutoSize = true;
-            this.checkBoxDopQuery.Location = new System.Drawing.Point(620, 16);
-            this.checkBoxDopQuery.Name = "checkBoxDopQuery";
-            this.checkBoxDopQuery.Size = new System.Drawing.Size(97, 17);
-            this.checkBoxDopQuery.TabIndex = 29;
-            this.checkBoxDopQuery.Text = "Доп. запросы";
-            this.checkBoxDopQuery.UseVisualStyleBackColor = true;
-            this.checkBoxDopQuery.CheckedChanged += new System.EventHandler(this.checkBoxDopQuery_CheckedChanged);
-            // 
-            // btnCandle
-            // 
-            this.btnCandle.Location = new System.Drawing.Point(617, 80);
-            this.btnCandle.Name = "btnCandle";
-            this.btnCandle.Size = new System.Drawing.Size(159, 32);
-            this.btnCandle.TabIndex = 18;
-            this.btnCandle.Text = "Свечи";
-            this.btnCandle.UseVisualStyleBackColor = true;
-            this.btnCandle.Click += new System.EventHandler(this.btnCandle_Click);
-            // 
-            // btnRelax
-            // 
-            this.btnRelax.Location = new System.Drawing.Point(617, 42);
-            this.btnRelax.Name = "btnRelax";
-            this.btnRelax.Size = new System.Drawing.Size(159, 32);
-            this.btnRelax.TabIndex = 17;
-            this.btnRelax.Text = "Спокойствие";
-            this.btnRelax.UseVisualStyleBackColor = true;
-            this.btnRelax.Click += new System.EventHandler(this.btnRelax_Click);
-            // 
-            // btnAllListHe
-            // 
-            this.btnAllListHe.Location = new System.Drawing.Point(530, 111);
-            this.btnAllListHe.Name = "btnAllListHe";
-            this.btnAllListHe.Size = new System.Drawing.Size(75, 23);
-            this.btnAllListHe.TabIndex = 15;
-            this.btnAllListHe.Text = "Отобразить";
-            this.btnAllListHe.UseVisualStyleBackColor = true;
-            this.btnAllListHe.Click += new System.EventHandler(this.btnAllListHe_Click);
-            // 
-            // btnSheAlListHe
-            // 
-            this.btnSheAlListHe.Location = new System.Drawing.Point(530, 78);
-            this.btnSheAlListHe.Name = "btnSheAlListHe";
-            this.btnSheAlListHe.Size = new System.Drawing.Size(75, 23);
-            this.btnSheAlListHe.TabIndex = 14;
-            this.btnSheAlListHe.Text = "Отобразить";
-            this.btnSheAlListHe.UseVisualStyleBackColor = true;
-            this.btnSheAlListHe.Click += new System.EventHandler(this.btnSheAlListHe_Click);
-            // 
-            // btnNAllListHe
-            // 
-            this.btnNAllListHe.Location = new System.Drawing.Point(530, 45);
-            this.btnNAllListHe.Name = "btnNAllListHe";
-            this.btnNAllListHe.Size = new System.Drawing.Size(75, 23);
-            this.btnNAllListHe.TabIndex = 13;
-            this.btnNAllListHe.Text = "Отобразить";
-            this.btnNAllListHe.UseVisualStyleBackColor = true;
-            this.btnNAllListHe.Click += new System.EventHandler(this.btnNAllListHe_Click);
-            // 
-            // btnTAllListHe
-            // 
-            this.btnTAllListHe.Location = new System.Drawing.Point(530, 12);
-            this.btnTAllListHe.Name = "btnTAllListHe";
-            this.btnTAllListHe.Size = new System.Drawing.Size(75, 23);
-            this.btnTAllListHe.TabIndex = 12;
-            this.btnTAllListHe.Text = "Отобразить";
-            this.btnTAllListHe.UseVisualStyleBackColor = true;
-            this.btnTAllListHe.Click += new System.EventHandler(this.btnTAllListHe_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(320, 116);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(112, 13);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "Затраты | Все время";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(320, 83);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(211, 13);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Затраты по параметру (она) | Все время";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(320, 48);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(199, 13);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Затраты по параметру (н) | Все время";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(320, 17);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(198, 13);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Затраты по параметру (т) | Все время";
-            // 
-            // btnMonthListHe
-            // 
-            this.btnMonthListHe.Location = new System.Drawing.Point(214, 112);
-            this.btnMonthListHe.Name = "btnMonthListHe";
-            this.btnMonthListHe.Size = new System.Drawing.Size(75, 23);
-            this.btnMonthListHe.TabIndex = 7;
-            this.btnMonthListHe.Text = "Отобразить";
-            this.btnMonthListHe.UseVisualStyleBackColor = true;
-            this.btnMonthListHe.Click += new System.EventHandler(this.btnMonthListHe_Click);
-            // 
-            // btnSheMonthListHe
-            // 
-            this.btnSheMonthListHe.Location = new System.Drawing.Point(214, 79);
-            this.btnSheMonthListHe.Name = "btnSheMonthListHe";
-            this.btnSheMonthListHe.Size = new System.Drawing.Size(75, 23);
-            this.btnSheMonthListHe.TabIndex = 6;
-            this.btnSheMonthListHe.Text = "Отобразить";
-            this.btnSheMonthListHe.UseVisualStyleBackColor = true;
-            this.btnSheMonthListHe.Click += new System.EventHandler(this.btnSheMonthListHe_Click);
-            // 
-            // btnNMonthListHe
-            // 
-            this.btnNMonthListHe.Location = new System.Drawing.Point(214, 46);
-            this.btnNMonthListHe.Name = "btnNMonthListHe";
-            this.btnNMonthListHe.Size = new System.Drawing.Size(75, 23);
-            this.btnNMonthListHe.TabIndex = 5;
-            this.btnNMonthListHe.Text = "Отобразить";
-            this.btnNMonthListHe.UseVisualStyleBackColor = true;
-            this.btnNMonthListHe.Click += new System.EventHandler(this.btnNMonthListHe_Click);
-            // 
-            // btnTMonthListHe
-            // 
-            this.btnTMonthListHe.Location = new System.Drawing.Point(214, 13);
-            this.btnTMonthListHe.Name = "btnTMonthListHe";
-            this.btnTMonthListHe.Size = new System.Drawing.Size(75, 23);
-            this.btnTMonthListHe.TabIndex = 4;
-            this.btnTMonthListHe.Text = "Отобразить";
-            this.btnTMonthListHe.UseVisualStyleBackColor = true;
-            this.btnTMonthListHe.Click += new System.EventHandler(this.btnTMonthListHe_Click);
-            // 
-            // infoMonthList
-            // 
-            this.infoMonthList.AutoSize = true;
-            this.infoMonthList.Location = new System.Drawing.Point(11, 117);
-            this.infoMonthList.Name = "infoMonthList";
-            this.infoMonthList.Size = new System.Drawing.Size(91, 13);
-            this.infoMonthList.TabIndex = 3;
-            this.infoMonthList.Text = "Затраты | Месяц";
-            // 
-            // infoSheMonthListHe
-            // 
-            this.infoSheMonthListHe.AutoSize = true;
-            this.infoSheMonthListHe.Location = new System.Drawing.Point(11, 84);
-            this.infoSheMonthListHe.Name = "infoSheMonthListHe";
-            this.infoSheMonthListHe.Size = new System.Drawing.Size(190, 13);
-            this.infoSheMonthListHe.TabIndex = 2;
-            this.infoSheMonthListHe.Text = "Затраты по параметру (она) | Месяц";
-            // 
-            // infoNMonthListHe
-            // 
-            this.infoNMonthListHe.AutoSize = true;
-            this.infoNMonthListHe.Location = new System.Drawing.Point(11, 49);
-            this.infoNMonthListHe.Name = "infoNMonthListHe";
-            this.infoNMonthListHe.Size = new System.Drawing.Size(178, 13);
-            this.infoNMonthListHe.TabIndex = 1;
-            this.infoNMonthListHe.Text = "Затраты по параметру (н) | Месяц";
-            // 
-            // infoTMonthListHe
-            // 
-            this.infoTMonthListHe.AutoSize = true;
-            this.infoTMonthListHe.Location = new System.Drawing.Point(11, 18);
-            this.infoTMonthListHe.Name = "infoTMonthListHe";
-            this.infoTMonthListHe.Size = new System.Drawing.Size(177, 13);
-            this.infoTMonthListHe.TabIndex = 0;
-            this.infoTMonthListHe.Text = "Затраты по параметру (т) | Месяц";
-            // 
-            // labelAnswerToUpdate
-            // 
-            this.labelAnswerToUpdate.AutoSize = true;
-            this.labelAnswerToUpdate.Location = new System.Drawing.Point(529, 10);
-            this.labelAnswerToUpdate.Name = "labelAnswerToUpdate";
-            this.labelAnswerToUpdate.Size = new System.Drawing.Size(0, 13);
-            this.labelAnswerToUpdate.TabIndex = 36;
-            // 
-            // labelLastUpdate
-            // 
-            this.labelLastUpdate.AutoSize = true;
-            this.labelLastUpdate.Location = new System.Drawing.Point(240, 28);
-            this.labelLastUpdate.Name = "labelLastUpdate";
-            this.labelLastUpdate.Size = new System.Drawing.Size(0, 13);
-            this.labelLastUpdate.TabIndex = 37;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(237, 8);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(161, 13);
-            this.label6.TabIndex = 38;
-            this.label6.Text = "Дата последнего обновления:";
-            // 
-            // panelWorkGit
-            // 
-            this.panelWorkGit.BackColor = System.Drawing.Color.White;
-            this.panelWorkGit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelWorkGit.Controls.Add(this.labelForStatusGitInstall);
-            this.panelWorkGit.Controls.Add(this.btnDontCheck);
-            this.panelWorkGit.Controls.Add(this.btnInstallGit);
-            this.panelWorkGit.Controls.Add(this.label9);
-            this.panelWorkGit.Controls.Add(this.btnCheckGit);
-            this.panelWorkGit.Controls.Add(this.label8);
-            this.panelWorkGit.Location = new System.Drawing.Point(826, 8);
-            this.panelWorkGit.Name = "panelWorkGit";
-            this.panelWorkGit.Size = new System.Drawing.Size(253, 353);
-            this.panelWorkGit.TabIndex = 39;
-            // 
-            // labelForStatusGitInstall
-            // 
-            this.labelForStatusGitInstall.AutoSize = true;
-            this.labelForStatusGitInstall.Location = new System.Drawing.Point(20, 311);
-            this.labelForStatusGitInstall.Name = "labelForStatusGitInstall";
-            this.labelForStatusGitInstall.Size = new System.Drawing.Size(0, 13);
-            this.labelForStatusGitInstall.TabIndex = 5;
-            // 
-            // btnDontCheck
-            // 
-            this.btnDontCheck.Location = new System.Drawing.Point(127, 145);
-            this.btnDontCheck.Name = "btnDontCheck";
-            this.btnDontCheck.Size = new System.Drawing.Size(97, 25);
-            this.btnDontCheck.TabIndex = 4;
-            this.btnDontCheck.Text = "Не стоит";
-            this.btnDontCheck.UseVisualStyleBackColor = true;
-            this.btnDontCheck.Click += new System.EventHandler(this.btnDontCheck_Click);
-            // 
             // btnInstallGit
             // 
-            this.btnInstallGit.Location = new System.Drawing.Point(12, 274);
+            this.btnInstallGit.Location = new System.Drawing.Point(13, 10);
             this.btnInstallGit.Name = "btnInstallGit";
-            this.btnInstallGit.Size = new System.Drawing.Size(97, 25);
+            this.btnInstallGit.Size = new System.Drawing.Size(140, 36);
             this.btnInstallGit.TabIndex = 3;
-            this.btnInstallGit.Text = "Установить";
+            this.btnInstallGit.Text = "Установить инструмент обновления";
             this.btnInstallGit.UseVisualStyleBackColor = true;
             this.btnInstallGit.Click += new System.EventHandler(this.btnInstallGit_Click);
             // 
-            // label9
+            // dataDop
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(14, 187);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(0, 13);
-            this.label9.TabIndex = 2;
+            this.dataDop.BackgroundColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.dataDop.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            this.dataDop.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataDop.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id,
+            this.date_expense,
+            this.event_type,
+            this.count,
+            this.count_expenses,
+            this.description,
+            this.type,
+            this.full_line});
+            this.dataDop.Location = new System.Drawing.Point(953, 399);
+            this.dataDop.Name = "dataDop";
+            this.dataDop.Size = new System.Drawing.Size(709, 580);
+            this.dataDop.TabIndex = 42;
             // 
-            // btnCheckGit
+            // id
             // 
-            this.btnCheckGit.Location = new System.Drawing.Point(12, 145);
-            this.btnCheckGit.Name = "btnCheckGit";
-            this.btnCheckGit.Size = new System.Drawing.Size(97, 25);
-            this.btnCheckGit.TabIndex = 1;
-            this.btnCheckGit.Text = "Проверка";
-            this.btnCheckGit.UseVisualStyleBackColor = true;
-            this.btnCheckGit.Click += new System.EventHandler(this.btnCheckGit_Click);
+            this.id.Frozen = true;
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
             // 
-            // label8
+            // date_expense
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(7, 12);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(245, 117);
-            this.label8.TabIndex = 0;
-            this.label8.Text = resources.GetString("label8.Text");
+            this.date_expense.HeaderText = "date_expense";
+            this.date_expense.Name = "date_expense";
             // 
-            // panelEnableGit
+            // event_type
             // 
-            this.panelEnableGit.BackColor = System.Drawing.Color.White;
-            this.panelEnableGit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelEnableGit.Controls.Add(this.btnOpenPanelGit);
-            this.panelEnableGit.Controls.Add(this.btnClosePanelGit);
-            this.panelEnableGit.Controls.Add(this.label7);
-            this.panelEnableGit.Location = new System.Drawing.Point(440, 107);
-            this.panelEnableGit.Name = "panelEnableGit";
-            this.panelEnableGit.Size = new System.Drawing.Size(380, 40);
-            this.panelEnableGit.TabIndex = 40;
+            this.event_type.HeaderText = "event_type";
+            this.event_type.Name = "event_type";
+            // 
+            // count
+            // 
+            this.count.HeaderText = "count";
+            this.count.Name = "count";
+            // 
+            // count_expenses
+            // 
+            this.count_expenses.HeaderText = "count_expenses";
+            this.count_expenses.Name = "count_expenses";
+            // 
+            // description
+            // 
+            this.description.HeaderText = "description";
+            this.description.Name = "description";
+            // 
+            // type
+            // 
+            this.type.HeaderText = "type";
+            this.type.Name = "type";
+            // 
+            // full_line
+            // 
+            this.full_line.HeaderText = "full_line";
+            this.full_line.Name = "full_line";
+            // 
+            // panelModuleADM
+            // 
+            this.panelModuleADM.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.panelModuleADM.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelModuleADM.Controls.Add(this.checkBoxHeBigADM);
+            this.panelModuleADM.Controls.Add(this.checkBoxHeGiftsADM);
+            this.panelModuleADM.Controls.Add(this.checkBoxHeADM);
+            this.panelModuleADM.Controls.Add(this.checkBoxSheADM);
+            this.panelModuleADM.Controls.Add(this.buttonExecuteCMDADM);
+            this.panelModuleADM.Controls.Add(this.buttonShowFieldPassword);
+            this.panelModuleADM.Controls.Add(this.buttonBlock);
+            this.panelModuleADM.Controls.Add(this.buttonExecuteSQLQuery);
+            this.panelModuleADM.Controls.Add(this.comboBoxCMDsADM);
+            this.panelModuleADM.Controls.Add(this.radioButtonOutputInOsn);
+            this.panelModuleADM.Controls.Add(this.radioButtonOutputInDop);
+            this.panelModuleADM.Controls.Add(this.labelHeaderSQLQuery);
+            this.panelModuleADM.Controls.Add(this.textBoxSQLQuery);
+            this.panelModuleADM.Location = new System.Drawing.Point(1389, 13);
+            this.panelModuleADM.Name = "panelModuleADM";
+            this.panelModuleADM.Size = new System.Drawing.Size(273, 375);
+            this.panelModuleADM.TabIndex = 43;
+            // 
+            // checkBoxHeBigADM
+            // 
+            this.checkBoxHeBigADM.AutoSize = true;
+            this.checkBoxHeBigADM.Location = new System.Drawing.Point(167, 334);
+            this.checkBoxHeBigADM.Name = "checkBoxHeBigADM";
+            this.checkBoxHeBigADM.Size = new System.Drawing.Size(55, 17);
+            this.checkBoxHeBigADM.TabIndex = 12;
+            this.checkBoxHeBigADM.Text = "HeBig";
+            this.checkBoxHeBigADM.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxHeGiftsADM
+            // 
+            this.checkBoxHeGiftsADM.AutoSize = true;
+            this.checkBoxHeGiftsADM.Location = new System.Drawing.Point(167, 305);
+            this.checkBoxHeGiftsADM.Name = "checkBoxHeGiftsADM";
+            this.checkBoxHeGiftsADM.Size = new System.Drawing.Size(61, 17);
+            this.checkBoxHeGiftsADM.TabIndex = 11;
+            this.checkBoxHeGiftsADM.Text = "HeGifts";
+            this.checkBoxHeGiftsADM.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxHeADM
+            // 
+            this.checkBoxHeADM.AutoSize = true;
+            this.checkBoxHeADM.Location = new System.Drawing.Point(26, 334);
+            this.checkBoxHeADM.Name = "checkBoxHeADM";
+            this.checkBoxHeADM.Size = new System.Drawing.Size(40, 17);
+            this.checkBoxHeADM.TabIndex = 10;
+            this.checkBoxHeADM.Text = "He";
+            this.checkBoxHeADM.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxSheADM
+            // 
+            this.checkBoxSheADM.AutoSize = true;
+            this.checkBoxSheADM.Location = new System.Drawing.Point(26, 305);
+            this.checkBoxSheADM.Name = "checkBoxSheADM";
+            this.checkBoxSheADM.Size = new System.Drawing.Size(45, 17);
+            this.checkBoxSheADM.TabIndex = 9;
+            this.checkBoxSheADM.Text = "She";
+            this.checkBoxSheADM.UseVisualStyleBackColor = true;
+            // 
+            // buttonExecuteCMDADM
+            // 
+            this.buttonExecuteCMDADM.Location = new System.Drawing.Point(10, 88);
+            this.buttonExecuteCMDADM.Name = "buttonExecuteCMDADM";
+            this.buttonExecuteCMDADM.Size = new System.Drawing.Size(119, 23);
+            this.buttonExecuteCMDADM.TabIndex = 8;
+            this.buttonExecuteCMDADM.Text = "Выполнить команду";
+            this.buttonExecuteCMDADM.UseVisualStyleBackColor = true;
+            this.buttonExecuteCMDADM.Click += new System.EventHandler(this.buttonExecuteCMDADM_Click);
+            // 
+            // buttonShowFieldPassword
+            // 
+            this.buttonShowFieldPassword.Location = new System.Drawing.Point(35, 203);
+            this.buttonShowFieldPassword.Name = "buttonShowFieldPassword";
+            this.buttonShowFieldPassword.Size = new System.Drawing.Size(94, 36);
+            this.buttonShowFieldPassword.TabIndex = 7;
+            this.buttonShowFieldPassword.Text = "Раскрыть карты";
+            this.buttonShowFieldPassword.UseVisualStyleBackColor = true;
+            this.buttonShowFieldPassword.Click += new System.EventHandler(this.buttonShowFieldPassword_Click);
+            // 
+            // buttonBlock
+            // 
+            this.buttonBlock.Location = new System.Drawing.Point(147, 216);
+            this.buttonBlock.Name = "buttonBlock";
+            this.buttonBlock.Size = new System.Drawing.Size(100, 23);
+            this.buttonBlock.TabIndex = 6;
+            this.buttonBlock.Text = "Заблокировать";
+            this.buttonBlock.UseVisualStyleBackColor = true;
+            this.buttonBlock.Click += new System.EventHandler(this.buttonBlock_Click);
+            // 
+            // buttonExecuteSQLQuery
+            // 
+            this.buttonExecuteSQLQuery.Location = new System.Drawing.Point(156, 88);
+            this.buttonExecuteSQLQuery.Name = "buttonExecuteSQLQuery";
+            this.buttonExecuteSQLQuery.Size = new System.Drawing.Size(112, 23);
+            this.buttonExecuteSQLQuery.TabIndex = 5;
+            this.buttonExecuteSQLQuery.Text = "Выполнить запрос";
+            this.buttonExecuteSQLQuery.UseVisualStyleBackColor = true;
+            this.buttonExecuteSQLQuery.Click += new System.EventHandler(this.buttonExecuteSQLQuery_Click);
+            // 
+            // comboBoxCMDsADM
+            // 
+            this.comboBoxCMDsADM.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.comboBoxCMDsADM.FormattingEnabled = true;
+            this.comboBoxCMDsADM.Items.AddRange(new object[] {
+            "Создать таблицу",
+            "Удалить таблицу",
+            "Очистить таблицу",
+            "Записать в таблицу с файла"});
+            this.comboBoxCMDsADM.Location = new System.Drawing.Point(4, 115);
+            this.comboBoxCMDsADM.Name = "comboBoxCMDsADM";
+            this.comboBoxCMDsADM.Size = new System.Drawing.Size(161, 21);
+            this.comboBoxCMDsADM.TabIndex = 4;
+            // 
+            // radioButtonOutputInOsn
+            // 
+            this.radioButtonOutputInOsn.AutoSize = true;
+            this.radioButtonOutputInOsn.Font = new System.Drawing.Font("MV Boli", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(204)));
+            this.radioButtonOutputInOsn.Location = new System.Drawing.Point(14, 282);
+            this.radioButtonOutputInOsn.Name = "radioButtonOutputInOsn";
+            this.radioButtonOutputInOsn.Size = new System.Drawing.Size(197, 17);
+            this.radioButtonOutputInOsn.TabIndex = 3;
+            this.radioButtonOutputInOsn.TabStop = true;
+            this.radioButtonOutputInOsn.Text = "Вывод данных в основную таблицу";
+            this.radioButtonOutputInOsn.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonOutputInDop
+            // 
+            this.radioButtonOutputInDop.AutoSize = true;
+            this.radioButtonOutputInDop.Font = new System.Drawing.Font("MV Boli", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(204)));
+            this.radioButtonOutputInDop.Location = new System.Drawing.Point(14, 259);
+            this.radioButtonOutputInDop.Name = "radioButtonOutputInDop";
+            this.radioButtonOutputInDop.Size = new System.Drawing.Size(233, 17);
+            this.radioButtonOutputInDop.TabIndex = 2;
+            this.radioButtonOutputInDop.TabStop = true;
+            this.radioButtonOutputInDop.Text = "Вывод данных в дополнительную таблицу";
+            this.radioButtonOutputInDop.UseVisualStyleBackColor = true;
+            // 
+            // labelHeaderSQLQuery
+            // 
+            this.labelHeaderSQLQuery.AutoSize = true;
+            this.labelHeaderSQLQuery.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelHeaderSQLQuery.Location = new System.Drawing.Point(11, 14);
+            this.labelHeaderSQLQuery.Name = "labelHeaderSQLQuery";
+            this.labelHeaderSQLQuery.Size = new System.Drawing.Size(154, 15);
+            this.labelHeaderSQLQuery.TabIndex = 1;
+            this.labelHeaderSQLQuery.Text = "Окно прямого запроса к БД";
+            // 
+            // textBoxSQLQuery
+            // 
+            this.textBoxSQLQuery.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxSQLQuery.Font = new System.Drawing.Font("MV Boli", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)), true);
+            this.textBoxSQLQuery.Location = new System.Drawing.Point(6, 26);
+            this.textBoxSQLQuery.Multiline = true;
+            this.textBoxSQLQuery.Name = "textBoxSQLQuery";
+            this.textBoxSQLQuery.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxSQLQuery.Size = new System.Drawing.Size(262, 56);
+            this.textBoxSQLQuery.TabIndex = 0;
+            // 
+            // dataOsn
+            // 
+            this.dataOsn.BackgroundColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.dataOsn.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataOsn.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataOsn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataOsn.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8});
+            this.dataOsn.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.dataOsn.Location = new System.Drawing.Point(6, 399);
+            this.dataOsn.Name = "dataOsn";
+            this.dataOsn.ReadOnly = true;
+            this.dataOsn.Size = new System.Drawing.Size(709, 580);
+            this.dataOsn.TabIndex = 44;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.Frozen = true;
+            this.dataGridViewTextBoxColumn1.HeaderText = "id";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "date_expense";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "event_type";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "count";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "count_expenses";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "description";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.HeaderText = "type";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.HeaderText = "full_line";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            // 
+            // panelModuleUpdate
+            // 
+            this.panelModuleUpdate.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.panelModuleUpdate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelModuleUpdate.Controls.Add(this.buttonAccessUpdate);
+            this.panelModuleUpdate.Controls.Add(this.radioButtonCreateBat);
+            this.panelModuleUpdate.Controls.Add(this.btnUpdate);
+            this.panelModuleUpdate.Controls.Add(this.btnInstallGit);
+            this.panelModuleUpdate.Controls.Add(this.labelHeaderIsUpdate);
+            this.panelModuleUpdate.Controls.Add(this.textBoxIsUpdate);
+            this.panelModuleUpdate.Controls.Add(this.labelHeaderWindowTextBoxUpdate);
+            this.panelModuleUpdate.Controls.Add(this.textBoxUpdate);
+            this.panelModuleUpdate.Location = new System.Drawing.Point(716, 12);
+            this.panelModuleUpdate.Name = "panelModuleUpdate";
+            this.panelModuleUpdate.Size = new System.Drawing.Size(667, 382);
+            this.panelModuleUpdate.TabIndex = 45;
+            // 
+            // labelHeaderIsUpdate
+            // 
+            this.labelHeaderIsUpdate.AutoSize = true;
+            this.labelHeaderIsUpdate.BackColor = System.Drawing.Color.Ivory;
+            this.labelHeaderIsUpdate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelHeaderIsUpdate.Font = new System.Drawing.Font("MV Boli", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.labelHeaderIsUpdate.Location = new System.Drawing.Point(17, 85);
+            this.labelHeaderIsUpdate.Name = "labelHeaderIsUpdate";
+            this.labelHeaderIsUpdate.Size = new System.Drawing.Size(144, 13);
+            this.labelHeaderIsUpdate.TabIndex = 57;
+            this.labelHeaderIsUpdate.Text = "Окно готовности обновления";
+            // 
+            // textBoxIsUpdate
+            // 
+            this.textBoxIsUpdate.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.textBoxIsUpdate.Location = new System.Drawing.Point(13, 90);
+            this.textBoxIsUpdate.Multiline = true;
+            this.textBoxIsUpdate.Name = "textBoxIsUpdate";
+            this.textBoxIsUpdate.ReadOnly = true;
+            this.textBoxIsUpdate.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxIsUpdate.Size = new System.Drawing.Size(363, 51);
+            this.textBoxIsUpdate.TabIndex = 58;
+            // 
+            // labelHeaderWindowTextBoxUpdate
+            // 
+            this.labelHeaderWindowTextBoxUpdate.AutoSize = true;
+            this.labelHeaderWindowTextBoxUpdate.BackColor = System.Drawing.Color.Ivory;
+            this.labelHeaderWindowTextBoxUpdate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelHeaderWindowTextBoxUpdate.Font = new System.Drawing.Font("MV Boli", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.labelHeaderWindowTextBoxUpdate.Location = new System.Drawing.Point(17, 159);
+            this.labelHeaderWindowTextBoxUpdate.Name = "labelHeaderWindowTextBoxUpdate";
+            this.labelHeaderWindowTextBoxUpdate.Size = new System.Drawing.Size(89, 13);
+            this.labelHeaderWindowTextBoxUpdate.TabIndex = 55;
+            this.labelHeaderWindowTextBoxUpdate.Text = "Окно обновления";
+            // 
+            // textBoxUpdate
+            // 
+            this.textBoxUpdate.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.textBoxUpdate.Location = new System.Drawing.Point(13, 164);
+            this.textBoxUpdate.Multiline = true;
+            this.textBoxUpdate.Name = "textBoxUpdate";
+            this.textBoxUpdate.ReadOnly = true;
+            this.textBoxUpdate.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxUpdate.Size = new System.Drawing.Size(363, 101);
+            this.textBoxUpdate.TabIndex = 56;
+            // 
+            // labelHeaderModuleUpdate
+            // 
+            this.labelHeaderModuleUpdate.AutoSize = true;
+            this.labelHeaderModuleUpdate.BackColor = System.Drawing.Color.Ivory;
+            this.labelHeaderModuleUpdate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelHeaderModuleUpdate.Font = new System.Drawing.Font("MV Boli", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.labelHeaderModuleUpdate.Location = new System.Drawing.Point(730, 6);
+            this.labelHeaderModuleUpdate.Name = "labelHeaderModuleUpdate";
+            this.labelHeaderModuleUpdate.Size = new System.Drawing.Size(108, 14);
+            this.labelHeaderModuleUpdate.TabIndex = 41;
+            this.labelHeaderModuleUpdate.Text = "Модуль обновления";
+            // 
+            // panelInfo
+            // 
+            this.panelInfo.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.panelInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelInfo.Controls.Add(this.labelHeaderWindowErrors);
+            this.panelInfo.Controls.Add(this.textBoxInfoMessage);
+            this.panelInfo.Controls.Add(this.textBoxInfoErrors);
+            this.panelInfo.Location = new System.Drawing.Point(335, 213);
+            this.panelInfo.Name = "panelInfo";
+            this.panelInfo.Size = new System.Drawing.Size(375, 181);
+            this.panelInfo.TabIndex = 30;
+            // 
+            // labelHeaderWindowErrors
+            // 
+            this.labelHeaderWindowErrors.AutoSize = true;
+            this.labelHeaderWindowErrors.BackColor = System.Drawing.Color.Ivory;
+            this.labelHeaderWindowErrors.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelHeaderWindowErrors.Font = new System.Drawing.Font("MV Boli", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.labelHeaderWindowErrors.Location = new System.Drawing.Point(12, 108);
+            this.labelHeaderWindowErrors.Name = "labelHeaderWindowErrors";
+            this.labelHeaderWindowErrors.Size = new System.Drawing.Size(70, 13);
+            this.labelHeaderWindowErrors.TabIndex = 55;
+            this.labelHeaderWindowErrors.Text = "Окно ошибок";
+            // 
+            // textBoxInfoMessage
+            // 
+            this.textBoxInfoMessage.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.textBoxInfoMessage.Location = new System.Drawing.Point(5, 8);
+            this.textBoxInfoMessage.Multiline = true;
+            this.textBoxInfoMessage.Name = "textBoxInfoMessage";
+            this.textBoxInfoMessage.ReadOnly = true;
+            this.textBoxInfoMessage.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxInfoMessage.Size = new System.Drawing.Size(363, 101);
+            this.textBoxInfoMessage.TabIndex = 0;
+            // 
+            // textBoxInfoErrors
+            // 
+            this.textBoxInfoErrors.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.textBoxInfoErrors.ForeColor = System.Drawing.Color.Red;
+            this.textBoxInfoErrors.Location = new System.Drawing.Point(5, 114);
+            this.textBoxInfoErrors.Multiline = true;
+            this.textBoxInfoErrors.Name = "textBoxInfoErrors";
+            this.textBoxInfoErrors.ReadOnly = true;
+            this.textBoxInfoErrors.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxInfoErrors.Size = new System.Drawing.Size(363, 60);
+            this.textBoxInfoErrors.TabIndex = 54;
+            // 
+            // textBoxWindowExpensesAll
+            // 
+            this.textBoxWindowExpensesAll.BackColor = System.Drawing.Color.Ivory;
+            this.textBoxWindowExpensesAll.ForeColor = System.Drawing.Color.Black;
+            this.textBoxWindowExpensesAll.Location = new System.Drawing.Point(8, 23);
+            this.textBoxWindowExpensesAll.Multiline = true;
+            this.textBoxWindowExpensesAll.Name = "textBoxWindowExpensesAll";
+            this.textBoxWindowExpensesAll.ReadOnly = true;
+            this.textBoxWindowExpensesAll.Size = new System.Drawing.Size(136, 47);
+            this.textBoxWindowExpensesAll.TabIndex = 1;
+            // 
+            // labelHeaderWindowInfo
+            // 
+            this.labelHeaderWindowInfo.AutoSize = true;
+            this.labelHeaderWindowInfo.BackColor = System.Drawing.Color.Ivory;
+            this.labelHeaderWindowInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelHeaderWindowInfo.Font = new System.Drawing.Font("MV Boli", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.labelHeaderWindowInfo.Location = new System.Drawing.Point(348, 205);
+            this.labelHeaderWindowInfo.Name = "labelHeaderWindowInfo";
+            this.labelHeaderWindowInfo.Size = new System.Drawing.Size(93, 13);
+            this.labelHeaderWindowInfo.TabIndex = 46;
+            this.labelHeaderWindowInfo.Text = "Окно информации";
+            // 
+            // panelAnalitics
+            // 
+            this.panelAnalitics.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.panelAnalitics.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelAnalitics.Controls.Add(this.tabControlStats);
+            this.panelAnalitics.Controls.Add(this.panelChooseData);
+            this.panelAnalitics.Controls.Add(this.textBoxPassword);
+            this.panelAnalitics.Location = new System.Drawing.Point(12, 12);
+            this.panelAnalitics.Name = "panelAnalitics";
+            this.panelAnalitics.Size = new System.Drawing.Size(316, 382);
+            this.panelAnalitics.TabIndex = 47;
+            // 
+            // tabControlStats
+            // 
+            this.tabControlStats.Controls.Add(this.tabPageExpenses);
+            this.tabControlStats.Controls.Add(this.tabPageCigarettes);
+            this.tabControlStats.Controls.Add(this.tabPageCandles);
+            this.tabControlStats.Controls.Add(this.tabPageRelax);
+            this.tabControlStats.Location = new System.Drawing.Point(22, 80);
+            this.tabControlStats.Name = "tabControlStats";
+            this.tabControlStats.SelectedIndex = 0;
+            this.tabControlStats.Size = new System.Drawing.Size(267, 280);
+            this.tabControlStats.TabIndex = 67;
+            // 
+            // tabPageExpenses
+            // 
+            this.tabPageExpenses.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.tabPageExpenses.Controls.Add(this.labelHeaderWindowExpensesAll);
+            this.tabPageExpenses.Controls.Add(this.labelHeaderWindowExpensesCurrent);
+            this.tabPageExpenses.Controls.Add(this.labelHeaderWindowPreviusYear);
+            this.tabPageExpenses.Controls.Add(this.panelExpensesCurrentYear);
+            this.tabPageExpenses.Controls.Add(this.panelExpensesPreviusYear);
+            this.tabPageExpenses.Controls.Add(this.textBoxWindowExpensesAll);
+            this.tabPageExpenses.Controls.Add(this.labelHeaderWindowExpensesAVG);
+            this.tabPageExpenses.Controls.Add(this.textBoxExpensesAVG);
+            this.tabPageExpenses.Location = new System.Drawing.Point(4, 22);
+            this.tabPageExpenses.Name = "tabPageExpenses";
+            this.tabPageExpenses.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageExpenses.Size = new System.Drawing.Size(259, 254);
+            this.tabPageExpenses.TabIndex = 0;
+            this.tabPageExpenses.Text = "Затраты";
+            // 
+            // labelHeaderWindowExpensesAll
+            // 
+            this.labelHeaderWindowExpensesAll.AutoSize = true;
+            this.labelHeaderWindowExpensesAll.BackColor = System.Drawing.Color.Ivory;
+            this.labelHeaderWindowExpensesAll.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelHeaderWindowExpensesAll.Font = new System.Drawing.Font("MV Boli", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.labelHeaderWindowExpensesAll.Location = new System.Drawing.Point(15, 11);
+            this.labelHeaderWindowExpensesAll.Name = "labelHeaderWindowExpensesAll";
+            this.labelHeaderWindowExpensesAll.Size = new System.Drawing.Size(68, 13);
+            this.labelHeaderWindowExpensesAll.TabIndex = 63;
+            this.labelHeaderWindowExpensesAll.Text = "За все время";
+            // 
+            // labelHeaderWindowExpensesCurrent
+            // 
+            this.labelHeaderWindowExpensesCurrent.AutoSize = true;
+            this.labelHeaderWindowExpensesCurrent.BackColor = System.Drawing.Color.Ivory;
+            this.labelHeaderWindowExpensesCurrent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelHeaderWindowExpensesCurrent.Font = new System.Drawing.Font("MV Boli", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.labelHeaderWindowExpensesCurrent.Location = new System.Drawing.Point(12, 77);
+            this.labelHeaderWindowExpensesCurrent.Name = "labelHeaderWindowExpensesCurrent";
+            this.labelHeaderWindowExpensesCurrent.Size = new System.Drawing.Size(119, 13);
+            this.labelHeaderWindowExpensesCurrent.TabIndex = 62;
+            this.labelHeaderWindowExpensesCurrent.Text = "Затраты за текущий год";
+            // 
+            // labelHeaderWindowPreviusYear
+            // 
+            this.labelHeaderWindowPreviusYear.AutoSize = true;
+            this.labelHeaderWindowPreviusYear.BackColor = System.Drawing.Color.Ivory;
+            this.labelHeaderWindowPreviusYear.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelHeaderWindowPreviusYear.Font = new System.Drawing.Font("MV Boli", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.labelHeaderWindowPreviusYear.Location = new System.Drawing.Point(14, 167);
+            this.labelHeaderWindowPreviusYear.Name = "labelHeaderWindowPreviusYear";
+            this.labelHeaderWindowPreviusYear.Size = new System.Drawing.Size(116, 13);
+            this.labelHeaderWindowPreviusYear.TabIndex = 61;
+            this.labelHeaderWindowPreviusYear.Text = "Затраты за прошедший";
+            // 
+            // panelExpensesCurrentYear
+            // 
+            this.panelExpensesCurrentYear.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.panelExpensesCurrentYear.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelExpensesCurrentYear.Controls.Add(this.labelHeaderWindowExpensesCurrentYear);
+            this.panelExpensesCurrentYear.Controls.Add(this.labelHeaderWindowExpensesCurrentMonth);
+            this.panelExpensesCurrentYear.Controls.Add(this.textBoxWindowExpensesCurrentYear);
+            this.panelExpensesCurrentYear.Controls.Add(this.textBoxWindowExpensesCurrentMonth);
+            this.panelExpensesCurrentYear.Location = new System.Drawing.Point(6, 86);
+            this.panelExpensesCurrentYear.Name = "panelExpensesCurrentYear";
+            this.panelExpensesCurrentYear.Size = new System.Drawing.Size(241, 72);
+            this.panelExpensesCurrentYear.TabIndex = 51;
+            // 
+            // labelHeaderWindowExpensesCurrentYear
+            // 
+            this.labelHeaderWindowExpensesCurrentYear.AutoSize = true;
+            this.labelHeaderWindowExpensesCurrentYear.BackColor = System.Drawing.Color.Ivory;
+            this.labelHeaderWindowExpensesCurrentYear.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelHeaderWindowExpensesCurrentYear.Font = new System.Drawing.Font("MV Boli", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.labelHeaderWindowExpensesCurrentYear.Location = new System.Drawing.Point(8, 11);
+            this.labelHeaderWindowExpensesCurrentYear.Name = "labelHeaderWindowExpensesCurrentYear";
+            this.labelHeaderWindowExpensesCurrentYear.Size = new System.Drawing.Size(37, 13);
+            this.labelHeaderWindowExpensesCurrentYear.TabIndex = 60;
+            this.labelHeaderWindowExpensesCurrentYear.Text = "За год";
+            // 
+            // labelHeaderWindowExpensesCurrentMonth
+            // 
+            this.labelHeaderWindowExpensesCurrentMonth.AutoSize = true;
+            this.labelHeaderWindowExpensesCurrentMonth.BackColor = System.Drawing.Color.Ivory;
+            this.labelHeaderWindowExpensesCurrentMonth.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelHeaderWindowExpensesCurrentMonth.Font = new System.Drawing.Font("MV Boli", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.labelHeaderWindowExpensesCurrentMonth.Location = new System.Drawing.Point(145, 11);
+            this.labelHeaderWindowExpensesCurrentMonth.Name = "labelHeaderWindowExpensesCurrentMonth";
+            this.labelHeaderWindowExpensesCurrentMonth.Size = new System.Drawing.Size(48, 13);
+            this.labelHeaderWindowExpensesCurrentMonth.TabIndex = 57;
+            this.labelHeaderWindowExpensesCurrentMonth.Text = "За месяц";
+            // 
+            // textBoxWindowExpensesCurrentYear
+            // 
+            this.textBoxWindowExpensesCurrentYear.BackColor = System.Drawing.Color.Ivory;
+            this.textBoxWindowExpensesCurrentYear.ForeColor = System.Drawing.Color.Black;
+            this.textBoxWindowExpensesCurrentYear.Location = new System.Drawing.Point(3, 20);
+            this.textBoxWindowExpensesCurrentYear.Multiline = true;
+            this.textBoxWindowExpensesCurrentYear.Name = "textBoxWindowExpensesCurrentYear";
+            this.textBoxWindowExpensesCurrentYear.ReadOnly = true;
+            this.textBoxWindowExpensesCurrentYear.Size = new System.Drawing.Size(136, 47);
+            this.textBoxWindowExpensesCurrentYear.TabIndex = 59;
+            this.textBoxWindowExpensesCurrentYear.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBoxWindowExpensesCurrentYear_MouseClick);
+            // 
+            // textBoxWindowExpensesCurrentMonth
+            // 
+            this.textBoxWindowExpensesCurrentMonth.BackColor = System.Drawing.Color.Ivory;
+            this.textBoxWindowExpensesCurrentMonth.ForeColor = System.Drawing.Color.Black;
+            this.textBoxWindowExpensesCurrentMonth.Location = new System.Drawing.Point(145, 20);
+            this.textBoxWindowExpensesCurrentMonth.Multiline = true;
+            this.textBoxWindowExpensesCurrentMonth.Name = "textBoxWindowExpensesCurrentMonth";
+            this.textBoxWindowExpensesCurrentMonth.ReadOnly = true;
+            this.textBoxWindowExpensesCurrentMonth.Size = new System.Drawing.Size(89, 47);
+            this.textBoxWindowExpensesCurrentMonth.TabIndex = 56;
+            this.textBoxWindowExpensesCurrentMonth.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBoxWindowExpensesCurrentMonth_MouseClick);
+            // 
+            // panelExpensesPreviusYear
+            // 
+            this.panelExpensesPreviusYear.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.panelExpensesPreviusYear.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelExpensesPreviusYear.Controls.Add(this.labelHeaderWindowExpensesPreviusYear);
+            this.panelExpensesPreviusYear.Controls.Add(this.textBoxWindowExpensesPreviusYear);
+            this.panelExpensesPreviusYear.Controls.Add(this.labelHeaderWindowExpensesPreviusMonth);
+            this.panelExpensesPreviusYear.Controls.Add(this.textBoxWindowExpensesPreviusMonth);
+            this.panelExpensesPreviusYear.Location = new System.Drawing.Point(6, 175);
+            this.panelExpensesPreviusYear.Name = "panelExpensesPreviusYear";
+            this.panelExpensesPreviusYear.Size = new System.Drawing.Size(241, 72);
+            this.panelExpensesPreviusYear.TabIndex = 60;
+            // 
+            // labelHeaderWindowExpensesPreviusYear
+            // 
+            this.labelHeaderWindowExpensesPreviusYear.AutoSize = true;
+            this.labelHeaderWindowExpensesPreviusYear.BackColor = System.Drawing.Color.Ivory;
+            this.labelHeaderWindowExpensesPreviusYear.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelHeaderWindowExpensesPreviusYear.Font = new System.Drawing.Font("MV Boli", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.labelHeaderWindowExpensesPreviusYear.Location = new System.Drawing.Point(9, 11);
+            this.labelHeaderWindowExpensesPreviusYear.Name = "labelHeaderWindowExpensesPreviusYear";
+            this.labelHeaderWindowExpensesPreviusYear.Size = new System.Drawing.Size(24, 13);
+            this.labelHeaderWindowExpensesPreviusYear.TabIndex = 58;
+            this.labelHeaderWindowExpensesPreviusYear.Text = "Год";
+            // 
+            // textBoxWindowExpensesPreviusYear
+            // 
+            this.textBoxWindowExpensesPreviusYear.BackColor = System.Drawing.Color.Ivory;
+            this.textBoxWindowExpensesPreviusYear.ForeColor = System.Drawing.Color.Black;
+            this.textBoxWindowExpensesPreviusYear.Location = new System.Drawing.Point(4, 20);
+            this.textBoxWindowExpensesPreviusYear.Multiline = true;
+            this.textBoxWindowExpensesPreviusYear.Name = "textBoxWindowExpensesPreviusYear";
+            this.textBoxWindowExpensesPreviusYear.ReadOnly = true;
+            this.textBoxWindowExpensesPreviusYear.Size = new System.Drawing.Size(136, 47);
+            this.textBoxWindowExpensesPreviusYear.TabIndex = 54;
+            this.textBoxWindowExpensesPreviusYear.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBoxWindowExpensesPreviusYear_MouseClick);
+            // 
+            // labelHeaderWindowExpensesPreviusMonth
+            // 
+            this.labelHeaderWindowExpensesPreviusMonth.AutoSize = true;
+            this.labelHeaderWindowExpensesPreviusMonth.BackColor = System.Drawing.Color.Ivory;
+            this.labelHeaderWindowExpensesPreviusMonth.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelHeaderWindowExpensesPreviusMonth.Font = new System.Drawing.Font("MV Boli", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.labelHeaderWindowExpensesPreviusMonth.Location = new System.Drawing.Point(145, 11);
+            this.labelHeaderWindowExpensesPreviusMonth.Name = "labelHeaderWindowExpensesPreviusMonth";
+            this.labelHeaderWindowExpensesPreviusMonth.Size = new System.Drawing.Size(35, 13);
+            this.labelHeaderWindowExpensesPreviusMonth.TabIndex = 57;
+            this.labelHeaderWindowExpensesPreviusMonth.Text = "Месяц";
+            // 
+            // textBoxWindowExpensesPreviusMonth
+            // 
+            this.textBoxWindowExpensesPreviusMonth.BackColor = System.Drawing.Color.Ivory;
+            this.textBoxWindowExpensesPreviusMonth.ForeColor = System.Drawing.Color.Black;
+            this.textBoxWindowExpensesPreviusMonth.Location = new System.Drawing.Point(145, 20);
+            this.textBoxWindowExpensesPreviusMonth.Multiline = true;
+            this.textBoxWindowExpensesPreviusMonth.Name = "textBoxWindowExpensesPreviusMonth";
+            this.textBoxWindowExpensesPreviusMonth.ReadOnly = true;
+            this.textBoxWindowExpensesPreviusMonth.Size = new System.Drawing.Size(89, 47);
+            this.textBoxWindowExpensesPreviusMonth.TabIndex = 56;
+            this.textBoxWindowExpensesPreviusMonth.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBoxWindowExpensesPreviusMonth_MouseClick);
+            // 
+            // labelHeaderWindowExpensesAVG
+            // 
+            this.labelHeaderWindowExpensesAVG.AutoSize = true;
+            this.labelHeaderWindowExpensesAVG.BackColor = System.Drawing.Color.Ivory;
+            this.labelHeaderWindowExpensesAVG.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelHeaderWindowExpensesAVG.Font = new System.Drawing.Font("MV Boli", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.labelHeaderWindowExpensesAVG.Location = new System.Drawing.Point(152, 11);
+            this.labelHeaderWindowExpensesAVG.Name = "labelHeaderWindowExpensesAVG";
+            this.labelHeaderWindowExpensesAVG.Size = new System.Drawing.Size(82, 13);
+            this.labelHeaderWindowExpensesAVG.TabIndex = 59;
+            this.labelHeaderWindowExpensesAVG.Text = "Среднемесячная";
+            // 
+            // textBoxExpensesAVG
+            // 
+            this.textBoxExpensesAVG.BackColor = System.Drawing.Color.Ivory;
+            this.textBoxExpensesAVG.ForeColor = System.Drawing.Color.Black;
+            this.textBoxExpensesAVG.Location = new System.Drawing.Point(149, 23);
+            this.textBoxExpensesAVG.Multiline = true;
+            this.textBoxExpensesAVG.Name = "textBoxExpensesAVG";
+            this.textBoxExpensesAVG.ReadOnly = true;
+            this.textBoxExpensesAVG.Size = new System.Drawing.Size(98, 47);
+            this.textBoxExpensesAVG.TabIndex = 58;
+            this.textBoxExpensesAVG.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBoxExpensesAVG_MouseClick);
+            // 
+            // tabPageCigarettes
+            // 
+            this.tabPageCigarettes.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.tabPageCigarettes.Controls.Add(this.labelHeaderWindowCigarettesAll);
+            this.tabPageCigarettes.Controls.Add(this.textBoxCigarettesAll);
+            this.tabPageCigarettes.Controls.Add(this.labelHEaderWindowCigarettesCurrentYear);
+            this.tabPageCigarettes.Controls.Add(this.labelHeaderWindowCigarettesPreviusYear);
+            this.tabPageCigarettes.Controls.Add(this.panelCigarettesCurrentYear);
+            this.tabPageCigarettes.Controls.Add(this.panelCigarettesPreviusYear);
+            this.tabPageCigarettes.Controls.Add(this.labelHeaderWindowCigarettesAVG);
+            this.tabPageCigarettes.Controls.Add(this.textBoxCigarettesAVG);
+            this.tabPageCigarettes.Location = new System.Drawing.Point(4, 22);
+            this.tabPageCigarettes.Name = "tabPageCigarettes";
+            this.tabPageCigarettes.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageCigarettes.Size = new System.Drawing.Size(259, 254);
+            this.tabPageCigarettes.TabIndex = 1;
+            this.tabPageCigarettes.Text = "Сигареты";
+            // 
+            // labelHeaderWindowCigarettesAll
+            // 
+            this.labelHeaderWindowCigarettesAll.AutoSize = true;
+            this.labelHeaderWindowCigarettesAll.BackColor = System.Drawing.Color.Ivory;
+            this.labelHeaderWindowCigarettesAll.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelHeaderWindowCigarettesAll.Font = new System.Drawing.Font("MV Boli", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.labelHeaderWindowCigarettesAll.Location = new System.Drawing.Point(15, 11);
+            this.labelHeaderWindowCigarettesAll.Name = "labelHeaderWindowCigarettesAll";
+            this.labelHeaderWindowCigarettesAll.Size = new System.Drawing.Size(68, 13);
+            this.labelHeaderWindowCigarettesAll.TabIndex = 72;
+            this.labelHeaderWindowCigarettesAll.Text = "За все время";
+            // 
+            // textBoxCigarettesAll
+            // 
+            this.textBoxCigarettesAll.BackColor = System.Drawing.Color.Ivory;
+            this.textBoxCigarettesAll.ForeColor = System.Drawing.Color.Black;
+            this.textBoxCigarettesAll.Location = new System.Drawing.Point(8, 23);
+            this.textBoxCigarettesAll.Multiline = true;
+            this.textBoxCigarettesAll.Name = "textBoxCigarettesAll";
+            this.textBoxCigarettesAll.ReadOnly = true;
+            this.textBoxCigarettesAll.Size = new System.Drawing.Size(136, 47);
+            this.textBoxCigarettesAll.TabIndex = 71;
+            this.textBoxCigarettesAll.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBoxCigarettesAll_MouseClick);
+            // 
+            // labelHEaderWindowCigarettesCurrentYear
+            // 
+            this.labelHEaderWindowCigarettesCurrentYear.AutoSize = true;
+            this.labelHEaderWindowCigarettesCurrentYear.BackColor = System.Drawing.Color.Ivory;
+            this.labelHEaderWindowCigarettesCurrentYear.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelHEaderWindowCigarettesCurrentYear.Font = new System.Drawing.Font("MV Boli", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.labelHEaderWindowCigarettesCurrentYear.Location = new System.Drawing.Point(12, 77);
+            this.labelHEaderWindowCigarettesCurrentYear.Name = "labelHEaderWindowCigarettesCurrentYear";
+            this.labelHEaderWindowCigarettesCurrentYear.Size = new System.Drawing.Size(119, 13);
+            this.labelHEaderWindowCigarettesCurrentYear.TabIndex = 70;
+            this.labelHEaderWindowCigarettesCurrentYear.Text = "Затраты за текущий год";
+            // 
+            // labelHeaderWindowCigarettesPreviusYear
+            // 
+            this.labelHeaderWindowCigarettesPreviusYear.AutoSize = true;
+            this.labelHeaderWindowCigarettesPreviusYear.BackColor = System.Drawing.Color.Ivory;
+            this.labelHeaderWindowCigarettesPreviusYear.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelHeaderWindowCigarettesPreviusYear.Font = new System.Drawing.Font("MV Boli", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.labelHeaderWindowCigarettesPreviusYear.Location = new System.Drawing.Point(14, 167);
+            this.labelHeaderWindowCigarettesPreviusYear.Name = "labelHeaderWindowCigarettesPreviusYear";
+            this.labelHeaderWindowCigarettesPreviusYear.Size = new System.Drawing.Size(116, 13);
+            this.labelHeaderWindowCigarettesPreviusYear.TabIndex = 69;
+            this.labelHeaderWindowCigarettesPreviusYear.Text = "Затраты за прошедший";
+            // 
+            // panelCigarettesCurrentYear
+            // 
+            this.panelCigarettesCurrentYear.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.panelCigarettesCurrentYear.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelCigarettesCurrentYear.Controls.Add(this.labelHeaderWindowCigarettesCurrentYearYear);
+            this.panelCigarettesCurrentYear.Controls.Add(this.labelHeaderWindowCigarettesCurrentYearMonth);
+            this.panelCigarettesCurrentYear.Controls.Add(this.textBoxCigarettesCurrentYearYear);
+            this.panelCigarettesCurrentYear.Controls.Add(this.textBoxCigarettesCurrentYearMonth);
+            this.panelCigarettesCurrentYear.Location = new System.Drawing.Point(6, 86);
+            this.panelCigarettesCurrentYear.Name = "panelCigarettesCurrentYear";
+            this.panelCigarettesCurrentYear.Size = new System.Drawing.Size(241, 72);
+            this.panelCigarettesCurrentYear.TabIndex = 64;
+            // 
+            // labelHeaderWindowCigarettesCurrentYearYear
+            // 
+            this.labelHeaderWindowCigarettesCurrentYearYear.AutoSize = true;
+            this.labelHeaderWindowCigarettesCurrentYearYear.BackColor = System.Drawing.Color.Ivory;
+            this.labelHeaderWindowCigarettesCurrentYearYear.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelHeaderWindowCigarettesCurrentYearYear.Font = new System.Drawing.Font("MV Boli", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.labelHeaderWindowCigarettesCurrentYearYear.Location = new System.Drawing.Point(8, 11);
+            this.labelHeaderWindowCigarettesCurrentYearYear.Name = "labelHeaderWindowCigarettesCurrentYearYear";
+            this.labelHeaderWindowCigarettesCurrentYearYear.Size = new System.Drawing.Size(37, 13);
+            this.labelHeaderWindowCigarettesCurrentYearYear.TabIndex = 60;
+            this.labelHeaderWindowCigarettesCurrentYearYear.Text = "За год";
+            // 
+            // labelHeaderWindowCigarettesCurrentYearMonth
+            // 
+            this.labelHeaderWindowCigarettesCurrentYearMonth.AutoSize = true;
+            this.labelHeaderWindowCigarettesCurrentYearMonth.BackColor = System.Drawing.Color.Ivory;
+            this.labelHeaderWindowCigarettesCurrentYearMonth.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelHeaderWindowCigarettesCurrentYearMonth.Font = new System.Drawing.Font("MV Boli", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.labelHeaderWindowCigarettesCurrentYearMonth.Location = new System.Drawing.Point(145, 11);
+            this.labelHeaderWindowCigarettesCurrentYearMonth.Name = "labelHeaderWindowCigarettesCurrentYearMonth";
+            this.labelHeaderWindowCigarettesCurrentYearMonth.Size = new System.Drawing.Size(48, 13);
+            this.labelHeaderWindowCigarettesCurrentYearMonth.TabIndex = 57;
+            this.labelHeaderWindowCigarettesCurrentYearMonth.Text = "За месяц";
+            // 
+            // textBoxCigarettesCurrentYearYear
+            // 
+            this.textBoxCigarettesCurrentYearYear.BackColor = System.Drawing.Color.Ivory;
+            this.textBoxCigarettesCurrentYearYear.ForeColor = System.Drawing.Color.Black;
+            this.textBoxCigarettesCurrentYearYear.Location = new System.Drawing.Point(3, 20);
+            this.textBoxCigarettesCurrentYearYear.Multiline = true;
+            this.textBoxCigarettesCurrentYearYear.Name = "textBoxCigarettesCurrentYearYear";
+            this.textBoxCigarettesCurrentYearYear.ReadOnly = true;
+            this.textBoxCigarettesCurrentYearYear.Size = new System.Drawing.Size(136, 47);
+            this.textBoxCigarettesCurrentYearYear.TabIndex = 59;
+            this.textBoxCigarettesCurrentYearYear.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBoxCigarettesCurrentYearYear_MouseClick);
+            // 
+            // textBoxCigarettesCurrentYearMonth
+            // 
+            this.textBoxCigarettesCurrentYearMonth.BackColor = System.Drawing.Color.Ivory;
+            this.textBoxCigarettesCurrentYearMonth.ForeColor = System.Drawing.Color.Black;
+            this.textBoxCigarettesCurrentYearMonth.Location = new System.Drawing.Point(145, 20);
+            this.textBoxCigarettesCurrentYearMonth.Multiline = true;
+            this.textBoxCigarettesCurrentYearMonth.Name = "textBoxCigarettesCurrentYearMonth";
+            this.textBoxCigarettesCurrentYearMonth.ReadOnly = true;
+            this.textBoxCigarettesCurrentYearMonth.Size = new System.Drawing.Size(89, 47);
+            this.textBoxCigarettesCurrentYearMonth.TabIndex = 56;
+            this.textBoxCigarettesCurrentYearMonth.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBoxCigarettesCurrentYearMonth_MouseClick);
+            // 
+            // panelCigarettesPreviusYear
+            // 
+            this.panelCigarettesPreviusYear.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.panelCigarettesPreviusYear.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelCigarettesPreviusYear.Controls.Add(this.labelHeaderWindowCigarettesPreviusYearYear);
+            this.panelCigarettesPreviusYear.Controls.Add(this.textBoxCigarettesPreviusYearYear);
+            this.panelCigarettesPreviusYear.Controls.Add(this.labelHeaderWindowCigarettesPreviusYearMonth);
+            this.panelCigarettesPreviusYear.Controls.Add(this.textBoxCigarettesPreviusYearMonth);
+            this.panelCigarettesPreviusYear.Location = new System.Drawing.Point(6, 175);
+            this.panelCigarettesPreviusYear.Name = "panelCigarettesPreviusYear";
+            this.panelCigarettesPreviusYear.Size = new System.Drawing.Size(241, 72);
+            this.panelCigarettesPreviusYear.TabIndex = 68;
+            // 
+            // labelHeaderWindowCigarettesPreviusYearYear
+            // 
+            this.labelHeaderWindowCigarettesPreviusYearYear.AutoSize = true;
+            this.labelHeaderWindowCigarettesPreviusYearYear.BackColor = System.Drawing.Color.Ivory;
+            this.labelHeaderWindowCigarettesPreviusYearYear.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelHeaderWindowCigarettesPreviusYearYear.Font = new System.Drawing.Font("MV Boli", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.labelHeaderWindowCigarettesPreviusYearYear.Location = new System.Drawing.Point(9, 11);
+            this.labelHeaderWindowCigarettesPreviusYearYear.Name = "labelHeaderWindowCigarettesPreviusYearYear";
+            this.labelHeaderWindowCigarettesPreviusYearYear.Size = new System.Drawing.Size(24, 13);
+            this.labelHeaderWindowCigarettesPreviusYearYear.TabIndex = 58;
+            this.labelHeaderWindowCigarettesPreviusYearYear.Text = "Год";
+            // 
+            // textBoxCigarettesPreviusYearYear
+            // 
+            this.textBoxCigarettesPreviusYearYear.BackColor = System.Drawing.Color.Ivory;
+            this.textBoxCigarettesPreviusYearYear.ForeColor = System.Drawing.Color.Black;
+            this.textBoxCigarettesPreviusYearYear.Location = new System.Drawing.Point(4, 20);
+            this.textBoxCigarettesPreviusYearYear.Multiline = true;
+            this.textBoxCigarettesPreviusYearYear.Name = "textBoxCigarettesPreviusYearYear";
+            this.textBoxCigarettesPreviusYearYear.ReadOnly = true;
+            this.textBoxCigarettesPreviusYearYear.Size = new System.Drawing.Size(136, 47);
+            this.textBoxCigarettesPreviusYearYear.TabIndex = 54;
+            this.textBoxCigarettesPreviusYearYear.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBoxCigarettesPreviusYearYear_MouseClick);
+            // 
+            // labelHeaderWindowCigarettesPreviusYearMonth
+            // 
+            this.labelHeaderWindowCigarettesPreviusYearMonth.AutoSize = true;
+            this.labelHeaderWindowCigarettesPreviusYearMonth.BackColor = System.Drawing.Color.Ivory;
+            this.labelHeaderWindowCigarettesPreviusYearMonth.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelHeaderWindowCigarettesPreviusYearMonth.Font = new System.Drawing.Font("MV Boli", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.labelHeaderWindowCigarettesPreviusYearMonth.Location = new System.Drawing.Point(145, 11);
+            this.labelHeaderWindowCigarettesPreviusYearMonth.Name = "labelHeaderWindowCigarettesPreviusYearMonth";
+            this.labelHeaderWindowCigarettesPreviusYearMonth.Size = new System.Drawing.Size(35, 13);
+            this.labelHeaderWindowCigarettesPreviusYearMonth.TabIndex = 57;
+            this.labelHeaderWindowCigarettesPreviusYearMonth.Text = "Месяц";
+            // 
+            // textBoxCigarettesPreviusYearMonth
+            // 
+            this.textBoxCigarettesPreviusYearMonth.BackColor = System.Drawing.Color.Ivory;
+            this.textBoxCigarettesPreviusYearMonth.ForeColor = System.Drawing.Color.Black;
+            this.textBoxCigarettesPreviusYearMonth.Location = new System.Drawing.Point(145, 20);
+            this.textBoxCigarettesPreviusYearMonth.Multiline = true;
+            this.textBoxCigarettesPreviusYearMonth.Name = "textBoxCigarettesPreviusYearMonth";
+            this.textBoxCigarettesPreviusYearMonth.ReadOnly = true;
+            this.textBoxCigarettesPreviusYearMonth.Size = new System.Drawing.Size(89, 47);
+            this.textBoxCigarettesPreviusYearMonth.TabIndex = 56;
+            this.textBoxCigarettesPreviusYearMonth.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBoxCigarettesPreviusYearMonth_MouseClick);
+            // 
+            // labelHeaderWindowCigarettesAVG
+            // 
+            this.labelHeaderWindowCigarettesAVG.AutoSize = true;
+            this.labelHeaderWindowCigarettesAVG.BackColor = System.Drawing.Color.Ivory;
+            this.labelHeaderWindowCigarettesAVG.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelHeaderWindowCigarettesAVG.Font = new System.Drawing.Font("MV Boli", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.labelHeaderWindowCigarettesAVG.Location = new System.Drawing.Point(152, 11);
+            this.labelHeaderWindowCigarettesAVG.Name = "labelHeaderWindowCigarettesAVG";
+            this.labelHeaderWindowCigarettesAVG.Size = new System.Drawing.Size(82, 13);
+            this.labelHeaderWindowCigarettesAVG.TabIndex = 67;
+            this.labelHeaderWindowCigarettesAVG.Text = "Среднемесячная";
+            // 
+            // textBoxCigarettesAVG
+            // 
+            this.textBoxCigarettesAVG.BackColor = System.Drawing.Color.Ivory;
+            this.textBoxCigarettesAVG.ForeColor = System.Drawing.Color.Black;
+            this.textBoxCigarettesAVG.Location = new System.Drawing.Point(149, 23);
+            this.textBoxCigarettesAVG.Multiline = true;
+            this.textBoxCigarettesAVG.Name = "textBoxCigarettesAVG";
+            this.textBoxCigarettesAVG.ReadOnly = true;
+            this.textBoxCigarettesAVG.Size = new System.Drawing.Size(98, 47);
+            this.textBoxCigarettesAVG.TabIndex = 66;
+            this.textBoxCigarettesAVG.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBoxCigarettesAVG_MouseClick);
+            // 
+            // tabPageCandles
+            // 
+            this.tabPageCandles.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.tabPageCandles.Controls.Add(this.dataCandles);
+            this.tabPageCandles.Controls.Add(this.labelHeaderWindowCandles);
+            this.tabPageCandles.Controls.Add(this.textBoxCandles);
+            this.tabPageCandles.Location = new System.Drawing.Point(4, 22);
+            this.tabPageCandles.Name = "tabPageCandles";
+            this.tabPageCandles.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageCandles.Size = new System.Drawing.Size(259, 254);
+            this.tabPageCandles.TabIndex = 2;
+            this.tabPageCandles.Text = "Свечи";
+            // 
+            // dataCandles
+            // 
+            this.dataCandles.AllowUserToAddRows = false;
+            this.dataCandles.AllowUserToDeleteRows = false;
+            this.dataCandles.BackgroundColor = System.Drawing.Color.Ivory;
+            this.dataCandles.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            this.dataCandles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataCandles.Location = new System.Drawing.Point(8, 76);
+            this.dataCandles.Name = "dataCandles";
+            this.dataCandles.ReadOnly = true;
+            this.dataCandles.Size = new System.Drawing.Size(238, 154);
+            this.dataCandles.TabIndex = 65;
+            // 
+            // labelHeaderWindowCandles
+            // 
+            this.labelHeaderWindowCandles.AutoSize = true;
+            this.labelHeaderWindowCandles.BackColor = System.Drawing.Color.Ivory;
+            this.labelHeaderWindowCandles.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelHeaderWindowCandles.Font = new System.Drawing.Font("MV Boli", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.labelHeaderWindowCandles.Location = new System.Drawing.Point(15, 11);
+            this.labelHeaderWindowCandles.Name = "labelHeaderWindowCandles";
+            this.labelHeaderWindowCandles.Size = new System.Drawing.Size(67, 13);
+            this.labelHeaderWindowCandles.TabIndex = 64;
+            this.labelHeaderWindowCandles.Text = "Информация";
+            // 
+            // textBoxCandles
+            // 
+            this.textBoxCandles.BackColor = System.Drawing.Color.Ivory;
+            this.textBoxCandles.ForeColor = System.Drawing.Color.Black;
+            this.textBoxCandles.Location = new System.Drawing.Point(8, 23);
+            this.textBoxCandles.Multiline = true;
+            this.textBoxCandles.Name = "textBoxCandles";
+            this.textBoxCandles.ReadOnly = true;
+            this.textBoxCandles.Size = new System.Drawing.Size(245, 47);
+            this.textBoxCandles.TabIndex = 63;
+            this.textBoxCandles.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBoxCandles_MouseClick);
+            // 
+            // tabPageRelax
+            // 
+            this.tabPageRelax.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.tabPageRelax.Controls.Add(this.dataRelax);
+            this.tabPageRelax.Controls.Add(this.labelHeaderRelax);
+            this.tabPageRelax.Controls.Add(this.textBoxRelax);
+            this.tabPageRelax.Location = new System.Drawing.Point(4, 22);
+            this.tabPageRelax.Name = "tabPageRelax";
+            this.tabPageRelax.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageRelax.Size = new System.Drawing.Size(259, 254);
+            this.tabPageRelax.TabIndex = 3;
+            this.tabPageRelax.Text = "Спокойствие";
+            // 
+            // dataRelax
+            // 
+            this.dataRelax.AllowUserToAddRows = false;
+            this.dataRelax.AllowUserToDeleteRows = false;
+            this.dataRelax.BackgroundColor = System.Drawing.Color.Ivory;
+            this.dataRelax.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            this.dataRelax.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataRelax.Location = new System.Drawing.Point(8, 76);
+            this.dataRelax.Name = "dataRelax";
+            this.dataRelax.ReadOnly = true;
+            this.dataRelax.Size = new System.Drawing.Size(238, 154);
+            this.dataRelax.TabIndex = 68;
+            // 
+            // labelHeaderRelax
+            // 
+            this.labelHeaderRelax.AutoSize = true;
+            this.labelHeaderRelax.BackColor = System.Drawing.Color.Ivory;
+            this.labelHeaderRelax.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelHeaderRelax.Font = new System.Drawing.Font("MV Boli", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.labelHeaderRelax.Location = new System.Drawing.Point(15, 11);
+            this.labelHeaderRelax.Name = "labelHeaderRelax";
+            this.labelHeaderRelax.Size = new System.Drawing.Size(67, 13);
+            this.labelHeaderRelax.TabIndex = 67;
+            this.labelHeaderRelax.Text = "Информация";
+            // 
+            // textBoxRelax
+            // 
+            this.textBoxRelax.BackColor = System.Drawing.Color.Ivory;
+            this.textBoxRelax.ForeColor = System.Drawing.Color.Black;
+            this.textBoxRelax.Location = new System.Drawing.Point(8, 23);
+            this.textBoxRelax.Multiline = true;
+            this.textBoxRelax.Name = "textBoxRelax";
+            this.textBoxRelax.ReadOnly = true;
+            this.textBoxRelax.Size = new System.Drawing.Size(245, 47);
+            this.textBoxRelax.TabIndex = 66;
+            this.textBoxRelax.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBoxRelax_MouseClick);
+            // 
+            // labelHeaderModuleAnalitics
+            // 
+            this.labelHeaderModuleAnalitics.AutoSize = true;
+            this.labelHeaderModuleAnalitics.BackColor = System.Drawing.Color.Ivory;
+            this.labelHeaderModuleAnalitics.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelHeaderModuleAnalitics.Font = new System.Drawing.Font("MV Boli", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.labelHeaderModuleAnalitics.Location = new System.Drawing.Point(17, 6);
+            this.labelHeaderModuleAnalitics.Name = "labelHeaderModuleAnalitics";
+            this.labelHeaderModuleAnalitics.Size = new System.Drawing.Size(94, 13);
+            this.labelHeaderModuleAnalitics.TabIndex = 48;
+            this.labelHeaderModuleAnalitics.Text = "Модуль аналитики";
+            // 
+            // panelMode
+            // 
+            this.panelMode.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.panelMode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelMode.Controls.Add(this.radioButtonReadFromFile);
+            this.panelMode.Controls.Add(this.radioButtonModeHeBig);
+            this.panelMode.Controls.Add(this.radioButtonModeHeGifts);
+            this.panelMode.Controls.Add(this.radioButtonModeHe);
+            this.panelMode.Controls.Add(this.radioButtonModeShe);
+            this.panelMode.Location = new System.Drawing.Point(562, 13);
+            this.panelMode.Name = "panelMode";
+            this.panelMode.Size = new System.Drawing.Size(148, 106);
+            this.panelMode.TabIndex = 49;
+            // 
+            // radioButtonReadFromFile
+            // 
+            this.radioButtonReadFromFile.AutoSize = true;
+            this.radioButtonReadFromFile.Font = new System.Drawing.Font("MV Boli", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.radioButtonReadFromFile.Location = new System.Drawing.Point(12, 79);
+            this.radioButtonReadFromFile.Name = "radioButtonReadFromFile";
+            this.radioButtonReadFromFile.Size = new System.Drawing.Size(131, 20);
+            this.radioButtonReadFromFile.TabIndex = 4;
+            this.radioButtonReadFromFile.TabStop = true;
+            this.radioButtonReadFromFile.Text = "Чтение с файла";
+            this.radioButtonReadFromFile.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonModeHeBig
+            // 
+            this.radioButtonModeHeBig.AutoSize = true;
+            this.radioButtonModeHeBig.Font = new System.Drawing.Font("MV Boli", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.radioButtonModeHeBig.Location = new System.Drawing.Point(12, 61);
+            this.radioButtonModeHeBig.Name = "radioButtonModeHeBig";
+            this.radioButtonModeHeBig.Size = new System.Drawing.Size(63, 20);
+            this.radioButtonModeHeBig.TabIndex = 3;
+            this.radioButtonModeHeBig.TabStop = true;
+            this.radioButtonModeHeBig.Text = "HeBig";
+            this.radioButtonModeHeBig.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonModeHeGifts
+            // 
+            this.radioButtonModeHeGifts.AutoSize = true;
+            this.radioButtonModeHeGifts.Font = new System.Drawing.Font("MV Boli", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.radioButtonModeHeGifts.Location = new System.Drawing.Point(12, 45);
+            this.radioButtonModeHeGifts.Name = "radioButtonModeHeGifts";
+            this.radioButtonModeHeGifts.Size = new System.Drawing.Size(72, 20);
+            this.radioButtonModeHeGifts.TabIndex = 2;
+            this.radioButtonModeHeGifts.TabStop = true;
+            this.radioButtonModeHeGifts.Text = "HeGifts";
+            this.radioButtonModeHeGifts.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonModeHe
+            // 
+            this.radioButtonModeHe.AutoSize = true;
+            this.radioButtonModeHe.Font = new System.Drawing.Font("MV Boli", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.radioButtonModeHe.Location = new System.Drawing.Point(12, 28);
+            this.radioButtonModeHe.Name = "radioButtonModeHe";
+            this.radioButtonModeHe.Size = new System.Drawing.Size(43, 20);
+            this.radioButtonModeHe.TabIndex = 1;
+            this.radioButtonModeHe.TabStop = true;
+            this.radioButtonModeHe.Text = "He";
+            this.radioButtonModeHe.UseVisualStyleBackColor = true;
+            this.radioButtonModeHe.CheckedChanged += new System.EventHandler(this.radioButtonModeHe_CheckedChanged);
+            // 
+            // radioButtonModeShe
+            // 
+            this.radioButtonModeShe.AutoSize = true;
+            this.radioButtonModeShe.Font = new System.Drawing.Font("MV Boli", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.radioButtonModeShe.Location = new System.Drawing.Point(12, 10);
+            this.radioButtonModeShe.Name = "radioButtonModeShe";
+            this.radioButtonModeShe.Size = new System.Drawing.Size(51, 20);
+            this.radioButtonModeShe.TabIndex = 0;
+            this.radioButtonModeShe.TabStop = true;
+            this.radioButtonModeShe.Text = "She";
+            this.radioButtonModeShe.UseVisualStyleBackColor = true;
+            this.radioButtonModeShe.CheckedChanged += new System.EventHandler(this.radioButtonModeShe_CheckedChanged);
+            // 
+            // labelHeaderMode
+            // 
+            this.labelHeaderMode.AutoSize = true;
+            this.labelHeaderMode.BackColor = System.Drawing.Color.Ivory;
+            this.labelHeaderMode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelHeaderMode.Font = new System.Drawing.Font("MV Boli", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.labelHeaderMode.Location = new System.Drawing.Point(574, 6);
+            this.labelHeaderMode.Name = "labelHeaderMode";
+            this.labelHeaderMode.Size = new System.Drawing.Size(44, 13);
+            this.labelHeaderMode.TabIndex = 50;
+            this.labelHeaderMode.Text = "Режимы";
+            // 
+            // panelSpecial
+            // 
+            this.panelSpecial.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.panelSpecial.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelSpecial.Controls.Add(this.buttonInfoInSpesialParams);
+            this.panelSpecial.Controls.Add(this.checkBoxExpenses);
+            this.panelSpecial.Controls.Add(this.checkBoxShe);
+            this.panelSpecial.Controls.Add(this.checkBoxWithoutParams);
+            this.panelSpecial.Controls.Add(this.checkBoxN);
+            this.panelSpecial.Controls.Add(this.checkBoxT);
+            this.panelSpecial.Location = new System.Drawing.Point(335, 13);
+            this.panelSpecial.Name = "panelSpecial";
+            this.panelSpecial.Size = new System.Drawing.Size(221, 106);
+            this.panelSpecial.TabIndex = 31;
+            // 
+            // buttonInfoInSpesialParams
+            // 
+            this.buttonInfoInSpesialParams.BackColor = System.Drawing.Color.Yellow;
+            this.buttonInfoInSpesialParams.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonInfoInSpesialParams.Location = new System.Drawing.Point(12, 10);
+            this.buttonInfoInSpesialParams.Name = "buttonInfoInSpesialParams";
+            this.buttonInfoInSpesialParams.Size = new System.Drawing.Size(20, 75);
+            this.buttonInfoInSpesialParams.TabIndex = 5;
+            this.buttonInfoInSpesialParams.Text = "?";
+            this.buttonInfoInSpesialParams.UseVisualStyleBackColor = false;
+            this.buttonInfoInSpesialParams.Click += new System.EventHandler(this.buttonInfoInSpesialParams_Click);
+            // 
+            // checkBoxExpenses
+            // 
+            this.checkBoxExpenses.AutoSize = true;
+            this.checkBoxExpenses.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxExpenses.Location = new System.Drawing.Point(40, 57);
+            this.checkBoxExpenses.Name = "checkBoxExpenses";
+            this.checkBoxExpenses.Size = new System.Drawing.Size(34, 19);
+            this.checkBoxExpenses.TabIndex = 4;
+            this.checkBoxExpenses.Text = "--";
+            this.checkBoxExpenses.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxShe
+            // 
+            this.checkBoxShe.AutoSize = true;
+            this.checkBoxShe.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxShe.Location = new System.Drawing.Point(40, 74);
+            this.checkBoxShe.Name = "checkBoxShe";
+            this.checkBoxShe.Size = new System.Drawing.Size(51, 19);
+            this.checkBoxShe.TabIndex = 3;
+            this.checkBoxShe.Text = "ОНА";
+            this.checkBoxShe.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxWithoutParams
+            // 
+            this.checkBoxWithoutParams.AutoSize = true;
+            this.checkBoxWithoutParams.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxWithoutParams.Location = new System.Drawing.Point(40, 40);
+            this.checkBoxWithoutParams.Name = "checkBoxWithoutParams";
+            this.checkBoxWithoutParams.Size = new System.Drawing.Size(119, 19);
+            this.checkBoxWithoutParams.TabIndex = 2;
+            this.checkBoxWithoutParams.Text = "Без параметров";
+            this.checkBoxWithoutParams.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxN
+            // 
+            this.checkBoxN.AutoSize = true;
+            this.checkBoxN.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxN.Location = new System.Drawing.Point(40, 24);
+            this.checkBoxN.Name = "checkBoxN";
+            this.checkBoxN.Size = new System.Drawing.Size(35, 19);
+            this.checkBoxN.TabIndex = 1;
+            this.checkBoxN.Text = "Н";
+            this.checkBoxN.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxT
+            // 
+            this.checkBoxT.AutoSize = true;
+            this.checkBoxT.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxT.Location = new System.Drawing.Point(40, 8);
+            this.checkBoxT.Name = "checkBoxT";
+            this.checkBoxT.Size = new System.Drawing.Size(33, 19);
+            this.checkBoxT.TabIndex = 0;
+            this.checkBoxT.Text = "Т";
+            this.checkBoxT.UseVisualStyleBackColor = true;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Ivory;
+            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label10.Font = new System.Drawing.Font("MV Boli", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.label10.Location = new System.Drawing.Point(348, 6);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(124, 13);
+            this.label10.TabIndex = 51;
+            this.label10.Text = "Специальные параметры";
+            // 
+            // panelDopInstrumental
+            // 
+            this.panelDopInstrumental.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.panelDopInstrumental.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelDopInstrumental.Controls.Add(this.comboBoxDopInstrumental);
+            this.panelDopInstrumental.Controls.Add(this.buttonExecuteDopInstrumental);
+            this.panelDopInstrumental.Location = new System.Drawing.Point(335, 127);
+            this.panelDopInstrumental.Name = "panelDopInstrumental";
+            this.panelDopInstrumental.Size = new System.Drawing.Size(375, 77);
+            this.panelDopInstrumental.TabIndex = 31;
+            this.panelDopInstrumental.DoubleClick += new System.EventHandler(this.panelDopInstrumental_DoubleClick);
+            // 
+            // comboBoxDopInstrumental
+            // 
+            this.comboBoxDopInstrumental.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.comboBoxDopInstrumental.FormattingEnabled = true;
+            this.comboBoxDopInstrumental.Location = new System.Drawing.Point(19, 12);
+            this.comboBoxDopInstrumental.Name = "comboBoxDopInstrumental";
+            this.comboBoxDopInstrumental.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxDopInstrumental.TabIndex = 1;
+            // 
+            // buttonExecuteDopInstrumental
+            // 
+            this.buttonExecuteDopInstrumental.Location = new System.Drawing.Point(154, 12);
+            this.buttonExecuteDopInstrumental.Name = "buttonExecuteDopInstrumental";
+            this.buttonExecuteDopInstrumental.Size = new System.Drawing.Size(76, 23);
+            this.buttonExecuteDopInstrumental.TabIndex = 0;
+            this.buttonExecuteDopInstrumental.Text = "Выполнить";
+            this.buttonExecuteDopInstrumental.UseVisualStyleBackColor = true;
+            // 
+            // labelHeaderModuleDopInstrumental
+            // 
+            this.labelHeaderModuleDopInstrumental.AutoSize = true;
+            this.labelHeaderModuleDopInstrumental.BackColor = System.Drawing.Color.Ivory;
+            this.labelHeaderModuleDopInstrumental.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelHeaderModuleDopInstrumental.Font = new System.Drawing.Font("MV Boli", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.labelHeaderModuleDopInstrumental.Location = new System.Drawing.Point(348, 121);
+            this.labelHeaderModuleDopInstrumental.Name = "labelHeaderModuleDopInstrumental";
+            this.labelHeaderModuleDopInstrumental.Size = new System.Drawing.Size(149, 13);
+            this.labelHeaderModuleDopInstrumental.TabIndex = 52;
+            this.labelHeaderModuleDopInstrumental.Text = "Дополнительные возможности";
+            // 
+            // labelHeaderModuleAdm
+            // 
+            this.labelHeaderModuleAdm.AutoSize = true;
+            this.labelHeaderModuleAdm.BackColor = System.Drawing.Color.Ivory;
+            this.labelHeaderModuleAdm.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelHeaderModuleAdm.Font = new System.Drawing.Font("MV Boli", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.labelHeaderModuleAdm.Location = new System.Drawing.Point(1404, 8);
+            this.labelHeaderModuleAdm.Name = "labelHeaderModuleAdm";
+            this.labelHeaderModuleAdm.Size = new System.Drawing.Size(128, 14);
+            this.labelHeaderModuleAdm.TabIndex = 0;
+            this.labelHeaderModuleAdm.Text = "Модуль администратора";
+            // 
+            // textBoxList
+            // 
+            this.textBoxList.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.textBoxList.Location = new System.Drawing.Point(722, 399);
+            this.textBoxList.Multiline = true;
+            this.textBoxList.Name = "textBoxList";
+            this.textBoxList.ReadOnly = true;
+            this.textBoxList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxList.Size = new System.Drawing.Size(225, 580);
+            this.textBoxList.TabIndex = 54;
+            // 
+            // buttonAccessUpdate
+            // 
+            this.buttonAccessUpdate.Location = new System.Drawing.Point(159, 50);
+            this.buttonAccessUpdate.Name = "buttonAccessUpdate";
+            this.buttonAccessUpdate.Size = new System.Drawing.Size(140, 27);
+            this.buttonAccessUpdate.TabIndex = 59;
+            this.buttonAccessUpdate.Text = "Разрешить обновление";
+            this.buttonAccessUpdate.UseVisualStyleBackColor = true;
+            this.buttonAccessUpdate.Click += new System.EventHandler(this.buttonAccessUpdate_Click);
             // 
             // FManager
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(825, 909);
-            this.Controls.Add(this.panelEnableGit);
-            this.Controls.Add(this.panelWorkGit);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.labelLastUpdate);
-            this.Controls.Add(this.labelAnswerToUpdate);
-            this.Controls.Add(this.tabControlButtonsHe);
-            this.Controls.Add(this.labelVisible);
-            this.Controls.Add(this.textBoxPassword);
-            this.Controls.Add(this.radioButtonShe);
-            this.Controls.Add(this.radioButtonHe);
-            this.Controls.Add(this.panelUpdate);
-            this.Controls.Add(this.panelChooseData);
-            this.Controls.Add(this.textBoxAboutExpenses);
-            this.Controls.Add(this.tabControlButtons);
-            this.Controls.Add(this.infoCategoryPerson2);
-            this.Controls.Add(this.infoCategoryPerson1);
-            this.Controls.Add(this.textBoxSum);
+            this.ClientSize = new System.Drawing.Size(1668, 909);
             this.Controls.Add(this.textBoxList);
-            this.Controls.Add(this.infoParamN);
-            this.Controls.Add(this.infoParamT);
+            this.Controls.Add(this.labelHeaderModuleDopInstrumental);
+            this.Controls.Add(this.panelDopInstrumental);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.panelSpecial);
+            this.Controls.Add(this.labelHeaderMode);
+            this.Controls.Add(this.panelMode);
+            this.Controls.Add(this.labelHeaderModuleAnalitics);
+            this.Controls.Add(this.panelAnalitics);
+            this.Controls.Add(this.labelHeaderWindowInfo);
+            this.Controls.Add(this.labelHeaderModuleAdm);
+            this.Controls.Add(this.panelInfo);
+            this.Controls.Add(this.panelModuleADM);
+            this.Controls.Add(this.labelHeaderModuleUpdate);
+            this.Controls.Add(this.panelModuleUpdate);
+            this.Controls.Add(this.dataDop);
+            this.Controls.Add(this.dataOsn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -1161,126 +1546,171 @@
             this.Text = "Финансовый менеджер";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FManager_FormClosed);
             this.Load += new System.EventHandler(this.FManager_Load);
+            this.Shown += new System.EventHandler(this.FManager_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.numericYears)).EndInit();
-            this.tabControlButtons.ResumeLayout(false);
-            this.tabPageList.ResumeLayout(false);
-            this.tabPageList.PerformLayout();
-            this.tabPageSum.ResumeLayout(false);
-            this.tabPageSum.PerformLayout();
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
             this.panelChooseData.ResumeLayout(false);
             this.panelChooseData.PerformLayout();
-            this.panelUpdate.ResumeLayout(false);
-            this.panelUpdate.PerformLayout();
-            this.tabControlButtonsHe.ResumeLayout(false);
-            this.tabPageListHe.ResumeLayout(false);
-            this.tabPageListHe.PerformLayout();
-            this.panelWorkGit.ResumeLayout(false);
-            this.panelWorkGit.PerformLayout();
-            this.panelEnableGit.ResumeLayout(false);
-            this.panelEnableGit.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.statsDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataDop)).EndInit();
+            this.panelModuleADM.ResumeLayout(false);
+            this.panelModuleADM.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataOsn)).EndInit();
+            this.panelModuleUpdate.ResumeLayout(false);
+            this.panelModuleUpdate.PerformLayout();
+            this.panelInfo.ResumeLayout(false);
+            this.panelInfo.PerformLayout();
+            this.panelAnalitics.ResumeLayout(false);
+            this.panelAnalitics.PerformLayout();
+            this.tabControlStats.ResumeLayout(false);
+            this.tabPageExpenses.ResumeLayout(false);
+            this.tabPageExpenses.PerformLayout();
+            this.panelExpensesCurrentYear.ResumeLayout(false);
+            this.panelExpensesCurrentYear.PerformLayout();
+            this.panelExpensesPreviusYear.ResumeLayout(false);
+            this.panelExpensesPreviusYear.PerformLayout();
+            this.tabPageCigarettes.ResumeLayout(false);
+            this.tabPageCigarettes.PerformLayout();
+            this.panelCigarettesCurrentYear.ResumeLayout(false);
+            this.panelCigarettesCurrentYear.PerformLayout();
+            this.panelCigarettesPreviusYear.ResumeLayout(false);
+            this.panelCigarettesPreviusYear.PerformLayout();
+            this.tabPageCandles.ResumeLayout(false);
+            this.tabPageCandles.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataCandles)).EndInit();
+            this.tabPageRelax.ResumeLayout(false);
+            this.tabPageRelax.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataRelax)).EndInit();
+            this.panelMode.ResumeLayout(false);
+            this.panelMode.PerformLayout();
+            this.panelSpecial.ResumeLayout(false);
+            this.panelSpecial.PerformLayout();
+            this.panelDopInstrumental.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Button btnExpensesTList;
-        private System.Windows.Forms.Button btnProfitList;
-        private System.Windows.Forms.Button btnChooseDaysList;
         private System.Windows.Forms.Button btnChooseData;
         private System.Windows.Forms.ComboBox cbMonths;
         private System.Windows.Forms.NumericUpDown numericYears;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox info3;
-        private System.Windows.Forms.TextBox info2;
-        private System.Windows.Forms.TextBox info1;
-        private System.Windows.Forms.TextBox info4;
-        private System.Windows.Forms.Button btnExpensesNList;
-        private System.Windows.Forms.TextBox info8;
-        private System.Windows.Forms.Button btnExpensesNSum;
-        private System.Windows.Forms.TextBox info7;
-        private System.Windows.Forms.TextBox info6;
-        private System.Windows.Forms.TextBox info5;
-        private System.Windows.Forms.Button btnExpensesTSum;
-        private System.Windows.Forms.Button btnProfitSum;
-        private System.Windows.Forms.Button btnExpensesSum;
-        private System.Windows.Forms.Label infoParamT;
-        private System.Windows.Forms.Label infoParamN;
-        public System.Windows.Forms.TextBox textBoxList;
-        private System.Windows.Forms.TextBox textBoxSum;
-        private System.Windows.Forms.TextBox info9;
-        private System.Windows.Forms.Button btnExpensesPersonList;
-        private System.Windows.Forms.TextBox info10;
-        private System.Windows.Forms.Button btnExpensesPersonSum;
-        private System.Windows.Forms.Label infoCategoryPerson1;
-        private System.Windows.Forms.Label infoCategoryPerson2;
-        private System.Windows.Forms.TabControl tabControlButtons;
-        private System.Windows.Forms.TabPage tabPageList;
-        private System.Windows.Forms.TabPage tabPageSum;
-        private System.Windows.Forms.TextBox info11;
-        private System.Windows.Forms.Button btnProfitAfterExpenses;
-        private System.Windows.Forms.TextBox infoAboutExpenses;
-        private System.Windows.Forms.Button btnAboutExpenses;
-        private System.Windows.Forms.TextBox textBoxAboutExpenses;
-        private System.Windows.Forms.Button btnAboutCigarettes;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TextBox info12;
-        private System.Windows.Forms.TextBox info13;
-        private System.Windows.Forms.Button btnCigarettesCountAllTimes;
-        private System.Windows.Forms.TextBox info14;
-        private System.Windows.Forms.Button btnExpensesCigarettesAllTimes;
-        private System.Windows.Forms.TextBox info15;
-        private System.Windows.Forms.Button btnExpensesCigarettesListAllTimes;
         private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Label labelUpdateSucceful;
-        private System.Windows.Forms.Button btnLookUpdate;
         private System.Windows.Forms.Panel panelChooseData;
-        private System.Windows.Forms.Panel panelUpdate;
         private System.Windows.Forms.RadioButton radioButtonCreateBat;
-        private System.Windows.Forms.RadioButton radioButtonHe;
-        private System.Windows.Forms.RadioButton radioButtonShe;
         private System.Windows.Forms.TextBox textBoxPassword;
-        private System.Windows.Forms.Label labelVisible;
-        private System.Windows.Forms.TabControl tabControlButtonsHe;
-        private System.Windows.Forms.TabPage tabPageListHe;
-        private System.Windows.Forms.Button btnCandle;
-        private System.Windows.Forms.Button btnRelax;
-        private System.Windows.Forms.Button btnAllListHe;
-        private System.Windows.Forms.Button btnSheAlListHe;
-        private System.Windows.Forms.Button btnNAllListHe;
-        private System.Windows.Forms.Button btnTAllListHe;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btnMonthListHe;
-        private System.Windows.Forms.Button btnSheMonthListHe;
-        private System.Windows.Forms.Button btnNMonthListHe;
-        private System.Windows.Forms.Button btnTMonthListHe;
-        private System.Windows.Forms.Label infoMonthList;
-        private System.Windows.Forms.Label infoSheMonthListHe;
-        private System.Windows.Forms.Label infoNMonthListHe;
-        private System.Windows.Forms.Label infoTMonthListHe;
-        private System.Windows.Forms.CheckBox checkBoxDopQuery;
-        private System.Windows.Forms.Label labelAnswerToUpdate;
-        private System.Windows.Forms.Label labelLastUpdate;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label labelBatCreated;
-        private System.Windows.Forms.Button btnOpenPanelGit;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Panel panelWorkGit;
-        private System.Windows.Forms.Button btnClosePanelGit;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button btnCheckGit;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnInstallGit;
-        private System.Windows.Forms.Button btnDontCheck;
-        private System.Windows.Forms.Panel panelEnableGit;
-        private System.Windows.Forms.Label labelForStatusGitInstall;
         private System.Windows.Forms.BindingSource statsDataSetBindingSource;
+        private System.Windows.Forms.DataGridView dataDop;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn date_expense;
+        private System.Windows.Forms.DataGridViewTextBoxColumn event_type;
+        private System.Windows.Forms.DataGridViewTextBoxColumn count;
+        private System.Windows.Forms.DataGridViewTextBoxColumn count_expenses;
+        private System.Windows.Forms.DataGridViewTextBoxColumn description;
+        private System.Windows.Forms.DataGridViewTextBoxColumn type;
+        private System.Windows.Forms.DataGridViewTextBoxColumn full_line;
+        private System.Windows.Forms.Panel panelModuleADM;
+        private System.Windows.Forms.TextBox textBoxSQLQuery;
+        private System.Windows.Forms.Label labelHeaderSQLQuery;
+        private System.Windows.Forms.ComboBox comboBoxCMDsADM;
+        private System.Windows.Forms.RadioButton radioButtonOutputInOsn;
+        private System.Windows.Forms.RadioButton radioButtonOutputInDop;
+        protected internal System.Windows.Forms.Button buttonExecuteSQLQuery;
+        private System.Windows.Forms.DataGridView dataOsn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.Panel panelModuleUpdate;
+        private System.Windows.Forms.Label labelHeaderModuleUpdate;
+        private System.Windows.Forms.Panel panelInfo;
+        private System.Windows.Forms.Label labelHeaderWindowInfo;
+        private System.Windows.Forms.Panel panelAnalitics;
+        private System.Windows.Forms.Label labelHeaderModuleAnalitics;
+        private System.Windows.Forms.Panel panelMode;
+        private System.Windows.Forms.Label labelHeaderMode;
+        private System.Windows.Forms.RadioButton radioButtonReadFromFile;
+        private System.Windows.Forms.RadioButton radioButtonModeHeBig;
+        private System.Windows.Forms.RadioButton radioButtonModeHeGifts;
+        private System.Windows.Forms.RadioButton radioButtonModeHe;
+        private System.Windows.Forms.RadioButton radioButtonModeShe;
+        private System.Windows.Forms.Panel panelSpecial;
+        private System.Windows.Forms.Button buttonInfoInSpesialParams;
+        private System.Windows.Forms.CheckBox checkBoxExpenses;
+        private System.Windows.Forms.CheckBox checkBoxShe;
+        private System.Windows.Forms.CheckBox checkBoxWithoutParams;
+        private System.Windows.Forms.CheckBox checkBoxN;
+        private System.Windows.Forms.CheckBox checkBoxT;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Panel panelDopInstrumental;
+        private System.Windows.Forms.Label labelHeaderModuleDopInstrumental;
+        private System.Windows.Forms.ComboBox comboBoxDopInstrumental;
+        private System.Windows.Forms.Button buttonExecuteDopInstrumental;
+        private System.Windows.Forms.Label labelHeaderModuleAdm;
+        private System.Windows.Forms.TextBox textBoxInfoMessage;
+        private System.Windows.Forms.Button buttonBlock;
+        private System.Windows.Forms.Button buttonShowFieldPassword;
+        private System.Windows.Forms.Button buttonExecuteCMDADM;
+        private System.Windows.Forms.CheckBox checkBoxHeBigADM;
+        private System.Windows.Forms.CheckBox checkBoxHeGiftsADM;
+        private System.Windows.Forms.CheckBox checkBoxHeADM;
+        private System.Windows.Forms.CheckBox checkBoxSheADM;
+        private System.Windows.Forms.TextBox textBoxWindowExpensesAll;
+        private System.Windows.Forms.TextBox textBoxList;
+        private System.Windows.Forms.Label labelHeaderWindowErrors;
+        private System.Windows.Forms.TextBox textBoxInfoErrors;
+        private System.Windows.Forms.Label labelHeaderWindowExpensesCurrentMonth;
+        private System.Windows.Forms.TextBox textBoxWindowExpensesCurrentMonth;
+        private System.Windows.Forms.TextBox textBoxWindowExpensesPreviusYear;
+        private System.Windows.Forms.Label labelHeaderWindowExpensesAVG;
+        private System.Windows.Forms.TextBox textBoxExpensesAVG;
+        private System.Windows.Forms.Label labelHeaderWindowPreviusYear;
+        private System.Windows.Forms.Panel panelExpensesPreviusYear;
+        private System.Windows.Forms.Label labelHeaderWindowExpensesPreviusMonth;
+        private System.Windows.Forms.TextBox textBoxWindowExpensesPreviusMonth;
+        private System.Windows.Forms.Panel panelExpensesCurrentYear;
+        private System.Windows.Forms.Label labelHeaderWindowExpensesPreviusYear;
+        private System.Windows.Forms.Label labelHeaderWindowExpensesCurrentYear;
+        private System.Windows.Forms.TextBox textBoxWindowExpensesCurrentYear;
+        private System.Windows.Forms.TabControl tabControlStats;
+        private System.Windows.Forms.TabPage tabPageExpenses;
+        private System.Windows.Forms.TabPage tabPageCigarettes;
+        private System.Windows.Forms.Label labelHeaderWindowExpensesCurrent;
+        private System.Windows.Forms.Label labelHEaderWindowCigarettesCurrentYear;
+        private System.Windows.Forms.Label labelHeaderWindowCigarettesPreviusYear;
+        private System.Windows.Forms.Panel panelCigarettesCurrentYear;
+        private System.Windows.Forms.Label labelHeaderWindowCigarettesCurrentYearYear;
+        private System.Windows.Forms.Label labelHeaderWindowCigarettesCurrentYearMonth;
+        private System.Windows.Forms.TextBox textBoxCigarettesCurrentYearYear;
+        private System.Windows.Forms.TextBox textBoxCigarettesCurrentYearMonth;
+        private System.Windows.Forms.Panel panelCigarettesPreviusYear;
+        private System.Windows.Forms.Label labelHeaderWindowCigarettesPreviusYearYear;
+        private System.Windows.Forms.TextBox textBoxCigarettesPreviusYearYear;
+        private System.Windows.Forms.Label labelHeaderWindowCigarettesPreviusYearMonth;
+        private System.Windows.Forms.TextBox textBoxCigarettesPreviusYearMonth;
+        private System.Windows.Forms.Label labelHeaderWindowCigarettesAVG;
+        private System.Windows.Forms.TextBox textBoxCigarettesAVG;
+        private System.Windows.Forms.Label labelHeaderWindowExpensesAll;
+        private System.Windows.Forms.Label labelHeaderWindowCigarettesAll;
+        private System.Windows.Forms.TextBox textBoxCigarettesAll;
+        private System.Windows.Forms.TabPage tabPageCandles;
+        private System.Windows.Forms.DataGridView dataCandles;
+        private System.Windows.Forms.Label labelHeaderWindowCandles;
+        private System.Windows.Forms.TextBox textBoxCandles;
+        private System.Windows.Forms.TabPage tabPageRelax;
+        private System.Windows.Forms.DataGridView dataRelax;
+        private System.Windows.Forms.Label labelHeaderRelax;
+        private System.Windows.Forms.TextBox textBoxRelax;
+        private System.Windows.Forms.Label labelHeaderWindowTextBoxUpdate;
+        private System.Windows.Forms.TextBox textBoxUpdate;
+        private System.Windows.Forms.TextBox textBoxIsUpdate;
+        private System.Windows.Forms.Label labelHeaderIsUpdate;
+        private System.Windows.Forms.Button buttonAccessUpdate;
     }
 }
 
