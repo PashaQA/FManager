@@ -74,6 +74,47 @@ namespace FManager
             }
         }
 
+        public string locationHeGifts
+        {
+            get
+            {
+                return locationWorkFolder + @"\HeGifts.sys";
+            }
+        }
+
+        public string locationHeBig
+        {
+            get
+            {
+                return locationWorkFolder + @"\HeBig.sys";
+            }
+        }
+
+        public string locationNewFileHeGifts
+        {
+            get
+            {
+                return locationWorkFolder + @"\HeGiftsNew.sys";
+            }
+        }
+
+        public string locationNewFileHeBig
+        {
+            get
+            {
+                return locationWorkFolder + @"\HeBigNew.sys";
+            }
+        }
+
+        public string locationPashaFile
+        {
+            get
+            {
+                return locationWorkFolder + @"\admin.sys";
+            }
+        }
+
+
         /// <summary>
         /// Оба файла обновления конвертирует в список для записи в БД
         /// </summary>

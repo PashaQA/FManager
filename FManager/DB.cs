@@ -29,7 +29,9 @@ namespace FManager
             She,
             He,
             HeGifts,
-            HeBig
+            HeBig,
+            AbstractCASUAL,
+            AbstractHE
         }
 
         public DB()
@@ -73,7 +75,10 @@ namespace FManager
                                      "id integer primary key identity, " +
                                      "date_expense date not null," +
                                      "description nvarchar(255) not null," +
-                                      "expenses nvarchar(100) not null);\n";
+                                      "expenses nvarchar(100) not null," +
+                                       "type nvarchar(3) not null," +
+                                       "param nvarchar(1)," +
+                                       "full_line nvarchar(100));\n";
             }
             if (table == Tables.HeBig)
             {
@@ -81,7 +86,9 @@ namespace FManager
                                      "id integer primary key identity, " +
                                      "date_expense date not null," +
                                      "description nvarchar(255) not null," +
-                                     "expenses nvarchar(100) not null);";
+                                     "expenses nvarchar(100) not null," +
+                                       "type nvarchar(3) not null," +
+                                       "full_line nvarchar(100));\n";
             }
             try
             {
@@ -89,9 +96,7 @@ namespace FManager
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
-                //Вывод сообщения о том, что таблицы уже созданы,
-                // поэтому мы их заново создавать не будем.
+                MessageBox.Show("Ошибка из функции: DB.CreateTable. Ошибка: " + ex.Message);
             }
             finally
             {
@@ -122,7 +127,7 @@ namespace FManager
             }
             catch (Exception ex)
             {
-                //Сообщение на случай ошибки удаления таблиц
+                MessageBox.Show("Ошибка из функции: DB.DeleteTables. Ошибка: " + ex.Message);
             }
             finally
             {
@@ -150,19 +155,66 @@ namespace FManager
                 string nameTable = "";
                 if (table == Tables.He)
                     nameTable = "He";
-                if (table == Tables.She)
+                else if (table == Tables.She)
                     nameTable = "She";
-
+                else
+                {
+                    MessageBox.Show("Выбранная таблциа не поддерживется для записи из этой функции.", "Ошибкочка",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 cmd.CommandText = string.Format("insert into dbo." + nameTable +
                     "(date_expense, event_type, count, count_expenses, description, type, full_line) values('{0}', N'{1}', {2}, N'{3}', N'{4}', N'{5}', N'{6}')",
                     date_expense, event_type, count, count_expenses, description, type, full_line);
                 cmd.ExecuteReader();
-                connection.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
-                //сообщзение об ошибке записи в таблицу
+                MessageBox.Show("Ошибка из функции: DB.InsertIntoCasult. Ошибка: " + ex.Message);
+            }
+            finally
+            {
+                Close();
+            }
+        }
+
+        /// <summary>
+        /// Выполняет запись в таблицу HeBig или heGifts
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="date_expenses"></param>
+        /// <param name="description"></param>
+        /// <param name="expenses"></param>
+        /// <param name="type"></param>
+        public void InsertIntoHeTables(Tables table, string date_expenses, string description, string expenses, string type, string param, string full_line)
+        {
+            try
+            {
+                Open();
+                string nameTable = "";
+                if (table == Tables.HeBig)
+                    nameTable = "HeBig";
+                else if (table == Tables.HeGifts)
+                    nameTable = "HeGifts";
+                else
+                {
+                    MessageBox.Show("Выбранная табоица не поддерживается для записи из этой функции.", "Ошибочка",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (table == Tables.HeBig)
+                    cmd.CommandText += string.Format("insert into dbo." + nameTable + "(date_expense, description, expenses, type, full_line)" +
+                    " values ('{0}', N'{1}', N'{2}', N'{3}', N'{4}')",
+                    date_expenses, description, expenses, type, full_line);
+                else
+                    cmd.CommandText += string.Format("insert into dbo." + nameTable + "(date_expense, description, expenses, type, param, full_line)" +
+                        " values ('{0}', N'{1}', N'{2}', N'{3}', N'{4}', N'{5}')",
+                        date_expenses, description, expenses, type, param, full_line);
+                cmd.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка из функции: DB.InsertIntoHeTables. Ошибка: " + ex.Message);
             }
             finally
             {
@@ -191,9 +243,9 @@ namespace FManager
                 cmd.CommandText = "delete from dbo." + nameTable;
                 cmd.ExecuteReader();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                MessageBox.Show("Ошибка из функции: DB.ClearTables. Ошибка: " + ex.Message);
             }
             finally
             {
@@ -220,9 +272,9 @@ namespace FManager
                         names.Add(reader[i].ToString());
                 }
             }
-            catch(Exception)
+            catch (Exception ex)
             {
-                
+                MessageBox.Show("Ошибка из функции: DB.GetExistsTables. Ошибка: " + ex.Message);
             }
             finally
             {
@@ -264,9 +316,9 @@ namespace FManager
                     counter++;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //сообщение об ошибки выполнения запроса
+                MessageBox.Show("Ошибка из функции: DB.ExecuteQuery. Ошибка: " + ex.Message);
             }
             finally
             {
@@ -291,11 +343,10 @@ namespace FManager
                     tableName = "He";
                 else if (table == Tables.She)
                     tableName = "She";
-                else
-                {
-                    MessageBox.Show("Возврат данных с данной таблицы не возможен..", "Сыровато",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                else if (table == Tables.HeGifts)
+                    tableName = "HeGifts";
+                else if (table == Tables.HeBig)
+                    tableName = "HeBig";
                 cmd.CommandText = "select * from dbo." + tableName;
                 reader = cmd.ExecuteReader();
                 int counter = 0;
@@ -308,9 +359,9 @@ namespace FManager
                     counter++;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                MessageBox.Show("При запросе данных из БД выпала ошибка: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
             finally
             {

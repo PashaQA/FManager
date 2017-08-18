@@ -11,12 +11,12 @@ namespace FManager
     {
         private Assistant assis = new Assistant();
         private DB db = new DB();
-
+       
         public ParseFile()
         {
 
         }
-        
+
         /// <summary>
         /// Возвращает массив записей с файла по указанному пути
         /// </summary>
@@ -26,7 +26,7 @@ namespace FManager
         {
             List<string> deletedSpace = new List<string>();
             StreamReader sr = null;
-            if (path.IndexOf("Latest") != -1 || path.IndexOf("he") != -1)
+            if (path.IndexOf("Latest") != -1 || path.ToLower().IndexOf("he") != -1)
                 sr = new StreamReader(path, Encoding.Default);
             else if (path.IndexOf("she") != -1)
                 sr = new StreamReader(path, Encoding.UTF8);
@@ -64,7 +64,7 @@ namespace FManager
         /// Выполняет запись в выбранную таблицу с файла, соответствующего выбранной таблице
         /// </summary>
         /// <param name="table"></param>
-        public void SetDataFromFileToDB(DB.Tables table, bool update=false)
+        public void SetDataFromFileToDBCasual(DB.Tables table, bool update = false)
         {
             string path = string.Empty;
             if (table == DB.Tables.He)
@@ -81,8 +81,8 @@ namespace FManager
             }
             else
             {
-                MessageBox.Show("Запись в данную таблицу пока что не возможна.", "Сыровато",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Выбранная табоица не поддерживается для записи из этой функции.", "Ошибочка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -165,6 +165,148 @@ namespace FManager
 
         }
 
+        /// <summary>
+        /// Выполняет запись в выбранную таблицу с файла, соответствующего выбранной таблице.
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="update"></param>
+        public void SetDataFromFileToDBHeTables(DB.Tables table, bool update = false)
+        {
+            string path = string.Empty;
+            if (table == DB.Tables.HeBig)
+            {
+                if (update)
+                    path = assis.locationNewFileHeBig;
+                else
+                    path = assis.locationHeBig;
+            }
+            else if (table == DB.Tables.HeGifts)
+            {
+                if (update)
+                    path = assis.locationNewFileHeGifts;
+                else
+                    path = assis.locationHeGifts;
+            }
+            else
+            {
+                MessageBox.Show("Выбранная табоица не поддерживается для записи из этой функции.", "Ошибочка",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string[] fullList = GetParsedList(path);
+            string date_expenses = string.Empty;
+            string description = string.Empty;
+            string expenses = string.Empty;
+            string type = string.Empty;
+            string full_line = string.Empty;
+            string param = string.Empty;
+
+            for (int i = 0; i < fullList.Length; i++)
+            {
+                int idx = fullList[i].IndexOf(' ');
+                date_expenses = fullList[i].Remove(idx);
+                string[] splitedDate = date_expenses.Split('.');
+                date_expenses = "" + "20" + splitedDate[2] + "-" + splitedDate[1] + "-" + splitedDate[0];
+
+                int idxStart = fullList[i].IndexOf('-');
+                if (idxStart == -1) idxStart = fullList[i].IndexOf("--");
+                description = fullList[i].Remove(0, idxStart + 2);
+                int idxStop = description.LastIndexOf("-");
+                if (idxStop == -1) idxStop = description.LastIndexOf("--");
+                description = description.Remove(idxStop - 1);
+
+                idx = fullList[i].LastIndexOf('-');
+                if (idx == -1) fullList[i].LastIndexOf("--");
+                expenses = fullList[i].Remove(0, idx + 2);
+                idx = expenses.IndexOf(' ');
+                if (idx != -1)
+                {
+                    expenses = expenses.Remove(idx);
+                }
+
+                if (fullList[i].IndexOf("--") != -1) type = "--";
+                else type = "-";
+
+                idx = fullList[i].IndexOf('(');
+                param = string.Empty;
+                if (idx != -1)
+                {
+                    param = fullList[i].Remove(0, idx + 1);
+                    idx = param.IndexOf(')');
+                    param = param.Remove(idx);
+                }
+
+
+                full_line = fullList[i];
+
+                db.InsertIntoHeTables(table, date_expenses, description, expenses, type, param, full_line);
+            }
+
+        }
+
+        /// <summary>
+        /// Экспортирует выбранную таблицу в файл по ГОСТу
+        /// </summary>
+        public void SetDataFromDBToFile(Dictionary<int, Dictionary<string,string>> data, DB.Tables table)
+        {
+            DialogResult response = DialogResult.Yes;
+
+            string path = string.Empty;
+            if (table == DB.Tables.He)
+                path = assis.locationHeFile;
+            else if (table == DB.Tables.She)
+                path = assis.locationSheFile;
+            else if (table == DB.Tables.HeBig)
+                path = assis.locationHeBig;
+            else if (table == DB.Tables.HeGifts)
+                path = assis.locationHeGifts;
+            else throw new Exception("Выбрананя таблица не поддерживается в данной функции.");
+
+            List < string > fullList = new List<string>();
+            if (table == DB.Tables.He || table == DB.Tables.She)
+            {
+                string dateAdded = string.Empty;
+                for (int i = 0; i < data.Count; i++)
+                {
+                    int idx = data[i]["date_expense"].IndexOf(' ');
+                    string date = data[i]["date_expense"].Remove(idx);
+                    idx = date.IndexOf('/');
+                    date = date.Remove(0, idx + 1);
+
+                    idx = date.IndexOf('/');
+                    string month = date.Remove(idx);
+                    string year = date.Remove(0, idx + 1);
+
+                    if (dateAdded == string.Empty || dateAdded != date)
+                    {
+                        fullList.Add("-----------------" + ParseDBAssistant.getStringMonthFromInt(month) + " " + year);
+                        dateAdded = date;
+                    }
+
+                    fullList.Add(data[i]["full_line"]);
+                }
+            }
+            else if (table == DB.Tables.HeGifts || table == DB.Tables.HeBig)
+            {
+                for (int i = 0; i < data.Count; i++)
+                    fullList.Add(data[i]["full_line"]);
+            }
+
+            if(File.Exists(path))
+                response = MessageBox.Show("Данный файл уже существует в рабочей директории. Если экспортируете данную таблицу, старый файл удалится. Вы уверены что хотите экспортировать?",
+                    "Недопонятка.", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if(response == DialogResult.Yes)
+            {
+                using (StreamWriter sw = new StreamWriter(path, false, Encoding.Default))
+                {
+                    for (int i = 0; i < fullList.Count; i++)
+                        sw.WriteLine(fullList[i]);
+                }
+            }
+        }
+
         private String getDay(string line)
         {
             int idxData = line.IndexOf(' ');
@@ -184,7 +326,7 @@ namespace FManager
                     break;
                 }
                 else if (i == fullList.Length - 1 && idxStop == -1)
-                    idxStop = i;
+                    idxStop = i+1;
 
                 if (fullList[i].StartsWith("----"))
                     idxStart = i;
@@ -310,7 +452,7 @@ namespace FManager
         }
     }
 
-    public class ParseDB
+    public class ParseDBCasualTables
     {
         private const string _id = "id";
         private const string _date_expense = "date_expense";
@@ -322,12 +464,13 @@ namespace FManager
         private const string _full_line = "full_line";
 
         private Dictionary<int, Dictionary<string, string>> data;
-        private Dictionary<string, string[]> resultDic = new Dictionary<string, string[]>();
+        private Dictionary<string, string[]> resultDic;
         private List<string> listDescExpenses = new List<string>();
         private List<string> listDescPersonExpenses = new List<string>();
         private List<string> listCount = new List<string>();
+        private List<string> listProfit = new List<string>();
 
-        public ParseDB(Dictionary<int, Dictionary<string, string>> data)
+        public ParseDBCasualTables(Dictionary<int, Dictionary<string, string>> data)
         {
             this.data = data;
         }
@@ -499,17 +642,30 @@ namespace FManager
         ///  Ключи -, --, count
         /// </summary>
         /// <returns></returns>
-        public Dictionary<string, string[]> getExpensesAllTime()
+        public Dictionary<string, string[]> getExpensesAllTime(List<string> spezialParams)
         {
             int expenses = 0;
             int expensesPerson = 0;
             ClearLists();
             for (int i = 0; i < data.Count; i++)
             {
-                if (data[i][_event_type] == "-")
-                    expenses += getExpensesFromDay(data[i]);
-                else if (data[i][_event_type] == "--")
-                    expensesPerson += getExpensesFromDay(data[i]);
+                for (int j = 0; j < spezialParams.Count; j++)
+                {
+                    if (data[i]["type"] == spezialParams[j])
+                    {
+
+                        if (data[i][_event_type] == "-")
+                        {
+                            expenses += getExpensesFromDay(data[i]);
+                            break;
+                        }
+                        if (data[i][_event_type] == "--")
+                        {
+                            expensesPerson += getExpensesFromDay(data[i]);
+                            break;
+                        }
+                    }
+                }
             }
             resultDic["-"] = new string[1] { expenses.ToString() };
             resultDic["--"] = new string[1] { expensesPerson.ToString() };
@@ -522,24 +678,41 @@ namespace FManager
         ///     Ключи словаря -,--, descExpenses, descPersonExpenses
         /// </summary>
         /// <returns></returns>
-        public Dictionary<string, string[]> getExpensesYear(string year)
+        public Dictionary<string, string[]> getExpensesYear(List<string> spezialParams, string year)
         {
             int expenses = 0;
             int personExpenses = 0;
+            int profit = 0;
             ClearLists();
             for (int i = 0; i < data.Count; i++)
             {
                 if (data[i][_date_expense].IndexOf(year) != -1)
                 {
-                    if (data[i][_event_type] == "-")
+                    if (data[i][_event_type] == "+")
                     {
-                        expenses += getExpensesFromDay(data[i]);
-                        listDescExpenses.Add(data[i][_full_line]);
+                        profit += Convert.ToInt32(data[i][_count]);
+                        listProfit.Add(data[i][_full_line]);
+                        continue;
                     }
-                    else if (data[i][_event_type] == "--")
+
+                    for (int j = 0; j < spezialParams.Count; j++)
                     {
-                        personExpenses += getExpensesFromDay(data[i]);
-                        listDescPersonExpenses.Add(data[i][_full_line]);
+
+                        if (data[i]["type"] == spezialParams[j])
+                        {
+                            if (data[i][_event_type] == "-")
+                            {
+                                expenses += getExpensesFromDay(data[i]);
+                                listDescExpenses.Add(data[i][_full_line]);
+                                break;
+                            }
+                            if (data[i][_event_type] == "--")
+                            {
+                                personExpenses += getExpensesFromDay(data[i]);
+                                listDescPersonExpenses.Add(data[i][_full_line]);
+                                break;
+                            }
+                        }
                     }
                 }
             }
@@ -547,6 +720,8 @@ namespace FManager
             resultDic["--"] = new string[1] { personExpenses.ToString() };
             resultDic["descExpenses"] = getResDesc(listDescExpenses);
             resultDic["descPersonExpenses"] = getResDesc(listDescPersonExpenses);
+            resultDic["+"] = new string[1] { profit.ToString() };
+            resultDic["descProfit"] = getResDesc(listProfit);
             return resultDic;
         }
 
@@ -555,25 +730,41 @@ namespace FManager
         ///     Ключи словаря: -, --, descExpenses, descPersonExpenses
         /// </summary>
         /// <returns></returns>
-        public Dictionary<string, string[]> getExpensesMonth(string year, string month)
+        public Dictionary<string, string[]> getExpensesMonth(List<string> spezialParams, string year, string month)
         {
             int expenses = 0;
             int personExpenses = 0;
+            int profit = 0;
             ClearLists();
-            string date = getIntMonthFromString(month) + "/" + year;
+            string date = ParseDBAssistant.getIntMonthFromString(month) + "/" + year;
             for (int i = 0; i < data.Count; i++)
             {
                 if (data[i][_date_expense].IndexOf(date) != -1)
                 {
-                    if (data[i][_event_type] == "-")
+
+                    if (data[i][_event_type] == "+")
                     {
-                        expenses += getExpensesFromDay(data[i]);
-                        listDescExpenses.Add(data[i][_full_line]);
+                        profit += Convert.ToInt32(data[i][_count]);
+                        listProfit.Add(data[i][_full_line]);
                     }
-                    if (data[i][_event_type] == "--")
+
+                    for (int j = 0; j < spezialParams.Count; j++)
                     {
-                        personExpenses += getExpensesFromDay(data[i]);
-                        listDescPersonExpenses.Add(data[i][_full_line]);
+                        if (data[i]["type"] == spezialParams[j])
+                        {
+                            if (data[i][_event_type] == "-")
+                            {
+                                expenses += getExpensesFromDay(data[i]);
+                                listDescExpenses.Add(data[i][_full_line]);
+                                break;
+                            }
+                            if (data[i][_event_type] == "--")
+                            {
+                                personExpenses += getExpensesFromDay(data[i]);
+                                listDescPersonExpenses.Add(data[i][_full_line]);
+                                break;
+                            }
+                        }
                     }
                 }
             }
@@ -581,6 +772,8 @@ namespace FManager
             resultDic["--"] = new string[1] { personExpenses.ToString() };
             resultDic["descExpenses"] = getResDesc(listDescExpenses);
             resultDic["descPersonExpenses"] = getResDesc(listDescPersonExpenses);
+            resultDic["+"] = new string[1] { profit.ToString() };
+            resultDic["descProfit"] = getResDesc(listProfit);
             return resultDic;
         }
 
@@ -589,30 +782,36 @@ namespace FManager
         ///     Ключи словаря -, --, descExpenses, descPersonExpenses
         /// </summary>
         /// <returns></returns>
-        public Dictionary<string, string[]> getAVGExpenses()
+        public Dictionary<string, string[]> getAVGExpenses(List<string> spezialParams)
         {
             int expenses = 0;
             int personExpenses = 0;
             ClearLists();
             for (int i = 0; i < data.Count; i++)
             {
-                if (data[i][_event_type] == "-")
+                for (int j = 0; j < spezialParams.Count; j++)
                 {
-                    expenses += getExpensesFromDay(data[i]);
-                    listDescExpenses.Add(data[i][_full_line]);
-                }
-                else if (data[i][_event_type] == "--")
-                {
-                    personExpenses += getExpensesFromDay(data[i]);
-                    listDescPersonExpenses.Add(data[i][_full_line]);
+                    if (data[i]["type"] == spezialParams[j])
+                    {
+                        if (data[i][_event_type] == "-")
+                        {
+                            expenses += getExpensesFromDay(data[i]);
+                            listDescExpenses.Add(data[i][_full_line]);
+                            break;
+                        }
+                        if (data[i][_event_type] == "--")
+                        {
+                            personExpenses += getExpensesFromDay(data[i]);
+                            listDescPersonExpenses.Add(data[i][_full_line]);
+                            break;
+                        }
+                    }
                 }
             }
             expenses = expenses / getMonths().Count;
             personExpenses = personExpenses / getMonths().Count;
             resultDic["-"] = new string[1] { expenses.ToString() };
             resultDic["--"] = new string[1] { personExpenses.ToString() };
-            resultDic["descExpenses"] = getResDesc(listDescExpenses);
-            resultDic["descPersonExpenses"] = getResDesc(listDescPersonExpenses);
             return resultDic;
         }
 
@@ -639,7 +838,7 @@ namespace FManager
                         listDescExpenses.Add(data[i][_full_line]);
                         count += getCount(data[i][_count_expenses]);
                     }
-                    else if (data[i][_event_type] == "--")
+                    if (data[i][_event_type] == "--")
                     {
                         personExpenses += getExpensesFromDay(data[i]);
                         listDescPersonExpenses.Add(data[i][_full_line]);
@@ -676,7 +875,7 @@ namespace FManager
                         listDescExpenses.Add(data[i][_full_line]);
                         count += getCount(data[i][_count_expenses]);
                     }
-                    else if (data[i][_event_type] == "--")
+                    if (data[i][_event_type] == "--")
                     {
                         personExpenses += getExpensesFromDay(data[i]);
                         listDescPersonExpenses.Add(data[i][_full_line]);
@@ -719,7 +918,7 @@ namespace FManager
                             listDescExpenses.Add(data[i][_full_line]);
                             count += getCount(data[i][_count_expenses]);
                         }
-                        else if (data[i][_event_type] == "--")
+                        if (data[i][_event_type] == "--")
                         {
                             personExpenses += getExpensesFromDay(data[i]);
                             count += getCount(data[i][_count_expenses]);
@@ -749,7 +948,7 @@ namespace FManager
             int expenses = 0;
             int personExpenses = 0;
             ClearLists();
-            string date = getIntMonthFromString(month) + "/" + year;
+            string date = ParseDBAssistant.getIntMonthFromString(month) + "/" + year;
             for (int i = 0; i < data.Count; i++)
             {
                 if (data[i][_date_expense].IndexOf(date) != -1)
@@ -762,7 +961,7 @@ namespace FManager
                             count += getCount(data[i][_count_expenses]);
                             listDescExpenses.Add(data[i][_full_line]);
                         }
-                        else if (data[i][_event_type] == "--")
+                        if (data[i][_event_type] == "--")
                         {
                             personExpenses += getExpensesFromDay(data[i]);
                             count += getCount(data[i][_count_expenses]);
@@ -815,9 +1014,9 @@ namespace FManager
             int expenses = 0;
             int count = 0;
             ClearLists();
-            for(int i=0;i<data.Count;i++)
+            for (int i = 0; i < data.Count; i++)
             {
-                if(data[i][_description].IndexOf("спокойствие") != -1)
+                if (data[i][_description].IndexOf("спокойствие") != -1)
                 {
                     expenses += getExpensesFromDay(data[i]);
 
@@ -827,6 +1026,7 @@ namespace FManager
                     listDescExpenses.Add(date + " - " + data[i][_count]);
                     count += getCount(data[i][_count_expenses]);
                 }
+
             }
             resultDic["expenses"] = new string[1] { expenses.ToString() };
             resultDic["count"] = new string[1] { count.ToString() };
@@ -834,7 +1034,331 @@ namespace FManager
             return resultDic;
         }
 
-        public String getStringMonthFromInt(object month)
+
+        private Int32 getExpensesFromDay(Dictionary<string, string> day)
+        {
+            if (day[_count_expenses] == "0")
+                return Convert.ToInt32(day[_count]);
+            else
+                return Convert.ToInt32(day[_count]) * Convert.ToInt32(day[_count_expenses]);
+        }
+
+        private String[] getResDesc(List<string> listDesc)
+        {
+            string[] res = new string[listDesc.Count];
+            for (int i = 0; i < listDesc.Count; i++)
+                res[i] = listDesc[i];
+            return res;
+        }
+
+        private void ClearLists()
+        {
+            listDescExpenses.Clear();
+            listDescPersonExpenses.Clear();
+            resultDic = new Dictionary<string, string[]>();
+            listProfit.Clear();
+        }
+
+        private Int32 getCount(string count_expenses)
+        {
+            if (count_expenses == "0")
+                return 1;
+            else
+                return Convert.ToInt32(count_expenses);
+        }
+
+    }
+
+    public class ParseDBHeTables
+    {
+        private string _date_expense = "date_expense";
+        private string _description = "description";
+        private string _expenses = "expenses";
+        private string _type = "type";
+        private string _param = "param";
+        private string _full_line = "full_line";
+
+        private int expenses;
+        private List<string> descExpenses;
+        private List<string> descExpensesSkyline;
+        private int expensesSkyline;
+        private int countHolidays;
+        private int countGifts;
+        private List<string> aboutHolidaysList;
+        private List<string> aboutGiftsList;
+        private List<string> aboutSkylineList;
+        private string[] aboutHolidaysArray;
+        private string[] aboutGiftsArray;
+        private string[] aboutSkylineArray;
+
+        private string lastType;
+        private string lastDate;
+
+        private Dictionary<int, Dictionary<string, string>> data;
+        private Dictionary<string, string[]> resultDic;
+
+        public ParseDBHeTables(Dictionary<int, Dictionary<string, string>> data)
+        {
+            this.data = data;
+            getMonths("2015");
+        }
+
+        /// <summary>
+        /// Возвращает первый год статистики
+        /// </summary>
+        public int getFirstYear
+        {
+            get
+            {
+                if (data.Count == 0)
+                    return 0;
+                int idx = data[0][_date_expense].IndexOf(' ');
+                string date = data[0][_date_expense].Remove(idx);
+                idx = date.LastIndexOf('/');
+                return Convert.ToInt32(date.Remove(0, idx + 1));
+            }
+        }
+
+        /// <summary>
+        /// Возвращает последний год статистики
+        /// </summary>
+        public int getLastYear
+        {
+            get
+            {
+                if (data.Count == 0)
+                    return 0;
+                int idx = data[data.Count - 1][_date_expense].IndexOf(' ');
+                string date = data[data.Count - 1][_date_expense].Remove(idx);
+                idx = date.LastIndexOf('/');
+                return Convert.ToInt32(date.Remove(0, idx + 1));
+            }
+        }
+
+        /// <summary>
+        /// Возвращает список месяцев выбранного года.
+        /// </summary>
+        /// <param name="year"></param>
+        /// <returns></returns>
+        public List<string> getMonths(string year)
+        {
+            List<string> months = new List<string>();
+            string lastDate = string.Empty;
+            for (int i = 0; i < data.Count; i++)
+            {
+                int idx = data[i][_date_expense].IndexOf(' ');
+                string currentDate = data[i][_date_expense].Remove(idx);
+                idx = currentDate.IndexOf('/');
+                currentDate = currentDate.Remove(0, idx + 1);
+                if (currentDate.EndsWith(year))
+                {
+                    if (lastDate != currentDate)
+                    {
+                        idx = currentDate.IndexOf('/');
+                        string month = currentDate.Remove(idx);
+
+                        months.Add(ParseDBAssistant.getStringMonthFromInt(month));
+                    }
+                }
+                lastDate = currentDate;
+            }
+            return months;
+        }
+
+        /// <summary>
+        /// Возвращает затраты за все время.
+        /// Возвращает словарь с ключами -,--,countHolidays,aboutHolidays, countGifts, aboutGifts
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<string, string[]> All()
+        {
+            ClearData();
+            for (int i = 0; i < data.Count; i++) SetExpenses(data[i]);
+            SetData();
+            return resultDic;
+        }
+
+        /// <summary>
+        /// Возвращает среднемесячную затрату за все время.
+        /// Возвращает словарь с ключами -,--
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<string, string[]> AVG()
+        {
+            ClearData();
+            string currentDate = string.Empty;
+            string lastDate = string.Empty;
+            int month = 0;
+            int monthSkyline = 0;
+            string currentType = string.Empty;
+            string lastType = string.Empty;
+            List<string> debug = new List<string>();
+            for (int i = 0; i < data.Count; i++)
+            {
+                debug.Add(data[i][_date_expense]);
+            }
+            for (int i = 0; i < data.Count; i++)
+            {
+                int idx = data[i][_date_expense].IndexOf('/');
+                currentDate = data[i][_date_expense].Remove(0, idx + 1);
+                idx = currentDate.IndexOf(' ');
+                currentDate = currentDate.Remove(idx);
+                currentType = data[i][_type];
+
+
+                if (lastDate == string.Empty || currentDate != lastDate || currentType != lastType)
+                {
+                    if (currentDate != lastDate)
+                    {
+                        if (data[i][_type] == "-")
+                            month++;
+                    }
+                    if (data[i][_type] == "--")
+                        monthSkyline++;
+                }
+
+                lastDate = currentDate;
+                lastType = currentType;
+                SetExpenses(data[i]);
+            }
+            resultDic["-"] = new string[1] { (expenses / month).ToString() };
+            if (expensesSkyline != 0)
+                resultDic["--"] = new string[1] { (expensesSkyline / monthSkyline).ToString() };
+            else
+                resultDic["--"] = new string[1] { "0" };
+            return resultDic;
+        }
+
+        /// <summary>
+        /// Возвращает затраты за год.
+        /// Возвращает словарь с ключами -,--,countHolidays,aboutHolidays, countGifts, aboutGifts
+        /// </summary>
+        /// <param name="year"></param>
+        /// <returns></returns>
+        public Dictionary<string, string[]> Year(string year)
+        {
+            ClearData();
+            for (int i = 0; i < data.Count; i++)
+                if (data[i][_date_expense].IndexOf(year) != -1) SetExpenses(data[i]);
+            SetData();
+            return resultDic;
+        }
+
+        /// <summary>
+        /// Возвращает затраты за месяц.
+        /// Возвращает словарь с ключами -,--,countHolidays,aboutHolidays, countGifts, aboutGifts
+        /// </summary>
+        /// <param name="year"></param>
+        /// <param name="month"></param>
+        /// <returns></returns>
+        public Dictionary<string, string[]> Month(string year, string month)
+        {
+            month = ParseDBAssistant.getIntMonthFromString(month);
+            ClearData();
+            for (int i = 0; i < data.Count; i++)
+                if (data[i][_date_expense].IndexOf(month + "/" + year) != -1)
+                    SetExpenses(data[i]);
+            SetData();
+            return resultDic;
+        }
+
+
+        private void ClearData()
+        {
+            resultDic = new Dictionary<string, string[]>();
+            expenses = 0;
+            expensesSkyline = 0;
+            countHolidays = 0;
+            countGifts = 0;
+            descExpenses = new List<string>();
+            descExpensesSkyline = new List<string>();
+            lastType = string.Empty;
+            lastDate = string.Empty;
+            aboutGiftsArray = null;
+            aboutGiftsList = new List<string>();
+            aboutHolidaysArray = null;
+            aboutHolidaysList = new List<string>();
+            aboutSkylineArray = null;
+            aboutSkylineList = new List<string>();
+        }
+
+        private void SetExpenses(Dictionary<string, string> datai)
+        {
+            bool paramExists = false;
+            foreach (var keyValues in datai)
+            {
+                if (keyValues.Key == "param")
+                {
+                    paramExists = true;
+                    break;
+                }
+            }
+
+            if (datai[_type] == "-")
+            {
+                expenses += Convert.ToInt32(datai[_expenses]);
+            }
+            else if (datai[_type] == "--")
+            {
+                expensesSkyline += Convert.ToInt32(datai[_expenses]);
+                aboutSkylineList.Add(datai[_full_line]);
+            }
+
+
+            int idx = datai[_date_expense].IndexOf(' ');
+            string currentDate = datai[_date_expense].Remove(idx);
+            string currentType = datai[_type];
+
+
+            if (lastDate == string.Empty || currentDate != lastDate || currentType != lastType)
+            {
+                if (!paramExists || datai[_param] == "")
+                {
+                    countHolidays++;
+                    aboutHolidaysList.Add(datai[_date_expense]);
+                }
+            }
+
+            lastDate = currentDate;
+            lastType = currentType;
+            countGifts++;
+            aboutGiftsList.Add(datai[_full_line]);
+        }
+
+        private void SetData()
+        {
+            aboutHolidaysArray = new string[aboutHolidaysList.Count];
+            aboutGiftsArray = new string[aboutGiftsList.Count];
+            aboutSkylineArray = new string[aboutSkylineList.Count];
+
+            for (int i = 0; i < aboutHolidaysArray.Length; i++)
+                aboutHolidaysArray[i] = aboutHolidaysList[i];
+            for (int i = 0; i < aboutGiftsArray.Length; i++)
+                aboutGiftsArray[i] = aboutGiftsList[i];
+            for (int i = 0; i < aboutSkylineArray.Length; i++)
+                aboutSkylineArray[i] = aboutSkylineList[i];
+
+            resultDic["-"] = new string[1] { expenses.ToString() };
+            resultDic["--"] = new string[1] { expensesSkyline.ToString() };
+            resultDic["countHolidays"] = new string[1] { countHolidays.ToString() };
+            resultDic["aboutHolidays"] = aboutHolidaysArray;
+            resultDic["countGifts"] = new string[1] { countGifts.ToString() };
+            resultDic["aboutGifts"] = aboutGiftsArray;
+            resultDic["aboutSkyline"] = aboutSkylineArray;
+        }
+    }
+
+    /// <summary>
+    /// Данный класс служит в качестве вспомогательного класса для обработки данных с БД.
+    /// </summary>
+    public abstract class ParseDBAssistant
+    {
+        /// <summary>
+        /// Возвращает месяц в буквенном формате.
+        /// </summary>
+        /// <param name="month"></param>
+        /// <returns></returns>
+        public static String getStringMonthFromInt(object month)
         {
             if ((string)month == "01")
                 return "Январь";
@@ -863,7 +1387,12 @@ namespace FManager
             else return "";
         }
 
-        public String getIntMonthFromString(object month)
+        /// <summary>
+        /// Возвращает месяц в циферном формате.
+        /// </summary>
+        /// <param name="month"></param>
+        /// <returns></returns>
+        public static String getIntMonthFromString(object month)
         {
             if ((string)month == "Январь")
                 return "01";
@@ -891,36 +1420,7 @@ namespace FManager
                 return "12";
             else return "88";
         }
-
-        private Int32 getExpensesFromDay(Dictionary<string, string> day)
-        {
-            if (day[_count_expenses] == "0")
-                return Convert.ToInt32(day[_count]);
-            else
-                return Convert.ToInt32(day[_count]) * Convert.ToInt32(day[_count_expenses]);
-        }
-
-        private String[] getResDesc(List<string> listDesc)
-        {
-            string[] res = new string[listDesc.Count];
-            for (int i = 0; i < listDesc.Count; i++)
-                res[i] = listDesc[i];
-            return res;
-        }
-
-        private void ClearLists()
-        {
-            listDescExpenses.Clear();
-            listDescPersonExpenses.Clear();
-        }
-
-        private Int32 getCount(string count_expenses)
-        {
-            if (count_expenses == "0")
-                return 1;
-            else
-                return Convert.ToInt32(count_expenses);
-        }
-
     }
+
+
 }

@@ -51,6 +51,7 @@
             this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.full_line = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelModuleADM = new System.Windows.Forms.Panel();
+            this.checkBoxPasha = new System.Windows.Forms.CheckBox();
             this.checkBoxHeBigADM = new System.Windows.Forms.CheckBox();
             this.checkBoxHeGiftsADM = new System.Windows.Forms.CheckBox();
             this.checkBoxHeADM = new System.Windows.Forms.CheckBox();
@@ -74,6 +75,7 @@
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelModuleUpdate = new System.Windows.Forms.Panel();
+            this.buttonAccessUpdate = new System.Windows.Forms.Button();
             this.labelHeaderIsUpdate = new System.Windows.Forms.Label();
             this.textBoxIsUpdate = new System.Windows.Forms.TextBox();
             this.labelHeaderWindowTextBoxUpdate = new System.Windows.Forms.Label();
@@ -128,6 +130,19 @@
             this.dataRelax = new System.Windows.Forms.DataGridView();
             this.labelHeaderRelax = new System.Windows.Forms.Label();
             this.textBoxRelax = new System.Windows.Forms.TextBox();
+            this.tabPageResult = new System.Windows.Forms.TabPage();
+            this.labelHeaderWindowResultCurrent = new System.Windows.Forms.Label();
+            this.labelHeaderWindowResultPrevius = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.labelHeaderWindowResultYear = new System.Windows.Forms.Label();
+            this.labelHeaderWindowResultMonth = new System.Windows.Forms.Label();
+            this.textBoxResultYear = new System.Windows.Forms.TextBox();
+            this.textBoxResultMonth = new System.Windows.Forms.TextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.labelHeaderWindowResultPreviusYear = new System.Windows.Forms.Label();
+            this.textBoxResultPreviusYear = new System.Windows.Forms.TextBox();
+            this.labelHeaderWindowResultPreviusMonth = new System.Windows.Forms.Label();
+            this.textBoxResultPreviusMonth = new System.Windows.Forms.TextBox();
             this.labelHeaderModuleAnalitics = new System.Windows.Forms.Label();
             this.panelMode = new System.Windows.Forms.Panel();
             this.radioButtonReadFromFile = new System.Windows.Forms.RadioButton();
@@ -138,7 +153,6 @@
             this.labelHeaderMode = new System.Windows.Forms.Label();
             this.panelSpecial = new System.Windows.Forms.Panel();
             this.buttonInfoInSpesialParams = new System.Windows.Forms.Button();
-            this.checkBoxExpenses = new System.Windows.Forms.CheckBox();
             this.checkBoxShe = new System.Windows.Forms.CheckBox();
             this.checkBoxWithoutParams = new System.Windows.Forms.CheckBox();
             this.checkBoxN = new System.Windows.Forms.CheckBox();
@@ -150,7 +164,6 @@
             this.labelHeaderModuleDopInstrumental = new System.Windows.Forms.Label();
             this.labelHeaderModuleAdm = new System.Windows.Forms.Label();
             this.textBoxList = new System.Windows.Forms.TextBox();
-            this.buttonAccessUpdate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericYears)).BeginInit();
             this.panelChooseData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.statsDataSetBindingSource)).BeginInit();
@@ -171,6 +184,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataCandles)).BeginInit();
             this.tabPageRelax.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataRelax)).BeginInit();
+            this.tabPageResult.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.panelMode.SuspendLayout();
             this.panelSpecial.SuspendLayout();
             this.panelDopInstrumental.SuspendLayout();
@@ -331,6 +347,7 @@
             // 
             this.panelModuleADM.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.panelModuleADM.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelModuleADM.Controls.Add(this.checkBoxPasha);
             this.panelModuleADM.Controls.Add(this.checkBoxHeBigADM);
             this.panelModuleADM.Controls.Add(this.checkBoxHeGiftsADM);
             this.panelModuleADM.Controls.Add(this.checkBoxHeADM);
@@ -348,6 +365,17 @@
             this.panelModuleADM.Name = "panelModuleADM";
             this.panelModuleADM.Size = new System.Drawing.Size(273, 375);
             this.panelModuleADM.TabIndex = 43;
+            // 
+            // checkBoxPasha
+            // 
+            this.checkBoxPasha.AutoSize = true;
+            this.checkBoxPasha.Location = new System.Drawing.Point(171, 117);
+            this.checkBoxPasha.Name = "checkBoxPasha";
+            this.checkBoxPasha.Size = new System.Drawing.Size(56, 17);
+            this.checkBoxPasha.TabIndex = 13;
+            this.checkBoxPasha.Text = "Pasha";
+            this.checkBoxPasha.UseVisualStyleBackColor = true;
+            this.checkBoxPasha.CheckedChanged += new System.EventHandler(this.checkBoxPasha_CheckedChanged);
             // 
             // checkBoxHeBigADM
             // 
@@ -578,10 +606,20 @@
             this.panelModuleUpdate.Controls.Add(this.textBoxIsUpdate);
             this.panelModuleUpdate.Controls.Add(this.labelHeaderWindowTextBoxUpdate);
             this.panelModuleUpdate.Controls.Add(this.textBoxUpdate);
-            this.panelModuleUpdate.Location = new System.Drawing.Point(716, 12);
+            this.panelModuleUpdate.Location = new System.Drawing.Point(930, 12);
             this.panelModuleUpdate.Name = "panelModuleUpdate";
-            this.panelModuleUpdate.Size = new System.Drawing.Size(667, 382);
+            this.panelModuleUpdate.Size = new System.Drawing.Size(453, 382);
             this.panelModuleUpdate.TabIndex = 45;
+            // 
+            // buttonAccessUpdate
+            // 
+            this.buttonAccessUpdate.Location = new System.Drawing.Point(159, 50);
+            this.buttonAccessUpdate.Name = "buttonAccessUpdate";
+            this.buttonAccessUpdate.Size = new System.Drawing.Size(140, 27);
+            this.buttonAccessUpdate.TabIndex = 59;
+            this.buttonAccessUpdate.Text = "Разрешить обновление";
+            this.buttonAccessUpdate.UseVisualStyleBackColor = true;
+            this.buttonAccessUpdate.Click += new System.EventHandler(this.buttonAccessUpdate_Click);
             // 
             // labelHeaderIsUpdate
             // 
@@ -635,7 +673,7 @@
             this.labelHeaderModuleUpdate.BackColor = System.Drawing.Color.Ivory;
             this.labelHeaderModuleUpdate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelHeaderModuleUpdate.Font = new System.Drawing.Font("MV Boli", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
-            this.labelHeaderModuleUpdate.Location = new System.Drawing.Point(730, 6);
+            this.labelHeaderModuleUpdate.Location = new System.Drawing.Point(947, 6);
             this.labelHeaderModuleUpdate.Name = "labelHeaderModuleUpdate";
             this.labelHeaderModuleUpdate.Size = new System.Drawing.Size(108, 14);
             this.labelHeaderModuleUpdate.TabIndex = 41;
@@ -650,7 +688,7 @@
             this.panelInfo.Controls.Add(this.textBoxInfoErrors);
             this.panelInfo.Location = new System.Drawing.Point(335, 213);
             this.panelInfo.Name = "panelInfo";
-            this.panelInfo.Size = new System.Drawing.Size(375, 181);
+            this.panelInfo.Size = new System.Drawing.Size(589, 181);
             this.panelInfo.TabIndex = 30;
             // 
             // labelHeaderWindowErrors
@@ -673,7 +711,7 @@
             this.textBoxInfoMessage.Name = "textBoxInfoMessage";
             this.textBoxInfoMessage.ReadOnly = true;
             this.textBoxInfoMessage.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxInfoMessage.Size = new System.Drawing.Size(363, 101);
+            this.textBoxInfoMessage.Size = new System.Drawing.Size(579, 101);
             this.textBoxInfoMessage.TabIndex = 0;
             // 
             // textBoxInfoErrors
@@ -685,7 +723,7 @@
             this.textBoxInfoErrors.Name = "textBoxInfoErrors";
             this.textBoxInfoErrors.ReadOnly = true;
             this.textBoxInfoErrors.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxInfoErrors.Size = new System.Drawing.Size(363, 60);
+            this.textBoxInfoErrors.Size = new System.Drawing.Size(579, 60);
             this.textBoxInfoErrors.TabIndex = 54;
             // 
             // textBoxWindowExpensesAll
@@ -698,6 +736,7 @@
             this.textBoxWindowExpensesAll.ReadOnly = true;
             this.textBoxWindowExpensesAll.Size = new System.Drawing.Size(136, 47);
             this.textBoxWindowExpensesAll.TabIndex = 1;
+            this.textBoxWindowExpensesAll.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBoxWindowExpensesAll_MouseClick);
             // 
             // labelHeaderWindowInfo
             // 
@@ -729,10 +768,11 @@
             this.tabControlStats.Controls.Add(this.tabPageCigarettes);
             this.tabControlStats.Controls.Add(this.tabPageCandles);
             this.tabControlStats.Controls.Add(this.tabPageRelax);
-            this.tabControlStats.Location = new System.Drawing.Point(22, 80);
+            this.tabControlStats.Controls.Add(this.tabPageResult);
+            this.tabControlStats.Location = new System.Drawing.Point(12, 80);
             this.tabControlStats.Name = "tabControlStats";
             this.tabControlStats.SelectedIndex = 0;
-            this.tabControlStats.Size = new System.Drawing.Size(267, 280);
+            this.tabControlStats.Size = new System.Drawing.Size(282, 280);
             this.tabControlStats.TabIndex = 67;
             // 
             // tabPageExpenses
@@ -749,7 +789,7 @@
             this.tabPageExpenses.Location = new System.Drawing.Point(4, 22);
             this.tabPageExpenses.Name = "tabPageExpenses";
             this.tabPageExpenses.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageExpenses.Size = new System.Drawing.Size(259, 254);
+            this.tabPageExpenses.Size = new System.Drawing.Size(274, 254);
             this.tabPageExpenses.TabIndex = 0;
             this.tabPageExpenses.Text = "Затраты";
             // 
@@ -773,9 +813,9 @@
             this.labelHeaderWindowExpensesCurrent.Font = new System.Drawing.Font("MV Boli", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
             this.labelHeaderWindowExpensesCurrent.Location = new System.Drawing.Point(12, 77);
             this.labelHeaderWindowExpensesCurrent.Name = "labelHeaderWindowExpensesCurrent";
-            this.labelHeaderWindowExpensesCurrent.Size = new System.Drawing.Size(119, 13);
+            this.labelHeaderWindowExpensesCurrent.Size = new System.Drawing.Size(100, 13);
             this.labelHeaderWindowExpensesCurrent.TabIndex = 62;
-            this.labelHeaderWindowExpensesCurrent.Text = "Затраты за текущий год";
+            this.labelHeaderWindowExpensesCurrent.Text = "Затраты за текущий";
             // 
             // labelHeaderWindowPreviusYear
             // 
@@ -949,7 +989,7 @@
             this.tabPageCigarettes.Location = new System.Drawing.Point(4, 22);
             this.tabPageCigarettes.Name = "tabPageCigarettes";
             this.tabPageCigarettes.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageCigarettes.Size = new System.Drawing.Size(259, 254);
+            this.tabPageCigarettes.Size = new System.Drawing.Size(274, 254);
             this.tabPageCigarettes.TabIndex = 1;
             this.tabPageCigarettes.Text = "Сигареты";
             // 
@@ -985,9 +1025,9 @@
             this.labelHEaderWindowCigarettesCurrentYear.Font = new System.Drawing.Font("MV Boli", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
             this.labelHEaderWindowCigarettesCurrentYear.Location = new System.Drawing.Point(12, 77);
             this.labelHEaderWindowCigarettesCurrentYear.Name = "labelHEaderWindowCigarettesCurrentYear";
-            this.labelHEaderWindowCigarettesCurrentYear.Size = new System.Drawing.Size(119, 13);
+            this.labelHEaderWindowCigarettesCurrentYear.Size = new System.Drawing.Size(100, 13);
             this.labelHEaderWindowCigarettesCurrentYear.TabIndex = 70;
-            this.labelHEaderWindowCigarettesCurrentYear.Text = "Затраты за текущий год";
+            this.labelHEaderWindowCigarettesCurrentYear.Text = "Затраты за текущий";
             // 
             // labelHeaderWindowCigarettesPreviusYear
             // 
@@ -1156,7 +1196,7 @@
             this.tabPageCandles.Location = new System.Drawing.Point(4, 22);
             this.tabPageCandles.Name = "tabPageCandles";
             this.tabPageCandles.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageCandles.Size = new System.Drawing.Size(259, 254);
+            this.tabPageCandles.Size = new System.Drawing.Size(274, 254);
             this.tabPageCandles.TabIndex = 2;
             this.tabPageCandles.Text = "Свечи";
             // 
@@ -1206,7 +1246,7 @@
             this.tabPageRelax.Location = new System.Drawing.Point(4, 22);
             this.tabPageRelax.Name = "tabPageRelax";
             this.tabPageRelax.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageRelax.Size = new System.Drawing.Size(259, 254);
+            this.tabPageRelax.Size = new System.Drawing.Size(274, 254);
             this.tabPageRelax.TabIndex = 3;
             this.tabPageRelax.Text = "Спокойствие";
             // 
@@ -1247,6 +1287,166 @@
             this.textBoxRelax.TabIndex = 66;
             this.textBoxRelax.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBoxRelax_MouseClick);
             // 
+            // tabPageResult
+            // 
+            this.tabPageResult.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.tabPageResult.Controls.Add(this.labelHeaderWindowResultCurrent);
+            this.tabPageResult.Controls.Add(this.labelHeaderWindowResultPrevius);
+            this.tabPageResult.Controls.Add(this.panel1);
+            this.tabPageResult.Controls.Add(this.panel2);
+            this.tabPageResult.Location = new System.Drawing.Point(4, 22);
+            this.tabPageResult.Name = "tabPageResult";
+            this.tabPageResult.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageResult.Size = new System.Drawing.Size(274, 254);
+            this.tabPageResult.TabIndex = 4;
+            this.tabPageResult.Text = "Итог";
+            // 
+            // labelHeaderWindowResultCurrent
+            // 
+            this.labelHeaderWindowResultCurrent.AutoSize = true;
+            this.labelHeaderWindowResultCurrent.BackColor = System.Drawing.Color.Ivory;
+            this.labelHeaderWindowResultCurrent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelHeaderWindowResultCurrent.Font = new System.Drawing.Font("MV Boli", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.labelHeaderWindowResultCurrent.Location = new System.Drawing.Point(9, 15);
+            this.labelHeaderWindowResultCurrent.Name = "labelHeaderWindowResultCurrent";
+            this.labelHeaderWindowResultCurrent.Size = new System.Drawing.Size(100, 13);
+            this.labelHeaderWindowResultCurrent.TabIndex = 74;
+            this.labelHeaderWindowResultCurrent.Text = "Затраты за текущий";
+            // 
+            // labelHeaderWindowResultPrevius
+            // 
+            this.labelHeaderWindowResultPrevius.AutoSize = true;
+            this.labelHeaderWindowResultPrevius.BackColor = System.Drawing.Color.Ivory;
+            this.labelHeaderWindowResultPrevius.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelHeaderWindowResultPrevius.Font = new System.Drawing.Font("MV Boli", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.labelHeaderWindowResultPrevius.Location = new System.Drawing.Point(14, 133);
+            this.labelHeaderWindowResultPrevius.Name = "labelHeaderWindowResultPrevius";
+            this.labelHeaderWindowResultPrevius.Size = new System.Drawing.Size(116, 13);
+            this.labelHeaderWindowResultPrevius.TabIndex = 73;
+            this.labelHeaderWindowResultPrevius.Text = "Затраты за прошедший";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.labelHeaderWindowResultYear);
+            this.panel1.Controls.Add(this.labelHeaderWindowResultMonth);
+            this.panel1.Controls.Add(this.textBoxResultYear);
+            this.panel1.Controls.Add(this.textBoxResultMonth);
+            this.panel1.Location = new System.Drawing.Point(3, 24);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(265, 106);
+            this.panel1.TabIndex = 71;
+            // 
+            // labelHeaderWindowResultYear
+            // 
+            this.labelHeaderWindowResultYear.AutoSize = true;
+            this.labelHeaderWindowResultYear.BackColor = System.Drawing.Color.Ivory;
+            this.labelHeaderWindowResultYear.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelHeaderWindowResultYear.Font = new System.Drawing.Font("MV Boli", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.labelHeaderWindowResultYear.Location = new System.Drawing.Point(8, 11);
+            this.labelHeaderWindowResultYear.Name = "labelHeaderWindowResultYear";
+            this.labelHeaderWindowResultYear.Size = new System.Drawing.Size(37, 13);
+            this.labelHeaderWindowResultYear.TabIndex = 60;
+            this.labelHeaderWindowResultYear.Text = "За год";
+            // 
+            // labelHeaderWindowResultMonth
+            // 
+            this.labelHeaderWindowResultMonth.AutoSize = true;
+            this.labelHeaderWindowResultMonth.BackColor = System.Drawing.Color.Ivory;
+            this.labelHeaderWindowResultMonth.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelHeaderWindowResultMonth.Font = new System.Drawing.Font("MV Boli", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.labelHeaderWindowResultMonth.Location = new System.Drawing.Point(151, 11);
+            this.labelHeaderWindowResultMonth.Name = "labelHeaderWindowResultMonth";
+            this.labelHeaderWindowResultMonth.Size = new System.Drawing.Size(48, 13);
+            this.labelHeaderWindowResultMonth.TabIndex = 57;
+            this.labelHeaderWindowResultMonth.Text = "За месяц";
+            // 
+            // textBoxResultYear
+            // 
+            this.textBoxResultYear.BackColor = System.Drawing.Color.Ivory;
+            this.textBoxResultYear.ForeColor = System.Drawing.Color.Black;
+            this.textBoxResultYear.Location = new System.Drawing.Point(3, 20);
+            this.textBoxResultYear.Multiline = true;
+            this.textBoxResultYear.Name = "textBoxResultYear";
+            this.textBoxResultYear.ReadOnly = true;
+            this.textBoxResultYear.Size = new System.Drawing.Size(142, 81);
+            this.textBoxResultYear.TabIndex = 59;
+            this.textBoxResultYear.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBoxResultYear_MouseClick);
+            // 
+            // textBoxResultMonth
+            // 
+            this.textBoxResultMonth.BackColor = System.Drawing.Color.Ivory;
+            this.textBoxResultMonth.ForeColor = System.Drawing.Color.Black;
+            this.textBoxResultMonth.Location = new System.Drawing.Point(151, 20);
+            this.textBoxResultMonth.Multiline = true;
+            this.textBoxResultMonth.Name = "textBoxResultMonth";
+            this.textBoxResultMonth.ReadOnly = true;
+            this.textBoxResultMonth.Size = new System.Drawing.Size(109, 81);
+            this.textBoxResultMonth.TabIndex = 56;
+            this.textBoxResultMonth.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBoxResultMonth_MouseClick);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.labelHeaderWindowResultPreviusYear);
+            this.panel2.Controls.Add(this.textBoxResultPreviusYear);
+            this.panel2.Controls.Add(this.labelHeaderWindowResultPreviusMonth);
+            this.panel2.Controls.Add(this.textBoxResultPreviusMonth);
+            this.panel2.Location = new System.Drawing.Point(6, 141);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(262, 107);
+            this.panel2.TabIndex = 72;
+            // 
+            // labelHeaderWindowResultPreviusYear
+            // 
+            this.labelHeaderWindowResultPreviusYear.AutoSize = true;
+            this.labelHeaderWindowResultPreviusYear.BackColor = System.Drawing.Color.Ivory;
+            this.labelHeaderWindowResultPreviusYear.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelHeaderWindowResultPreviusYear.Font = new System.Drawing.Font("MV Boli", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.labelHeaderWindowResultPreviusYear.Location = new System.Drawing.Point(9, 11);
+            this.labelHeaderWindowResultPreviusYear.Name = "labelHeaderWindowResultPreviusYear";
+            this.labelHeaderWindowResultPreviusYear.Size = new System.Drawing.Size(24, 13);
+            this.labelHeaderWindowResultPreviusYear.TabIndex = 58;
+            this.labelHeaderWindowResultPreviusYear.Text = "Год";
+            // 
+            // textBoxResultPreviusYear
+            // 
+            this.textBoxResultPreviusYear.BackColor = System.Drawing.Color.Ivory;
+            this.textBoxResultPreviusYear.ForeColor = System.Drawing.Color.Black;
+            this.textBoxResultPreviusYear.Location = new System.Drawing.Point(4, 20);
+            this.textBoxResultPreviusYear.Multiline = true;
+            this.textBoxResultPreviusYear.Name = "textBoxResultPreviusYear";
+            this.textBoxResultPreviusYear.ReadOnly = true;
+            this.textBoxResultPreviusYear.Size = new System.Drawing.Size(141, 82);
+            this.textBoxResultPreviusYear.TabIndex = 54;
+            this.textBoxResultPreviusYear.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBoxResultPreviusYear_MouseClick);
+            // 
+            // labelHeaderWindowResultPreviusMonth
+            // 
+            this.labelHeaderWindowResultPreviusMonth.AutoSize = true;
+            this.labelHeaderWindowResultPreviusMonth.BackColor = System.Drawing.Color.Ivory;
+            this.labelHeaderWindowResultPreviusMonth.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelHeaderWindowResultPreviusMonth.Font = new System.Drawing.Font("MV Boli", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.labelHeaderWindowResultPreviusMonth.Location = new System.Drawing.Point(151, 11);
+            this.labelHeaderWindowResultPreviusMonth.Name = "labelHeaderWindowResultPreviusMonth";
+            this.labelHeaderWindowResultPreviusMonth.Size = new System.Drawing.Size(35, 13);
+            this.labelHeaderWindowResultPreviusMonth.TabIndex = 57;
+            this.labelHeaderWindowResultPreviusMonth.Text = "Месяц";
+            // 
+            // textBoxResultPreviusMonth
+            // 
+            this.textBoxResultPreviusMonth.BackColor = System.Drawing.Color.Ivory;
+            this.textBoxResultPreviusMonth.ForeColor = System.Drawing.Color.Black;
+            this.textBoxResultPreviusMonth.Location = new System.Drawing.Point(151, 20);
+            this.textBoxResultPreviusMonth.Multiline = true;
+            this.textBoxResultPreviusMonth.Name = "textBoxResultPreviusMonth";
+            this.textBoxResultPreviusMonth.ReadOnly = true;
+            this.textBoxResultPreviusMonth.Size = new System.Drawing.Size(106, 82);
+            this.textBoxResultPreviusMonth.TabIndex = 56;
+            this.textBoxResultPreviusMonth.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBoxResultPreviusMonth_MouseClick);
+            // 
             // labelHeaderModuleAnalitics
             // 
             this.labelHeaderModuleAnalitics.AutoSize = true;
@@ -1268,7 +1468,7 @@
             this.panelMode.Controls.Add(this.radioButtonModeHeGifts);
             this.panelMode.Controls.Add(this.radioButtonModeHe);
             this.panelMode.Controls.Add(this.radioButtonModeShe);
-            this.panelMode.Location = new System.Drawing.Point(562, 13);
+            this.panelMode.Location = new System.Drawing.Point(776, 13);
             this.panelMode.Name = "panelMode";
             this.panelMode.Size = new System.Drawing.Size(148, 106);
             this.panelMode.TabIndex = 49;
@@ -1296,6 +1496,7 @@
             this.radioButtonModeHeBig.TabStop = true;
             this.radioButtonModeHeBig.Text = "HeBig";
             this.radioButtonModeHeBig.UseVisualStyleBackColor = true;
+            this.radioButtonModeHeBig.CheckedChanged += new System.EventHandler(this.radioButtonModeHeBig_CheckedChanged);
             // 
             // radioButtonModeHeGifts
             // 
@@ -1308,6 +1509,7 @@
             this.radioButtonModeHeGifts.TabStop = true;
             this.radioButtonModeHeGifts.Text = "HeGifts";
             this.radioButtonModeHeGifts.UseVisualStyleBackColor = true;
+            this.radioButtonModeHeGifts.CheckedChanged += new System.EventHandler(this.radioButtonModeHeGifts_CheckedChanged);
             // 
             // radioButtonModeHe
             // 
@@ -1341,7 +1543,7 @@
             this.labelHeaderMode.BackColor = System.Drawing.Color.Ivory;
             this.labelHeaderMode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelHeaderMode.Font = new System.Drawing.Font("MV Boli", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
-            this.labelHeaderMode.Location = new System.Drawing.Point(574, 6);
+            this.labelHeaderMode.Location = new System.Drawing.Point(788, 6);
             this.labelHeaderMode.Name = "labelHeaderMode";
             this.labelHeaderMode.Size = new System.Drawing.Size(44, 13);
             this.labelHeaderMode.TabIndex = 50;
@@ -1352,14 +1554,13 @@
             this.panelSpecial.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.panelSpecial.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelSpecial.Controls.Add(this.buttonInfoInSpesialParams);
-            this.panelSpecial.Controls.Add(this.checkBoxExpenses);
             this.panelSpecial.Controls.Add(this.checkBoxShe);
             this.panelSpecial.Controls.Add(this.checkBoxWithoutParams);
             this.panelSpecial.Controls.Add(this.checkBoxN);
             this.panelSpecial.Controls.Add(this.checkBoxT);
             this.panelSpecial.Location = new System.Drawing.Point(335, 13);
             this.panelSpecial.Name = "panelSpecial";
-            this.panelSpecial.Size = new System.Drawing.Size(221, 106);
+            this.panelSpecial.Size = new System.Drawing.Size(435, 106);
             this.panelSpecial.TabIndex = 31;
             // 
             // buttonInfoInSpesialParams
@@ -1374,27 +1575,17 @@
             this.buttonInfoInSpesialParams.UseVisualStyleBackColor = false;
             this.buttonInfoInSpesialParams.Click += new System.EventHandler(this.buttonInfoInSpesialParams_Click);
             // 
-            // checkBoxExpenses
-            // 
-            this.checkBoxExpenses.AutoSize = true;
-            this.checkBoxExpenses.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBoxExpenses.Location = new System.Drawing.Point(40, 57);
-            this.checkBoxExpenses.Name = "checkBoxExpenses";
-            this.checkBoxExpenses.Size = new System.Drawing.Size(34, 19);
-            this.checkBoxExpenses.TabIndex = 4;
-            this.checkBoxExpenses.Text = "--";
-            this.checkBoxExpenses.UseVisualStyleBackColor = true;
-            // 
             // checkBoxShe
             // 
             this.checkBoxShe.AutoSize = true;
             this.checkBoxShe.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBoxShe.Location = new System.Drawing.Point(40, 74);
+            this.checkBoxShe.Location = new System.Drawing.Point(40, 57);
             this.checkBoxShe.Name = "checkBoxShe";
             this.checkBoxShe.Size = new System.Drawing.Size(51, 19);
             this.checkBoxShe.TabIndex = 3;
             this.checkBoxShe.Text = "ОНА";
             this.checkBoxShe.UseVisualStyleBackColor = true;
+            this.checkBoxShe.CheckedChanged += new System.EventHandler(this.checkBoxShe_CheckedChanged);
             // 
             // checkBoxWithoutParams
             // 
@@ -1406,6 +1597,7 @@
             this.checkBoxWithoutParams.TabIndex = 2;
             this.checkBoxWithoutParams.Text = "Без параметров";
             this.checkBoxWithoutParams.UseVisualStyleBackColor = true;
+            this.checkBoxWithoutParams.CheckedChanged += new System.EventHandler(this.checkBoxWithoutParams_CheckedChanged);
             // 
             // checkBoxN
             // 
@@ -1417,6 +1609,7 @@
             this.checkBoxN.TabIndex = 1;
             this.checkBoxN.Text = "Н";
             this.checkBoxN.UseVisualStyleBackColor = true;
+            this.checkBoxN.CheckedChanged += new System.EventHandler(this.checkBoxN_CheckedChanged);
             // 
             // checkBoxT
             // 
@@ -1428,6 +1621,7 @@
             this.checkBoxT.TabIndex = 0;
             this.checkBoxT.Text = "Т";
             this.checkBoxT.UseVisualStyleBackColor = true;
+            this.checkBoxT.CheckedChanged += new System.EventHandler(this.checkBoxT_CheckedChanged);
             // 
             // label10
             // 
@@ -1449,7 +1643,7 @@
             this.panelDopInstrumental.Controls.Add(this.buttonExecuteDopInstrumental);
             this.panelDopInstrumental.Location = new System.Drawing.Point(335, 127);
             this.panelDopInstrumental.Name = "panelDopInstrumental";
-            this.panelDopInstrumental.Size = new System.Drawing.Size(375, 77);
+            this.panelDopInstrumental.Size = new System.Drawing.Size(589, 77);
             this.panelDopInstrumental.TabIndex = 31;
             this.panelDopInstrumental.DoubleClick += new System.EventHandler(this.panelDopInstrumental_DoubleClick);
             // 
@@ -1457,19 +1651,25 @@
             // 
             this.comboBoxDopInstrumental.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.comboBoxDopInstrumental.FormattingEnabled = true;
+            this.comboBoxDopInstrumental.Items.AddRange(new object[] {
+            "Экспортировать She",
+            "Экспортировать He",
+            "Экспортировать HeGifts",
+            "Экспортировать HeBig"});
             this.comboBoxDopInstrumental.Location = new System.Drawing.Point(19, 12);
             this.comboBoxDopInstrumental.Name = "comboBoxDopInstrumental";
-            this.comboBoxDopInstrumental.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxDopInstrumental.Size = new System.Drawing.Size(153, 21);
             this.comboBoxDopInstrumental.TabIndex = 1;
             // 
             // buttonExecuteDopInstrumental
             // 
-            this.buttonExecuteDopInstrumental.Location = new System.Drawing.Point(154, 12);
+            this.buttonExecuteDopInstrumental.Location = new System.Drawing.Point(178, 12);
             this.buttonExecuteDopInstrumental.Name = "buttonExecuteDopInstrumental";
             this.buttonExecuteDopInstrumental.Size = new System.Drawing.Size(76, 23);
             this.buttonExecuteDopInstrumental.TabIndex = 0;
             this.buttonExecuteDopInstrumental.Text = "Выполнить";
             this.buttonExecuteDopInstrumental.UseVisualStyleBackColor = true;
+            this.buttonExecuteDopInstrumental.Click += new System.EventHandler(this.buttonExecuteDopInstrumental_Click);
             // 
             // labelHeaderModuleDopInstrumental
             // 
@@ -1505,16 +1705,6 @@
             this.textBoxList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxList.Size = new System.Drawing.Size(225, 580);
             this.textBoxList.TabIndex = 54;
-            // 
-            // buttonAccessUpdate
-            // 
-            this.buttonAccessUpdate.Location = new System.Drawing.Point(159, 50);
-            this.buttonAccessUpdate.Name = "buttonAccessUpdate";
-            this.buttonAccessUpdate.Size = new System.Drawing.Size(140, 27);
-            this.buttonAccessUpdate.TabIndex = 59;
-            this.buttonAccessUpdate.Text = "Разрешить обновление";
-            this.buttonAccessUpdate.UseVisualStyleBackColor = true;
-            this.buttonAccessUpdate.Click += new System.EventHandler(this.buttonAccessUpdate_Click);
             // 
             // FManager
             // 
@@ -1580,6 +1770,12 @@
             this.tabPageRelax.ResumeLayout(false);
             this.tabPageRelax.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataRelax)).EndInit();
+            this.tabPageResult.ResumeLayout(false);
+            this.tabPageResult.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panelMode.ResumeLayout(false);
             this.panelMode.PerformLayout();
             this.panelSpecial.ResumeLayout(false);
@@ -1641,7 +1837,6 @@
         private System.Windows.Forms.RadioButton radioButtonModeShe;
         private System.Windows.Forms.Panel panelSpecial;
         private System.Windows.Forms.Button buttonInfoInSpesialParams;
-        private System.Windows.Forms.CheckBox checkBoxExpenses;
         private System.Windows.Forms.CheckBox checkBoxShe;
         private System.Windows.Forms.CheckBox checkBoxWithoutParams;
         private System.Windows.Forms.CheckBox checkBoxN;
@@ -1711,6 +1906,20 @@
         private System.Windows.Forms.TextBox textBoxIsUpdate;
         private System.Windows.Forms.Label labelHeaderIsUpdate;
         private System.Windows.Forms.Button buttonAccessUpdate;
+        private System.Windows.Forms.CheckBox checkBoxPasha;
+        private System.Windows.Forms.TabPage tabPageResult;
+        private System.Windows.Forms.Label labelHeaderWindowResultCurrent;
+        private System.Windows.Forms.Label labelHeaderWindowResultPrevius;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label labelHeaderWindowResultYear;
+        private System.Windows.Forms.Label labelHeaderWindowResultMonth;
+        private System.Windows.Forms.TextBox textBoxResultYear;
+        private System.Windows.Forms.TextBox textBoxResultMonth;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label labelHeaderWindowResultPreviusYear;
+        private System.Windows.Forms.TextBox textBoxResultPreviusYear;
+        private System.Windows.Forms.Label labelHeaderWindowResultPreviusMonth;
+        private System.Windows.Forms.TextBox textBoxResultPreviusMonth;
     }
 }
 
