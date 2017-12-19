@@ -27,11 +27,12 @@ namespace FManager
         public enum Tables
         {
             She,
+            SheBig,
             He,
             HeGifts,
             HeBig,
             AbstractCASUAL,
-            AbstractHE
+            AbstractBIG
         }
 
         public DB()
@@ -90,6 +91,16 @@ namespace FManager
                                        "type nvarchar(3) not null," +
                                        "full_line nvarchar(100));\n";
             }
+            if (table == Tables.SheBig)
+            {
+                cmd.CommandText += "create table SheBig(" +
+                                     "id integer primary key identity, " +
+                                     "date_expense date not null," +
+                                     "description nvarchar(255) not null," +
+                                     "expenses nvarchar(100) not null," +
+                                       "type nvarchar(3) not null," +
+                                       "full_line nvarchar(100));\n";
+            }
             try
             {
                 cmd.ExecuteReader();
@@ -121,6 +132,8 @@ namespace FManager
                     nameTable = "HeGifts";
                 if (table == Tables.She)
                     nameTable = "She";
+                if (table == Tables.SheBig)
+                    nameTable = "SheBig";
                 Open();
                 cmd.CommandText = "drop table dbo." + nameTable;
                 cmd.ExecuteReader();
@@ -186,7 +199,7 @@ namespace FManager
         /// <param name="description"></param>
         /// <param name="expenses"></param>
         /// <param name="type"></param>
-        public void InsertIntoHeTables(Tables table, string date_expenses, string description, string expenses, string type, string param, string full_line)
+        public void InsertIntoBigTables(Tables table, string date_expenses, string description, string expenses, string type, string param, string full_line)
         {
             try
             {
@@ -196,13 +209,15 @@ namespace FManager
                     nameTable = "HeBig";
                 else if (table == Tables.HeGifts)
                     nameTable = "HeGifts";
+                else if (table == Tables.SheBig)
+                    nameTable = "SheBig";
                 else
                 {
                     MessageBox.Show("Выбранная табоица не поддерживается для записи из этой функции.", "Ошибочка",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                if (table == Tables.HeBig)
+                if (table == Tables.HeBig || table == Tables.SheBig)
                     cmd.CommandText += string.Format("insert into dbo." + nameTable + "(date_expense, description, expenses, type, full_line)" +
                     " values ('{0}', N'{1}', N'{2}', N'{3}', N'{4}')",
                     date_expenses, description, expenses, type, full_line);
@@ -214,7 +229,7 @@ namespace FManager
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ошибка из функции: DB.InsertIntoHeTables. Ошибка: " + ex.Message);
+                MessageBox.Show("Ошибка из функции: DB.InsertIntoBigTables. Ошибка: " + ex.Message);
             }
             finally
             {
@@ -237,6 +252,8 @@ namespace FManager
                 nameTable = "HeGifts";
             if (table == Tables.HeBig)
                 nameTable = "HeBig";
+            if (table == Tables.SheBig)
+                nameTable = "SheBig";
             try
             {
                 Open();
@@ -290,6 +307,8 @@ namespace FManager
                     tables.Add(Tables.HeGifts);
                 if (names[i] == "She")
                     tables.Add(Tables.She);
+                if (names[i] == "SheBig")
+                    tables.Add(Tables.SheBig);
             }
             return tables;
         }
@@ -347,6 +366,8 @@ namespace FManager
                     tableName = "HeGifts";
                 else if (table == Tables.HeBig)
                     tableName = "HeBig";
+                else if (table == Tables.SheBig)
+                    tableName = "SheBig";
                 cmd.CommandText = "select * from dbo." + tableName;
                 reader = cmd.ExecuteReader();
                 int counter = 0;

@@ -11,7 +11,8 @@ namespace FManager
     {
         private Assistant assis = new Assistant();
         private DB db = new DB();
-       
+        public List<string> exceptions;
+
         public ParseFile()
         {
 
@@ -26,10 +27,20 @@ namespace FManager
         {
             List<string> deletedSpace = new List<string>();
             StreamReader sr = null;
-            if (path.IndexOf("Latest") != -1 || path.ToLower().IndexOf("he") != -1)
-                sr = new StreamReader(path, Encoding.Default);
-            else if (path.IndexOf("she") != -1)
-                sr = new StreamReader(path, Encoding.UTF8);
+            try
+            {
+                if (path.IndexOf("Latest") != -1 || path.ToLower().IndexOf("he") != -1)
+                    sr = new StreamReader(path, Encoding.Default);
+                else if (path.IndexOf("she") != -1)
+                    sr = new StreamReader(path, Encoding.UTF8);
+            }
+            catch(Exception ex)
+            {
+                return null;
+                // Обходим ошибку из-за того, что в коммите придет сообщение об изменении 5 файлов, т.к. мы удаляем все 5 и можем залить всего 3,
+                // но система попытается изменить все 5 файлов согласно сообщению из коммита, но 2 файлов будет не хватать в репозитории,
+                // поэтому выскочит ошибка о том, что файла по данному пути нет.
+            }
             string allText = sr.ReadToEnd();
             sr.Close();
             string[] splited = allText.Split('\n');
@@ -64,7 +75,7 @@ namespace FManager
         /// Выполняет запись в выбранную таблицу с файла, соответствующего выбранной таблице
         /// </summary>
         /// <param name="table"></param>
-        public void SetDataFromFileToDBCasual(DB.Tables table, bool update = false)
+        public void SetDataFromFileToDBCasual(DB.Tables table, bool update = false, bool check = false, string path_to_repository="")
         {
             string path = string.Empty;
             if (table == DB.Tables.He)
@@ -85,92 +96,113 @@ namespace FManager
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
+            path = path_to_repository + path;
             string[] fullList = GetParsedList(path);
+            //Данная проверка нужна для того случая, когда мы из 5 файлов заливаем только 3 и в репозиторий вернется только 3 файла,
+            // а в коммите будут написаны все 5, но только не достающие 2 описаны как delete 
+            if (fullList == null) return;
             Dictionary<string, string[]> allMonths = setAllMonths(fullList);
+            exceptions = new List<string>();
             for (int i = 0; i < allMonths.Count; i++)
             {
                 string[] names = getAllNamesMonthYears(fullList);
                 for (int j = 0; j < allMonths[names[i]].Length; j++)
                 {
-                    string line = allMonths[names[i]][j];
+                    string _line = allMonths[names[i]][j];
                     string _date = getYearFromLine(names[i]) + "-" + getMonthFromLine(names[i]);
-                    string _day = getDay(line);
+                    string _day = getDay(_line);
                     string _event = "";
                     string _count = "";
                     string _count_expense = "";
                     string _desc = "";
                     string _type = "";
-                    if (_day.StartsWith("-"))
+                    try
                     {
-                        int counter = 0;
-                        while (true)
+                        if (_day.StartsWith("-"))
                         {
-                            counter++;
-                            if (!getDay(allMonths[names[i]][j - counter]).StartsWith("-"))
+                            int counter = 0;
+                            while (true)
                             {
-                                _day = getDay(allMonths[names[i]][j - counter]);
-                                break;
+                                counter++;
+                                if (!getDay(allMonths[names[i]][j - counter]).StartsWith("-"))
+                                {
+                                    _day = getDay(allMonths[names[i]][j - counter]);
+                                    break;
+                                }
                             }
                         }
+                        _date += "-" + _day;
+                        string[] list = _line.Split(' ');
+                        for (int k = 0; k < list.Length; k++)
+                        {
+                            if (list[k].StartsWith("+"))
+                                _event = "+";
+                            else if (list[k] == "-")
+                                _event = "-";
+                            else if (list[k] == "--")
+                                _event = "--";
+
+                            if (list[list.Length - 1].StartsWith("(")) _count = list[list.Length - 2];
+                            else _count = list[list.Length - 1];
+
+                            if (isMultiple(list[k]))
+                                _count_expense = list[k].Remove(0, 1);
+
+                            if (_desc == "" && list[k].StartsWith("-"))
+                            {
+                                int idxLocalStart = -1;
+                                int idxLocalEnd = -1;
+                                for (int x = 0; x < list.Length; x++)
+                                {
+                                    if (idxLocalStart != -1 && list[x].StartsWith("-"))
+                                        idxLocalEnd = x;
+                                    if (idxLocalStart == -1 && list[x].StartsWith("-"))
+                                        idxLocalStart = x;
+                                }
+                                for (int x = idxLocalStart; x < idxLocalEnd; x++)
+                                {
+                                    if (list[x].StartsWith("x") || list[x].StartsWith("х"))
+                                        continue;
+                                    _desc += list[x] + " ";
+                                }
+                                _desc = _desc.Replace("-", "").Replace("--", "");
+                                if (_desc[0] == ' ')
+                                    _desc = _desc.Remove(0, 1);
+                            }
+
+                            if (list[k].StartsWith("("))
+                            {
+                                _type = list[k].Remove(0, 1);
+                                _type = _type.Remove(_type.Length - 1);
+                            }
+                        }
+                        if (!check) db.InsertIntoCasual(table, _date, _event, _count, _count_expense, _desc, _type, _line);
                     }
-                    _date += "-" + _day;
-                    string[] list = line.Split(' ');
-                    for (int k = 0; k < list.Length; k++)
+                    catch (Exception ex)
                     {
-                        if (list[k].StartsWith("+"))
-                            _event = "+";
-                        else if (list[k] == "-")
-                            _event = "-";
-                        else if (list[k] == "--")
-                            _event = "--";
-
-                        if (list[list.Length - 1].StartsWith("(")) _count = list[list.Length - 2];
-                        else _count = list[list.Length - 1];
-
-                        if (isMultiple(list[k]))
-                            _count_expense = list[k].Remove(0, 1);
-
-                        if (_desc == "" && list[k].StartsWith("-"))
-                        {
-                            int idxLocalStart = -1;
-                            int idxLocalEnd = -1;
-                            for (int x = 0; x < list.Length; x++)
-                            {
-                                if (idxLocalStart != -1 && list[x].StartsWith("-"))
-                                    idxLocalEnd = x;
-                                if (idxLocalStart == -1 && list[x].StartsWith("-"))
-                                    idxLocalStart = x;
-                            }
-                            for (int x = idxLocalStart; x < idxLocalEnd; x++)
-                            {
-                                if (list[x].StartsWith("x") || list[x].StartsWith("х"))
-                                    continue;
-                                _desc += list[x] + " ";
-                            }
-                            _desc = _desc.Replace("-", "").Replace("--", "");
-                            if (_desc[0] == ' ')
-                                _desc = _desc.Remove(0, 1);
-                        }
-
-                        if (list[k].StartsWith("("))
-                        {
-                            _type = list[k].Remove(0, 1);
-                            _type = _type.Remove(_type.Length - 1);
-                        }
+                        exceptions.Add("Данная строчка: " + names[i] + " " + _line + " выдала следующую ошибку: " + ex.Message);
                     }
-                    db.InsertIntoCasual(table, _date, _event, _count, _count_expense, _desc, _type, line);
                 }
             }
+            if (exceptions.Count > 0)
+            {
+                string message = string.Empty;
+                for (int i = 0; i < exceptions.Count; i++)
+                    message += exceptions[i] + "\n";
 
+                MessageBox.Show(message, "Отмена записи данных в таблицу: " + table,
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
+
+
 
         /// <summary>
         /// Выполняет запись в выбранную таблицу с файла, соответствующего выбранной таблице.
         /// </summary>
         /// <param name="table"></param>
         /// <param name="update"></param>
-        public void SetDataFromFileToDBHeTables(DB.Tables table, bool update = false)
+        public void SetDataFromFileToDBBigTables(DB.Tables table, bool update = false, bool check = false, string path_to_repository="")
         {
             string path = string.Empty;
             if (table == DB.Tables.HeBig)
@@ -186,6 +218,13 @@ namespace FManager
                     path = assis.locationNewFileHeGifts;
                 else
                     path = assis.locationHeGifts;
+            }  
+            else if(table == DB.Tables.SheBig)
+            {
+                if (update)
+                    path = assis.locationNewFileSheBig;
+                else
+                    path = assis.locationSheBig;
             }
             else
             {
@@ -193,7 +232,7 @@ namespace FManager
                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
+            path = path_to_repository + path;
             string[] fullList = GetParsedList(path);
             string date_expenses = string.Empty;
             string description = string.Empty;
@@ -201,46 +240,52 @@ namespace FManager
             string type = string.Empty;
             string full_line = string.Empty;
             string param = string.Empty;
-
-            for (int i = 0; i < fullList.Length; i++)
+            exceptions = new List<string>();
+            try
             {
-                int idx = fullList[i].IndexOf(' ');
-                date_expenses = fullList[i].Remove(idx);
-                string[] splitedDate = date_expenses.Split('.');
-                date_expenses = "" + "20" + splitedDate[2] + "-" + splitedDate[1] + "-" + splitedDate[0];
-
-                int idxStart = fullList[i].IndexOf('-');
-                if (idxStart == -1) idxStart = fullList[i].IndexOf("--");
-                description = fullList[i].Remove(0, idxStart + 2);
-                int idxStop = description.LastIndexOf("-");
-                if (idxStop == -1) idxStop = description.LastIndexOf("--");
-                description = description.Remove(idxStop - 1);
-
-                idx = fullList[i].LastIndexOf('-');
-                if (idx == -1) fullList[i].LastIndexOf("--");
-                expenses = fullList[i].Remove(0, idx + 2);
-                idx = expenses.IndexOf(' ');
-                if (idx != -1)
+                for (int i = 0; i < fullList.Length; i++)
                 {
-                    expenses = expenses.Remove(idx);
+                    full_line = fullList[i];
+
+                    int idx = fullList[i].IndexOf(' ');
+                    date_expenses = fullList[i].Remove(idx);
+                    string[] splitedDate = date_expenses.Split('.');
+                    date_expenses = "" + "20" + splitedDate[2] + "-" + splitedDate[1] + "-" + splitedDate[0];
+
+                    int idxStart = fullList[i].IndexOf('-');
+                    if (idxStart == -1) idxStart = fullList[i].IndexOf("--");
+                    description = fullList[i].Remove(0, idxStart + 2);
+                    int idxStop = description.LastIndexOf("-");
+                    if (idxStop == -1) idxStop = description.LastIndexOf("--");
+                    description = description.Remove(idxStop - 1);
+
+                    idx = fullList[i].LastIndexOf('-');
+                    if (idx == -1) fullList[i].LastIndexOf("--");
+                    expenses = fullList[i].Remove(0, idx + 2);
+                    idx = expenses.IndexOf(' ');
+                    if (idx != -1)
+                    {
+                        expenses = expenses.Remove(idx);
+                    }
+
+                    if (fullList[i].IndexOf("--") != -1) type = "--";
+                    else type = "-";
+
+                    idx = fullList[i].IndexOf('(');
+                    param = string.Empty;
+                    if (idx != -1)
+                    {
+                        param = fullList[i].Remove(0, idx + 1);
+                        idx = param.IndexOf(')');
+                        param = param.Remove(idx);
+                    }
+
+                    if (!check) db.InsertIntoBigTables(table, date_expenses, description, expenses, type, param, full_line);
                 }
-
-                if (fullList[i].IndexOf("--") != -1) type = "--";
-                else type = "-";
-
-                idx = fullList[i].IndexOf('(');
-                param = string.Empty;
-                if (idx != -1)
-                {
-                    param = fullList[i].Remove(0, idx + 1);
-                    idx = param.IndexOf(')');
-                    param = param.Remove(idx);
-                }
-
-
-                full_line = fullList[i];
-
-                db.InsertIntoHeTables(table, date_expenses, description, expenses, type, param, full_line);
+            }
+            catch (Exception ex)
+            {
+                exceptions.Add("Данная строчка: " +  full_line + " выдала следующую ошибку: " + ex.Message);
             }
 
         }
@@ -248,7 +293,7 @@ namespace FManager
         /// <summary>
         /// Экспортирует выбранную таблицу в файл по ГОСТу
         /// </summary>
-        public void SetDataFromDBToFile(Dictionary<int, Dictionary<string,string>> data, DB.Tables table)
+        public void SetDataFromDBToFile(Dictionary<int, Dictionary<string, string>> data, DB.Tables table)
         {
             DialogResult response = DialogResult.Yes;
 
@@ -257,13 +302,15 @@ namespace FManager
                 path = assis.locationHeFile;
             else if (table == DB.Tables.She)
                 path = assis.locationSheFile;
+            else if (table == DB.Tables.SheBig)
+                path = assis.locationSheBig;
             else if (table == DB.Tables.HeBig)
                 path = assis.locationHeBig;
             else if (table == DB.Tables.HeGifts)
                 path = assis.locationHeGifts;
             else throw new Exception("Выбрананя таблица не поддерживается в данной функции.");
 
-            List < string > fullList = new List<string>();
+            List<string> fullList = new List<string>();
             if (table == DB.Tables.He || table == DB.Tables.She)
             {
                 string dateAdded = string.Empty;
@@ -293,11 +340,11 @@ namespace FManager
                     fullList.Add(data[i]["full_line"]);
             }
 
-            if(File.Exists(path))
+            if (File.Exists(path))
                 response = MessageBox.Show("Данный файл уже существует в рабочей директории. Если экспортируете данную таблицу, старый файл удалится. Вы уверены что хотите экспортировать?",
                     "Недопонятка.", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if(response == DialogResult.Yes)
+            if (response == DialogResult.Yes)
             {
                 using (StreamWriter sw = new StreamWriter(path, false, Encoding.Default))
                 {
@@ -326,7 +373,7 @@ namespace FManager
                     break;
                 }
                 else if (i == fullList.Length - 1 && idxStop == -1)
-                    idxStop = i+1;
+                    idxStop = i + 1;
 
                 if (fullList[i].StartsWith("----"))
                     idxStart = i;
@@ -808,10 +855,17 @@ namespace FManager
                     }
                 }
             }
-            expenses = expenses / getMonths().Count;
-            personExpenses = personExpenses / getMonths().Count;
-            resultDic["-"] = new string[1] { expenses.ToString() };
-            resultDic["--"] = new string[1] { personExpenses.ToString() };
+            try
+            {
+                expenses = expenses / getMonths().Count;
+                personExpenses = personExpenses / getMonths().Count;
+                resultDic["-"] = new string[1] { expenses.ToString() };
+                resultDic["--"] = new string[1] { personExpenses.ToString() };
+            }
+            catch (Exception)
+            {
+
+            }
             return resultDic;
         }
 
@@ -883,13 +937,20 @@ namespace FManager
                     }
                 }
             }
-            expenses = expenses / getMonths().Count;
-            personExpenses = personExpenses / getMonths().Count;
-            resultDic["-"] = new string[1] { expenses.ToString() };
-            resultDic["--"] = new string[1] { personExpenses.ToString() };
-            resultDic["count"] = new string[1] { (count / getMonths().Count).ToString() };
-            resultDic["descExpenses"] = getResDesc(listDescExpenses);
-            resultDic["descPersonExpenses"] = getResDesc(listDescPersonExpenses);
+            try
+            {
+                expenses = expenses / getMonths().Count;
+                personExpenses = personExpenses / getMonths().Count;
+                resultDic["-"] = new string[1] { expenses.ToString() };
+                resultDic["--"] = new string[1] { personExpenses.ToString() };
+                resultDic["count"] = new string[1] { (count / getMonths().Count).ToString() };
+                resultDic["descExpenses"] = getResDesc(listDescExpenses);
+                resultDic["descPersonExpenses"] = getResDesc(listDescPersonExpenses);
+            }
+            catch (Exception)
+            {
+
+            }
             return resultDic;
         }
 
@@ -1069,7 +1130,7 @@ namespace FManager
 
     }
 
-    public class ParseDBHeTables
+    public class ParseDBBigTables
     {
         private string _date_expense = "date_expense";
         private string _description = "description";
@@ -1097,7 +1158,7 @@ namespace FManager
         private Dictionary<int, Dictionary<string, string>> data;
         private Dictionary<string, string[]> resultDic;
 
-        public ParseDBHeTables(Dictionary<int, Dictionary<string, string>> data)
+        public ParseDBBigTables(Dictionary<int, Dictionary<string, string>> data)
         {
             this.data = data;
             getMonths("2015");
