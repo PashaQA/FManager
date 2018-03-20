@@ -167,6 +167,7 @@
             this.labelHeaderModuleDopInstrumental = new System.Windows.Forms.Label();
             this.labelHeaderModuleAdm = new System.Windows.Forms.Label();
             this.textBoxList = new System.Windows.Forms.TextBox();
+            this.checkBoxK = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericYears)).BeginInit();
             this.panelChooseData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.statsDataSetBindingSource)).BeginInit();
@@ -1583,6 +1584,7 @@
             // 
             this.panelSpecial.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.panelSpecial.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelSpecial.Controls.Add(this.checkBoxK);
             this.panelSpecial.Controls.Add(this.checkBoxB);
             this.panelSpecial.Controls.Add(this.buttonInfoInSpesialParams);
             this.panelSpecial.Controls.Add(this.checkBoxShe);
@@ -1749,6 +1751,18 @@
             this.textBoxList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxList.Size = new System.Drawing.Size(225, 580);
             this.textBoxList.TabIndex = 54;
+            // 
+            // checkBoxK
+            // 
+            this.checkBoxK.AutoSize = true;
+            this.checkBoxK.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxK.Location = new System.Drawing.Point(150, 8);
+            this.checkBoxK.Name = "checkBoxK";
+            this.checkBoxK.Size = new System.Drawing.Size(34, 19);
+            this.checkBoxK.TabIndex = 7;
+            this.checkBoxK.Text = "K";
+            this.checkBoxK.UseVisualStyleBackColor = true;
+            this.checkBoxK.CheckedChanged += new System.EventHandler(this.checkBoxK_CheckedChanged);
             // 
             // FManager
             // 
@@ -1967,6 +1981,7 @@
         private System.Windows.Forms.CheckBox checkBoxB;
         private System.Windows.Forms.CheckBox checkBoxAutoExport;
         private System.Windows.Forms.CheckBox checkBoxSheBigADM;
+        private System.Windows.Forms.CheckBox checkBoxK;
     }
 }
 

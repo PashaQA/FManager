@@ -100,6 +100,7 @@ namespace FManager
             spezailParams.Add("н");
             spezailParams.Add("она");
             spezailParams.Add("б");
+            spezailParams.Add("к");
             //По дефолту активирован режим She
             radioButtonModeShe.Checked = true;
             //По дефолту выбрана вспомогательная таблица для вывода информации из прямого запроса
@@ -110,6 +111,7 @@ namespace FManager
             checkBoxWithoutParams.Checked = true;
             checkBoxB.Checked = true;
             checkBoxShe.Checked = true;
+            checkBoxK.Checked = true;
             //По дефолту выбрано оба типа затрат
             //По дефолту недоступны простому пользователю функции администратора
             radioButtonModeHe.Enabled = false;
@@ -286,7 +288,8 @@ namespace FManager
                 "Параметр (без параметров) - выводит информацию о затратах, в которых не указан ни один параметр\n" +
                 "Категория (--) - сегодня мама дала 100р, завтра это твои деньги. Если ты что-то купила за деньги " +
                 "которые тебе дали вчера, которые ты накопила за вчера, будет считаться затратой на твои деньги.\n"+
-                "Параметр (б) - затраты на милостыню бедолагам по их просьбе.",
+                "Параметр (б) - затраты на милостыню бедолагам по их просьбе.\n"+
+                "Параметр (к) - затраты на каршеринг.",
                 "Описание парметров", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -925,6 +928,22 @@ namespace FManager
                 else
                 {
                     eventAssis.setSpezialParam(spezailParams, "она", EventAssistant.CmdForSpezialParam.Delete);
+                }
+                SetStats();
+            }
+        }
+
+        private void checkBoxK_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isFirstStart)
+            {
+                if(checkBoxK.Checked)
+                {
+                    eventAssis.setSpezialParam(spezailParams, "к", EventAssistant.CmdForSpezialParam.Add);
+                }
+                else
+                {
+                    eventAssis.setSpezialParam(spezailParams, "к", EventAssistant.CmdForSpezialParam.Delete);
                 }
                 SetStats();
             }
