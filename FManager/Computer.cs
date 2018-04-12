@@ -34,7 +34,7 @@ namespace FManager
                 else if (path.IndexOf("she") != -1)
                     sr = new StreamReader(path, Encoding.UTF8);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return null;
                 // Обходим ошибку из-за того, что в коммите придет сообщение об изменении 5 файлов, т.к. мы удаляем все 5 и можем залить всего 3,
@@ -75,7 +75,7 @@ namespace FManager
         /// Выполняет запись в выбранную таблицу с файла, соответствующего выбранной таблице
         /// </summary>
         /// <param name="table"></param>
-        public void SetDataFromFileToDBCasual(DB.Tables table, bool update = false, bool check = false, string path_to_repository="")
+        public void SetDataFromFileToDBCasual(DB.Tables table, bool update = false, bool check = false, string path_to_repository = "")
         {
             string path = string.Empty;
             if (table == DB.Tables.He)
@@ -202,7 +202,7 @@ namespace FManager
         /// </summary>
         /// <param name="table"></param>
         /// <param name="update"></param>
-        public void SetDataFromFileToDBBigTables(DB.Tables table, bool update = false, bool check = false, string path_to_repository="")
+        public void SetDataFromFileToDBBigTables(DB.Tables table, bool update = false, bool check = false, string path_to_repository = "")
         {
             string path = string.Empty;
             if (table == DB.Tables.HeBig)
@@ -218,8 +218,8 @@ namespace FManager
                     path = assis.locationNewFileHeGifts;
                 else
                     path = assis.locationHeGifts;
-            }  
-            else if(table == DB.Tables.SheBig)
+            }
+            else if (table == DB.Tables.SheBig)
             {
                 if (update)
                     path = assis.locationNewFileSheBig;
@@ -285,7 +285,7 @@ namespace FManager
             }
             catch (Exception ex)
             {
-                exceptions.Add("Данная строчка: " +  full_line + " выдала следующую ошибку: " + ex.Message);
+                exceptions.Add("Данная строчка: " + full_line + " выдала следующую ошибку: " + ex.Message);
             }
 
         }
@@ -532,7 +532,7 @@ namespace FManager
             for (int i = 0; i < data.Count; i++)
             {
                 bool exists = false;
-                int idx = data[i][_date_expense].LastIndexOf('/');
+                int idx = data[i][_date_expense].LastIndexOf('.');
                 string year = data[i][_date_expense].Remove(0, idx + 1);
                 idx = year.IndexOf(' ');
                 year = year.Remove(idx);
@@ -566,9 +566,9 @@ namespace FManager
                     if (data[i][_date_expense].IndexOf(year.ToString()) != -1)
                     {
                         bool exists = false;
-                        int idx = data[i][_date_expense].IndexOf('/');
+                        int idx = data[i][_date_expense].IndexOf('.');
                         string month = data[i][_date_expense].Remove(0, idx + 1);
-                        idx = month.IndexOf('/');
+                        idx = month.IndexOf('.');
                         month = month.Remove(idx);
                         for (int j = 0; j < months.Count; j++)
                         {
@@ -588,9 +588,9 @@ namespace FManager
                         if (data[i][_date_expense].IndexOf(years[j].ToString()) != -1)
                         {
                             bool exists = false;
-                            int idx = data[i][_date_expense].IndexOf('/');
+                            int idx = data[i][_date_expense].IndexOf('.');
                             string month = data[i][_date_expense].Remove(0, idx + 1);
-                            idx = month.IndexOf('/');
+                            idx = month.IndexOf('.');
                             month = month.Remove(idx);
                             for (int k = 0; k < months.Count; k++)
                             {
@@ -783,7 +783,7 @@ namespace FManager
             int personExpenses = 0;
             int profit = 0;
             ClearLists();
-            string date = ParseDBAssistant.getIntMonthFromString(month) + "/" + year;
+            string date = ParseDBAssistant.getIntMonthFromString(month) + "." + year;
             for (int i = 0; i < data.Count; i++)
             {
                 if (data[i][_date_expense].IndexOf(date) != -1)
@@ -1175,7 +1175,7 @@ namespace FManager
                     return 0;
                 int idx = data[0][_date_expense].IndexOf(' ');
                 string date = data[0][_date_expense].Remove(idx);
-                idx = date.LastIndexOf('/');
+                idx = date.LastIndexOf('.');
                 return Convert.ToInt32(date.Remove(0, idx + 1));
             }
         }
@@ -1191,7 +1191,7 @@ namespace FManager
                     return 0;
                 int idx = data[data.Count - 1][_date_expense].IndexOf(' ');
                 string date = data[data.Count - 1][_date_expense].Remove(idx);
-                idx = date.LastIndexOf('/');
+                idx = date.LastIndexOf('.');
                 return Convert.ToInt32(date.Remove(0, idx + 1));
             }
         }
@@ -1209,13 +1209,13 @@ namespace FManager
             {
                 int idx = data[i][_date_expense].IndexOf(' ');
                 string currentDate = data[i][_date_expense].Remove(idx);
-                idx = currentDate.IndexOf('/');
+                idx = currentDate.IndexOf('.');
                 currentDate = currentDate.Remove(0, idx + 1);
                 if (currentDate.EndsWith(year))
                 {
                     if (lastDate != currentDate)
                     {
-                        idx = currentDate.IndexOf('/');
+                        idx = currentDate.IndexOf('.');
                         string month = currentDate.Remove(idx);
 
                         months.Add(ParseDBAssistant.getStringMonthFromInt(month));
@@ -1260,7 +1260,7 @@ namespace FManager
             }
             for (int i = 0; i < data.Count; i++)
             {
-                int idx = data[i][_date_expense].IndexOf('/');
+                int idx = data[i][_date_expense].IndexOf('.');
                 currentDate = data[i][_date_expense].Remove(0, idx + 1);
                 idx = currentDate.IndexOf(' ');
                 currentDate = currentDate.Remove(idx);
@@ -1317,7 +1317,7 @@ namespace FManager
             month = ParseDBAssistant.getIntMonthFromString(month);
             ClearData();
             for (int i = 0; i < data.Count; i++)
-                if (data[i][_date_expense].IndexOf(month + "/" + year) != -1)
+                if (data[i][_date_expense].IndexOf(month + "." + year) != -1)
                     SetExpenses(data[i]);
             SetData();
             return resultDic;

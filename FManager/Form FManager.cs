@@ -553,7 +553,14 @@ namespace FManager
                         TableClear();
                     }
                 }
-                SetMonths();
+                try
+                {
+                    SetMonths();
+                }
+                catch(Exception ex)
+                {
+
+                }
             }
             try
             {
@@ -699,7 +706,7 @@ namespace FManager
 
             //Подготовливает список затрат только для выбранного месяца для вывода в DataGrid
             for (int i = 0, j = 0; i < response.Count; i++)
-                if (response[i]["date_expense"].IndexOf(ParseDBAssistant.getIntMonthFromString(month) + "/" + year.ToString()) != -1)
+                if (response[i]["date_expense"].IndexOf(ParseDBAssistant.getIntMonthFromString(month) + "." + year.ToString()) != -1)
                 {
                     parseResponse[j] = response[i];
                     j++;

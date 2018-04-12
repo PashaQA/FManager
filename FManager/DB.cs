@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Data.SQLite;
 
 namespace FManager
 {
@@ -37,6 +38,7 @@ namespace FManager
 
         public DB()
         {
+            SQLiteConnection conn = new SQLiteConnection("stats_sqlite.db", true);
             connection = new SqlConnection(connectionDB);
         }
 
