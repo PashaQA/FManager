@@ -21,8 +21,11 @@ namespace FManager
         }
 
         private Assistant set = new Assistant();
+        //private SQLiteConnection connection;
         private SqlConnection connection;
+        //private SQLiteCommand cmd;
         private SqlCommand cmd;
+        //private SQLiteDataReader reader;
         private SqlDataReader reader;
 
         public enum Tables
@@ -38,8 +41,11 @@ namespace FManager
 
         public DB()
         {
-            SQLiteConnection conn = new SQLiteConnection("stats_sqlite.db", true);
             connection = new SqlConnection(connectionDB);
+
+            //string path_to_db = set.locationWorkFolder + "\\stats_sqlite.db";
+            //SQLiteConnection.CreateFile(path_to_db);
+            //connection = new SQLiteConnection("Data Source=" + path_to_db);
         }
 
         /// <summary>
@@ -47,6 +53,7 @@ namespace FManager
         /// </summary>
         public void CreateTable(Tables table)
         {
+            // id integer primery key autoincrement для sqlite
             Open();
             if (table == Tables.He)
             {
@@ -178,9 +185,10 @@ namespace FManager
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                cmd.CommandText = string.Format("insert into dbo." + nameTable +
-                    "(date_expense, event_type, count, count_expenses, description, type, full_line) values('{0}', N'{1}', {2}, N'{3}', N'{4}', N'{5}', N'{6}')",
+                cmd.CommandText = string.Format("insert into dbo.'" + nameTable +
+                    "'(date_expense, event_type, count, count_expenses, description, type, full_line) values('{0}', N'{1}', {2}, N'{3}', N'{4}', N'{5}', N'{6}')",
                     date_expense, event_type, count, count_expenses, description, type, full_line);
+                //cmd.CommandText = "insert into she(date_expense, event_type, count, count_expenses, description, type, full_line) values('2016-01-05', '-', 10, 2, 'asda', 'н', 'dsfsdfsfs');";
                 cmd.ExecuteReader();
             }
             catch (Exception ex)
@@ -284,6 +292,7 @@ namespace FManager
             {
                 Open();
                 cmd.CommandText = "select name from sys.objects where type in (N'U');";
+                //cmd.CommandText = "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name;";
                 reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -412,7 +421,7 @@ namespace FManager
                         if (keys[j] == "date_expense")
                         {
                             string date = data[i]["date_expense"];
-                            int idx = date.IndexOf(' ');
+                             int idx = date.IndexOf(' ');
                             view.Rows[i].Cells[j].Value = date.Remove(idx);
 
                         }
