@@ -49,11 +49,11 @@ namespace FManager
                 return locationWorkFolder + @"\LatestHe.sys";
             }
         }
-       
+
         public string locationNewFile
         {
             get
-            { 
+            {
                 return locationUpdateFolder + @"\Updater_FManager\she.txt";
             }
         }
@@ -75,7 +75,7 @@ namespace FManager
         }
 
         public string locationRepository { get; set; }
-       
+
         public string locationUpdateFolder { get; set; }
 
         public string locationGitFile
@@ -123,7 +123,7 @@ namespace FManager
         {
             get
             {
-                return locationUpdateFolder+ @"\Updater_FManager\hegifts.txt";
+                return locationUpdateFolder + @"\Updater_FManager\hegifts.txt";
             }
         }
 
@@ -134,15 +134,15 @@ namespace FManager
                 return locationUpdateFolder + @"\Updater_FManager\hebig.txt";
             }
         }
-        
+
         public string locationNewFileSheBig
         {
             get
             {
                 return locationUpdateFolder + @"\Updater_FManager\shebig.txt";
             }
-        }      
-    
+        }
+
         public string locationPashaFile
         {
             get
@@ -196,6 +196,14 @@ namespace FManager
             get
             {
                 return locationSystemFolder + "\\permission_auto_export.sys";
+            }
+        }
+
+        public string locationSQLite
+        {
+            get
+            {
+                return locationWorkFolder + "\\stats_sqlite.db";
             }
         }
 

@@ -36,7 +36,8 @@ namespace FManager
         private List<int> index_new_date = new List<int>();
 
         private Assistant assistant = new Assistant();
-        private DB db = new DB();
+        //private DB_mssql db = new DB_mssql();
+        private DB_sqlite db = new DB_sqlite();
         private ParseDBCasualTables pdbCasual;
         private ParseDBBigTables pdbBig;
         private ParseFile pfile = new ParseFile();
@@ -102,7 +103,7 @@ namespace FManager
             spezailParams.Add("б");
             spezailParams.Add("к");
             //По дефолту активирован режим She
-            radioButtonModeShe.Checked = true;
+            radioButtonModeHe.Checked = true;
             //По дефолту выбрана вспомогательная таблица для вывода информации из прямого запроса
             radioButtonOutputInDop.Checked = true;
             //По дефолту активированы все специальные параметры

@@ -10,7 +10,8 @@ namespace FManager
     public class ParseFile
     {
         private Assistant assis = new Assistant();
-        private DB db = new DB();
+        //private DB_mssql db = new DB_mssql();
+        private DB_sqlite db = new DB_sqlite();
         public List<string> exceptions;
 
         public ParseFile()
