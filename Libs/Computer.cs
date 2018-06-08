@@ -5,7 +5,7 @@ using System.Text;
 using System.IO;
 using System.Windows.Forms;
 
-namespace FManager
+namespace Libs
 {
     public class ParseFile
     {
@@ -320,9 +320,11 @@ namespace FManager
                     int idx = data[i]["date_expense"].IndexOf(' ');
                     string date = data[i]["date_expense"].Remove(idx);
                     idx = date.IndexOf('/');
+                    if (idx == -1) idx = date.IndexOf('.');
                     date = date.Remove(0, idx + 1);
-
+                
                     idx = date.IndexOf('/');
+                    if (idx == -1) idx = date.IndexOf('.');
                     string month = date.Remove(idx);
                     string year = date.Remove(0, idx + 1);
 
@@ -368,7 +370,7 @@ namespace FManager
 
             for (int i = 0; i < fullList.Length; i++)
             {
-                if (idxStart != -1 && fullList[i].StartsWith("----"))
+                if (idxStart != -1 && fullList[i].Contains("----"))
                 {
                     idxStop = i;
                     break;
@@ -376,7 +378,7 @@ namespace FManager
                 else if (i == fullList.Length - 1 && idxStop == -1)
                     idxStop = i + 1;
 
-                if (fullList[i].StartsWith("----"))
+                if (fullList[i].Contains("----"))
                     idxStart = i;
             }
 
@@ -396,7 +398,7 @@ namespace FManager
             int counter = 0;
             for (int i = 0; i < fullList.Length; i++)
             {
-                if (fullList[i].StartsWith("----"))
+                if (fullList[i].Contains("-----"))
                     counter++;
             }
             return counter;
@@ -451,7 +453,7 @@ namespace FManager
             string[] months = new string[getCountMonth(fullList)];
             for (int i = 0; i < fullList.Length; i++)
             {
-                if (fullList[i].StartsWith("----"))
+                if (fullList[i].Contains("----"))
                 {
                     months[counter] = fullList[i];
                     counter++;

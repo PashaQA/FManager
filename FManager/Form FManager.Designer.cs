@@ -168,6 +168,7 @@
             this.labelHeaderModuleDopInstrumental = new System.Windows.Forms.Label();
             this.labelHeaderModuleAdm = new System.Windows.Forms.Label();
             this.textBoxList = new System.Windows.Forms.TextBox();
+            this.buttonChart = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericYears)).BeginInit();
             this.panelChooseData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.statsDataSetBindingSource)).BeginInit();
@@ -351,6 +352,7 @@
             // 
             this.panelModuleADM.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.panelModuleADM.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelModuleADM.Controls.Add(this.buttonChart);
             this.panelModuleADM.Controls.Add(this.checkBoxSheBigADM);
             this.panelModuleADM.Controls.Add(this.checkBoxPasha);
             this.panelModuleADM.Controls.Add(this.checkBoxHeBigADM);
@@ -1764,6 +1766,16 @@
             this.textBoxList.Size = new System.Drawing.Size(225, 580);
             this.textBoxList.TabIndex = 54;
             // 
+            // buttonChart
+            // 
+            this.buttonChart.Location = new System.Drawing.Point(171, 141);
+            this.buttonChart.Name = "buttonChart";
+            this.buttonChart.Size = new System.Drawing.Size(95, 23);
+            this.buttonChart.TabIndex = 15;
+            this.buttonChart.Text = "Графики";
+            this.buttonChart.UseVisualStyleBackColor = true;
+            this.buttonChart.Click += new System.EventHandler(this.buttonChart_Click);
+            // 
             // FManager
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1982,6 +1994,7 @@
         private System.Windows.Forms.CheckBox checkBoxAutoExport;
         private System.Windows.Forms.CheckBox checkBoxSheBigADM;
         private System.Windows.Forms.CheckBox checkBoxK;
+        private System.Windows.Forms.Button buttonChart;
     }
 }
 

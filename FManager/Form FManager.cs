@@ -8,6 +8,8 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using Microsoft.Win32;
+using Chart;
+using Libs;
 
 namespace FManager
 {
@@ -1074,6 +1076,26 @@ namespace FManager
                         File.Delete(assistant.locationPermissionAutoExport);
         }
 
+
+        private void buttonChart_Click(object sender, EventArgs e)
+        {
+            DB.Tables table;
+            if (getMode == Mode.Casual)
+            {
+                if (radioButtonModeHe.Checked) table = DB.Tables.He;
+                else table = DB.Tables.She;
+            }
+            else
+            {
+                if (radioButtonModeHeBig.Checked) table = DB.Tables.HeBig;
+                else if (radioButtonModeHeGifts.Checked) table = DB.Tables.HeGifts;
+                else table = DB.Tables.SheBig;
+            }
+            Form_Chart form = new Form_Chart(spezailParams, table);
+            form.Show();
+        }
+
+
         /// <summary>
         ///  Проверяет наличие обновления и если оно есть, подготавливает данные для обновления
         /// </summary>
@@ -1841,5 +1863,6 @@ namespace FManager
                 }
             }
         }
+
     }
 }

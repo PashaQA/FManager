@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FManager", "FManager\FManag
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Starter", "Starter\Starter.csproj", "{8B7122AA-49CD-4854-A831-BE925EFAF881}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chart", "Chart\Chart.csproj", "{28A9CB7C-8679-4CBE-A61B-2DF7A4049C8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Libs", "Libs\Libs.csproj", "{BD0A866B-EDBA-47AC-B543-E1B0883E244A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{8B7122AA-49CD-4854-A831-BE925EFAF881}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B7122AA-49CD-4854-A831-BE925EFAF881}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B7122AA-49CD-4854-A831-BE925EFAF881}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28A9CB7C-8679-4CBE-A61B-2DF7A4049C8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28A9CB7C-8679-4CBE-A61B-2DF7A4049C8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28A9CB7C-8679-4CBE-A61B-2DF7A4049C8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28A9CB7C-8679-4CBE-A61B-2DF7A4049C8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD0A866B-EDBA-47AC-B543-E1B0883E244A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD0A866B-EDBA-47AC-B543-E1B0883E244A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD0A866B-EDBA-47AC-B543-E1B0883E244A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD0A866B-EDBA-47AC-B543-E1B0883E244A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

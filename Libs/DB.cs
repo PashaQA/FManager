@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using System.Data.SQLite;
 using System.IO;
 
-namespace FManager
+namespace Libs
 {
     public class DB
     {
@@ -40,6 +40,10 @@ namespace FManager
         private SqlCommand cmd;
         private SqlDataReader reader;
 
+        public DB_mssql()
+        {
+            connection = new SqlConnection(connectionDB);
+        }
 
         /// <summary>
         /// Создает выбранную таблицу
