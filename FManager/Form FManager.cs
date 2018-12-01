@@ -21,6 +21,7 @@ namespace FManager
         private const string _export_hegifts = "Экспортировать HeGifts";
         private const string _export_she = "Экспортировать She";
         private const string _export_shebig = "Экспортировать SheBig";
+        private const string _export_hecar = "Экспортировать HeCar";
         private const string _export_all = "Экспортировать все данные";
 
         private bool helpSql = false;
@@ -66,7 +67,7 @@ namespace FManager
 
         private void FManager_Load(object sender, EventArgs e)
         {
-            if(!File.Exists(assistant.locationPermissionStartFM))
+            if (!File.Exists(assistant.locationPermissionStartFM))
             {
                 if (!File.Exists(assistant.locationPashaFile))
                 {
@@ -84,7 +85,7 @@ namespace FManager
             modules.Add(panelModuleADM);
             modules.Add(dataDop);
             modules.Add(dataOsn);
-            eventAssis.CheckFiles(modules);            
+            eventAssis.CheckFiles(modules);
             if (!eventAssis.CheckGit())
             {
                 textBoxInfoMessage.Text += "На данном компьютере скорее всего отсутствует инструмент обновления данных." +
@@ -104,8 +105,6 @@ namespace FManager
             spezailParams.Add("она");
             spezailParams.Add("б");
             spezailParams.Add("к");
-            //По дефолту активирован режим She
-            radioButtonModeHe.Checked = true;
             //По дефолту выбрана вспомогательная таблица для вывода информации из прямого запроса
             radioButtonOutputInDop.Checked = true;
             //По дефолту активированы все специальные параметры
@@ -115,16 +114,27 @@ namespace FManager
             checkBoxB.Checked = true;
             checkBoxShe.Checked = true;
             checkBoxK.Checked = true;
+            //По дефолтну не актированы параметры по затратам на машину
+            checkBoxBenz.Checked = false;
+            checkBoxSH.Checked = false;
+            checkBoxKr.Checked = false;
+            checkBoxTun.Checked = false;
+            checkBoxR.Checked = false;
+            checkBoxRem.Checked = false;
             //По дефолту выбрано оба типа затрат
             //По дефолту недоступны простому пользователю функции администратора
             radioButtonModeHe.Enabled = false;
             radioButtonModeHeGifts.Enabled = false;
             radioButtonModeHeBig.Enabled = false;
+            radioButtonModeHeAll.Enabled = false;
+            radioButtonModeHeCar.Enabled = false;
             panelModuleADM.Enabled = false;
             buttonAccessUpdate.Enabled = false;
             //По дефолту кнопка "Обновить недоступна"
             btnUpdate.Enabled = false;
             isFirstStart = false;
+            //По дефолту активирован режим She
+            radioButtonModeHe.Checked = true;
 
             //Проверка на запуск с правами администратора
             if (eventAssis.IsExists(assistant.locationPashaFile))
@@ -132,6 +142,8 @@ namespace FManager
                 radioButtonModeHe.Enabled = true;
                 radioButtonModeHeGifts.Enabled = true;
                 radioButtonModeHeBig.Enabled = true;
+                radioButtonModeHeAll.Enabled = true;
+                radioButtonModeHeCar.Enabled = true;
                 panelModuleADM.Enabled = true;
                 buttonAccessUpdate.Enabled = true;
                 checkBoxPasha.Checked = true;
@@ -169,6 +181,8 @@ namespace FManager
                         table = DB.Tables.HeGifts;
                     else if (dict.Key == "hebig.txt")
                         table = DB.Tables.HeBig;
+                    else if (dict.Key == "hecar.txt")
+                        table = DB.Tables.HeCar;
                     else table = DB.Tables.SheBig;
 
                     if (table == DB.Tables.He || table == DB.Tables.She)
@@ -233,6 +247,8 @@ namespace FManager
                 radioButtonModeHe.Enabled = true;
                 radioButtonModeHeGifts.Enabled = true;
                 radioButtonModeHeBig.Enabled = true;
+                radioButtonModeHeAll.Enabled = true;
+                radioButtonModeHeCar.Enabled = true;
                 panelModuleADM.Enabled = true;
                 buttonAccessUpdate.Enabled = true;
                 checkBoxShe.Enabled = true;
@@ -245,6 +261,8 @@ namespace FManager
             radioButtonModeHe.Enabled = false;
             radioButtonModeHeGifts.Enabled = false;
             radioButtonModeHeBig.Enabled = false;
+            radioButtonModeHeAll.Enabled = false;
+            radioButtonModeHeCar.Enabled = false;
             panelModuleADM.Enabled = false;
         }
 
@@ -290,39 +308,28 @@ namespace FManager
                 "Параметер (н) - необходимое затраты, которых просто не избежать\n" +
                 "Параметр (без параметров) - выводит информацию о затратах, в которых не указан ни один параметр\n" +
                 "Категория (--) - сегодня мама дала 100р, завтра это твои деньги. Если ты что-то купила за деньги " +
-                "которые тебе дали вчера, которые ты накопила за вчера, будет считаться затратой на твои деньги.\n"+
-                "Параметр (б) - затраты на милостыню бедолагам по их просьбе.\n"+
-                "Параметр (к) - затраты на каршеринг.",
+                "которые тебе дали вчера, которые ты накопила за вчера, будет считаться затратой на твои деньги.\n" +
+                "Параметр (б) - затраты на милостыню бедолагам по их просьбе.\n" +
+                "Параметр (к) - затраты на каршеринг.\n" +
+                "Параметр (бенз) - затраты на бензин.\n" +
+                "Параметр (ш) - Затраты на штраф.\n" +
+                "Параметр (кр) - Затраты на кредит.\n" +
+                "Параметр (тюн) - Затраты на тюнниг.\n" +
+                "Параметр (р) - Затраты на расходники.\n" +
+                "Параметр (рем) - Затраты на ремонт.\n",
                 "Описание парметров", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
+            
         private void buttonBlock_Click(object sender, EventArgs e)
         {
             radioButtonModeHe.Enabled = false;
             radioButtonModeHeGifts.Enabled = false;
             radioButtonModeHeBig.Enabled = false;
+            radioButtonModeHeAll.Enabled = false;
+            radioButtonModeHeCar.Enabled = false;
             panelModuleADM.Enabled = false;
             checkBoxShe.Enabled = false;
             checkBoxPasha.Checked = false;
-        }
-
-        private void radioButtonModeShe_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radioButtonModeShe.Checked)
-            {
-                checkBoxB.Checked = false;
-                checkBoxShe.Enabled = false;
-
-                textBoxCandles.Visible = false;
-                dataCandles.Visible = false;
-                labelHeaderWindowCandles.Visible = false;
-
-                textBoxRelax.Visible = false;
-                dataRelax.Visible = false;
-                labelHeaderRelax.Visible = false;
-
-                SetStats();
-            }
         }
 
         private void buttonShowFieldPassword_Click(object sender, EventArgs e)
@@ -340,11 +347,8 @@ namespace FManager
         private void buttonExecuteCMDADM_Click(object sender, EventArgs e)
         {
             //Проверка на то, что хотя бы одна таблица выбрана
-            if (checkBoxHeADM.Checked == false &&
-                    checkBoxHeBigADM.Checked == false &&
-                    checkBoxHeGiftsADM.Checked == false &&
-                    checkBoxSheADM.Checked == false &&
-                    checkBoxSheBigADM.Checked == false)
+            if (!checkBoxHeADM.Checked && !checkBoxHeBigADM.Checked && !checkBoxHeGiftsADM.Checked &&
+                !checkBoxSheADM.Checked && !checkBoxSheBigADM.Checked && !checkBoxHeCarADM.Checked)
             {
                 MessageBox.Show("Необходимо выбрать таблицу.", "Маленькая неясность",
                     MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -361,6 +365,8 @@ namespace FManager
                 activeTables.Add(DB.Tables.HeGifts);
             if (checkBoxHeBigADM.Checked)
                 activeTables.Add(DB.Tables.HeBig);
+            if (checkBoxHeCarADM.Checked)
+                activeTables.Add(DB.Tables.HeCar);
             if (checkBoxSheADM.Checked)
                 activeTables.Add(DB.Tables.She);
             if (checkBoxSheBigADM.Checked)
@@ -429,7 +435,8 @@ namespace FManager
                         else
                             continue;
                     }
-                    if (activeTables[i] == DB.Tables.He || activeTables[i] == DB.Tables.She)
+                    if (activeTables[i] == DB.Tables.He || activeTables[i] == DB.Tables.She ||
+                        activeTables[i] == DB.Tables.HeCar)
                     {
                         pfile.SetDataFromFileToDBCasual(activeTables[i], false, true);
                         if (pfile.exceptions != null && pfile.exceptions.Count == 0)
@@ -438,7 +445,8 @@ namespace FManager
                             dataWritten = true;
                         }
                     }
-                    if (activeTables[i] == DB.Tables.HeBig || activeTables[i] == DB.Tables.HeGifts || activeTables[i] == DB.Tables.SheBig)
+                    //if (activeTables[i] == DB.Tables.HeBig || activeTables[i] == DB.Tables.HeGifts || activeTables[i] == DB.Tables.SheBig)
+                    else
                         pfile.SetDataFromFileToDBBigTables(activeTables[i]);
 
                     if (dataWritten)
@@ -518,6 +526,8 @@ namespace FManager
                 response = db.GetData(DB.Tables.SheBig);
             else if (radioButtonModeHeGifts.Checked)
                 response = db.GetData(DB.Tables.HeGifts);
+            else if (radioButtonModeHeCar.Checked)
+                response = db.GetData(DB.Tables.HeCar);
 
             if (getMode == Mode.Casual)
             {
@@ -527,6 +537,13 @@ namespace FManager
             }
             else if (getMode == Mode.Big)
                 pdbBig = new ParseDBBigTables(response);
+
+
+            if (pdbBig.getFirstYear == 0 && pdbBig.getLastYear == 0 && response.Count == 0)
+            {
+                MessageBox.Show("Отсутствуют данные", "Информирование", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
 
             if (!fromButton)
             {
@@ -560,7 +577,7 @@ namespace FManager
                 {
                     SetMonths();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
 
                 }
@@ -726,28 +743,7 @@ namespace FManager
                 dataOsn.Columns.Clear();
         }
 
-        private void radioButtonModeHe_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!isFirstStart)
-            {
-                if (radioButtonModeHe.Checked)
-                {
-                    checkBoxB.Checked = true;
-                    checkBoxShe.Enabled = true;
 
-                    textBoxCandles.Visible = true;
-                    dataCandles.Visible = true;
-                    labelHeaderWindowCandles.Visible = true;
-
-                    textBoxRelax.Visible = true;
-                    dataRelax.Visible = true;
-                    labelHeaderRelax.Visible = true;
-
-                    SetStats();
-                }
-            }
-
-        }
 
         private void textBoxWindowExpensesAll_MouseClick(object sender, MouseEventArgs e)
         {
@@ -947,13 +943,109 @@ namespace FManager
         {
             if (!isFirstStart)
             {
-                if(checkBoxK.Checked)
+                if (checkBoxK.Checked)
                 {
                     eventAssis.setSpezialParam(spezailParams, "к", EventAssistant.CmdForSpezialParam.Add);
                 }
                 else
                 {
                     eventAssis.setSpezialParam(spezailParams, "к", EventAssistant.CmdForSpezialParam.Delete);
+                }
+                SetStats();
+            }
+        }
+
+        private void checkBoxBenz_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isFirstStart)
+            {
+                if (checkBoxBenz.Checked)
+                {
+                    eventAssis.setSpezialParam(spezailParams, "бенз", EventAssistant.CmdForSpezialParam.Add);
+                }
+                else
+                {
+                    eventAssis.setSpezialParam(spezailParams, "бенз", EventAssistant.CmdForSpezialParam.Delete);
+                }
+                SetStats();
+            }
+        }
+
+        private void checkBoxSH_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isFirstStart)
+            {
+                if (checkBoxSH.Checked)
+                {
+                    eventAssis.setSpezialParam(spezailParams, "ш", EventAssistant.CmdForSpezialParam.Add);
+                }
+                else
+                {
+                    eventAssis.setSpezialParam(spezailParams, "ш", EventAssistant.CmdForSpezialParam.Delete);
+                }
+                SetStats();
+            }
+        }
+
+        private void checkBoxKr_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isFirstStart)
+            {
+                if (checkBoxKr.Checked)
+                {
+                    eventAssis.setSpezialParam(spezailParams, "кр", EventAssistant.CmdForSpezialParam.Add);
+                }
+                else
+                {
+                    eventAssis.setSpezialParam(spezailParams, "кр", EventAssistant.CmdForSpezialParam.Delete);
+                }
+                SetStats();
+            }
+        }
+
+        private void checkBoxTun_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isFirstStart)
+            {
+                if (checkBoxTun.Checked)
+                {
+                    eventAssis.setSpezialParam(spezailParams, "тюн", EventAssistant.CmdForSpezialParam.Add);
+                }
+                else
+                {
+                    eventAssis.setSpezialParam(spezailParams, "тюн", EventAssistant.CmdForSpezialParam.Delete);
+                }
+                SetStats();
+            }
+        }
+
+        private void checkBoxR_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isFirstStart)
+            {
+                if (checkBoxR.Checked)
+                {
+                    eventAssis.setSpezialParam(spezailParams, "р", EventAssistant.CmdForSpezialParam.Add);
+                }
+                else
+                {
+                    eventAssis.setSpezialParam(spezailParams, "р", EventAssistant.CmdForSpezialParam.Delete);
+                }
+                SetStats();
+            }
+        }
+
+        private void checkBoxRem_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isFirstStart)
+            {
+                if (checkBoxRem.Checked)
+                {
+                    eventAssis.setSpezialParam(spezailParams, "рем", EventAssistant.CmdForSpezialParam.Add);
+                }
+                else
+                {
+                    eventAssis.setSpezialParam(spezailParams, "рем", EventAssistant.CmdForSpezialParam.Delete);
                 }
                 SetStats();
             }
@@ -974,11 +1066,77 @@ namespace FManager
                 radioButtonModeHe.Enabled = false;
                 radioButtonModeHeGifts.Enabled = false;
                 radioButtonModeHeBig.Enabled = false;
+                radioButtonModeHeAll.Enabled = false;
+                radioButtonModeHeCar.Enabled = false;
                 panelModuleADM.Enabled = false;
                 checkBoxShe.Enabled = false;
                 textBoxInfoMessage.Text += "Запрещен дефолтный запуск приложения с правами администратора." + Environment.NewLine;
             }
 
+        }
+
+        private void radioButtonModeHe_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isFirstStart)
+            {
+                if (radioButtonModeHe.Checked)
+                {
+                    checkBoxB.Checked = true;
+                    checkBoxShe.Enabled = true;
+
+                    textBoxCandles.Visible = true;
+                    dataCandles.Visible = true;
+                    labelHeaderWindowCandles.Visible = true;
+
+                    textBoxRelax.Visible = true;
+                    dataRelax.Visible = true;
+                    labelHeaderRelax.Visible = true;
+
+                    SetStats();
+                }
+            }
+
+        }
+
+        private void radioButtonModeHeCar_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isFirstStart)
+            {
+                if (radioButtonModeHeCar.Checked)
+                {
+                    checkBoxBenz.Checked = true;
+                    checkBoxSH.Checked = true;
+                    checkBoxKr.Checked = true;
+                    checkBoxTun.Checked = true;
+                    checkBoxR.Checked = true;
+                    checkBoxRem.Checked = true;
+
+                    checkBoxT.Checked = false;
+                    checkBoxN.Checked = false;
+                    checkBoxWithoutParams.Checked = false;
+                    checkBoxB.Checked = false;
+                    checkBoxShe.Checked = false;
+                    checkBoxK.Checked = false;
+
+                    SetStats();
+                }
+                else
+                {
+                    checkBoxBenz.Checked = false;
+                    checkBoxSH.Checked = false;
+                    checkBoxKr.Checked = false;
+                    checkBoxTun.Checked = false;
+                    checkBoxR.Checked = false;
+                    checkBoxRem.Checked = false;
+
+                    checkBoxT.Checked = true;
+                    checkBoxN.Checked = true;
+                    checkBoxWithoutParams.Checked = true;
+                    checkBoxB.Checked = true;
+                    checkBoxShe.Checked = true;
+                    checkBoxK.Checked = true;
+                }
+            }
         }
 
         private void radioButtonModeHeGifts_CheckedChanged(object sender, EventArgs e)
@@ -991,6 +1149,25 @@ namespace FManager
         {
             checkBoxB.Checked = false;
             SetStats();
+        }
+
+        private void radioButtonModeShe_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonModeShe.Checked)
+            {
+                checkBoxB.Checked = false;
+                checkBoxShe.Enabled = false;
+
+                textBoxCandles.Visible = false;
+                dataCandles.Visible = false;
+                labelHeaderWindowCandles.Visible = false;
+
+                textBoxRelax.Visible = false;
+                dataRelax.Visible = false;
+                labelHeaderRelax.Visible = false;
+
+                SetStats();
+            }
         }
 
         private void radioButtonModeSheBig_CheckedChanged(object sender, EventArgs e)
@@ -1021,20 +1198,21 @@ namespace FManager
 
                 ExportData(selected_item);
 
-                if(selected_item == _export_all)
+                if (selected_item == _export_all)
                 {
-                    if(File.Exists(assistant.locationNeedExport))
+                    if (File.Exists(assistant.locationNeedExport))
                     {
                         comboBoxDopInstrumental.Items.Add(_export_he);
                         comboBoxDopInstrumental.Items.Add(_export_hegifts);
                         comboBoxDopInstrumental.Items.Add(_export_hebig);
+                        comboBoxDopInstrumental.Items.Add(_export_hecar);
                         comboBoxDopInstrumental.Items.Add(_export_she);
                         comboBoxDopInstrumental.Items.Add(_export_shebig);
 
                         //Возвращаем доступность всех модулей
                         foreach (Control module in modules)
                         {
-                            if (module.Name !=  "panelModuleADM")
+                            if (module.Name != "panelModuleADM")
                                 module.Enabled = true;
                         }
 
@@ -1068,29 +1246,24 @@ namespace FManager
 
         private void checkBoxAutoExport_CheckedChanged(object sender, EventArgs e)
         {
-            if(checkBoxAutoExport.Checked)
+            if (checkBoxAutoExport.Checked)
                 if (!File.Exists(assistant.locationPermissionAutoExport))
                     assistant.CreateFile(assistant.locationPermissionAutoExport);
-            else
+                else
                  if (File.Exists(assistant.locationPermissionAutoExport))
-                        File.Delete(assistant.locationPermissionAutoExport);
+                    File.Delete(assistant.locationPermissionAutoExport);
         }
 
 
         private void buttonChart_Click(object sender, EventArgs e)
         {
             DB.Tables table;
-            if (getMode == Mode.Casual)
-            {
-                if (radioButtonModeHe.Checked) table = DB.Tables.He;
-                else table = DB.Tables.She;
-            }
-            else
-            {
-                if (radioButtonModeHeBig.Checked) table = DB.Tables.HeBig;
-                else if (radioButtonModeHeGifts.Checked) table = DB.Tables.HeGifts;
-                else table = DB.Tables.SheBig;
-            }
+            if (radioButtonModeHe.Checked) table = DB.Tables.He;
+            else if (radioButtonModeHeBig.Checked) table = DB.Tables.HeBig;
+            else if (radioButtonModeHeGifts.Checked) table = DB.Tables.HeGifts;
+            else if (radioButtonModeHeCar.Checked) table = DB.Tables.HeCar;
+            else if (radioButtonModeShe.Checked) table = DB.Tables.She;
+            else table = DB.Tables.SheBig;
             Form_Chart form = new Form_Chart(spezailParams, table);
             form.Show();
         }
@@ -1341,11 +1514,12 @@ namespace FManager
         {
             get
             {
-                if (radioButtonModeHe.Checked || radioButtonModeShe.Checked)
+                if (radioButtonModeHe.Checked || radioButtonModeShe.Checked || radioButtonModeHeCar.Checked)
                     return Mode.Casual;
-                else if (radioButtonModeHeBig.Checked || radioButtonModeHeGifts.Checked || radioButtonModeSheBig.Checked)
+               // else if (radioButtonModeHeBig.Checked || radioButtonModeHeGifts.Checked || radioButtonModeSheBig.Checked)
+                else
                     return Mode.Big;
-                return new Mode();
+                //return new Mode();
             }
         }
 
@@ -1418,6 +1592,9 @@ namespace FManager
 
             if (selected_item == _export_hebig || selected_item == _export_all)
                 pfile.SetDataFromDBToFile(db.GetData(DB.Tables.HeBig), DB.Tables.HeBig);
+
+            if (selected_item == _export_hecar || selected_item == _export_all)
+                pfile.SetDataFromDBToFile(db.GetData(DB.Tables.HeCar), DB.Tables.HeCar);
 
             if (selected_item == _export_she || selected_item == _export_all)
                 pfile.SetDataFromDBToFile(db.GetData(DB.Tables.She), DB.Tables.She);
@@ -1679,7 +1856,7 @@ namespace FManager
                         if (!(hePerson == null))
                         {
                             result += "Gifts: " + hePerson["--"][0] + " руб." + Environment.NewLine;
-                            result += "Res: " + (Convert.ToInt32(dict["-"][0]) + Convert.ToInt32(hePerson["--"][0])).ToString() + " руб." + Environment.NewLine;
+                            result += "Res: " + (Math.Round(Convert.ToDouble(dict["-"][0]) + Convert.ToDouble(hePerson["--"][0]), 2)).ToString() + " руб." + Environment.NewLine;
                         }
                     }
                 }
@@ -1744,6 +1921,7 @@ namespace FManager
                     }
                     if (cmd == CmdForSpezialParam.Delete)
                     {
+                        exists = true;
                         if (speziaParam[i] == param)
                         {
                             speziaParam.Remove(param);

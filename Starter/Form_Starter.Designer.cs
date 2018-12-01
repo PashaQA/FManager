@@ -46,6 +46,7 @@
             this.textBoxCommitComment = new System.Windows.Forms.TextBox();
             this.labelHeaderFinancePanel = new System.Windows.Forms.Label();
             this.panelUpdaterFinance = new System.Windows.Forms.Panel();
+            this.checkBoxHeCar = new System.Windows.Forms.CheckBox();
             this.checkBoxHeGifts = new System.Windows.Forms.CheckBox();
             this.checkBoxHeBig = new System.Windows.Forms.CheckBox();
             this.checkBoxHe = new System.Windows.Forms.CheckBox();
@@ -190,7 +191,7 @@
             this.panelUpdater.Controls.Add(this.buttonUploadUpdate);
             this.panelUpdater.Location = new System.Drawing.Point(12, 320);
             this.panelUpdater.Name = "panelUpdater";
-            this.panelUpdater.Size = new System.Drawing.Size(327, 219);
+            this.panelUpdater.Size = new System.Drawing.Size(327, 233);
             this.panelUpdater.TabIndex = 55;
             // 
             // textBoxBackup
@@ -253,6 +254,7 @@
             // 
             this.panelUpdaterFinance.BackColor = System.Drawing.Color.Beige;
             this.panelUpdaterFinance.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelUpdaterFinance.Controls.Add(this.checkBoxHeCar);
             this.panelUpdaterFinance.Controls.Add(this.checkBoxHeGifts);
             this.panelUpdaterFinance.Controls.Add(this.checkBoxHeBig);
             this.panelUpdaterFinance.Controls.Add(this.checkBoxHe);
@@ -260,8 +262,19 @@
             this.panelUpdaterFinance.Controls.Add(this.checkBoxShe);
             this.panelUpdaterFinance.Location = new System.Drawing.Point(169, 70);
             this.panelUpdaterFinance.Name = "panelUpdaterFinance";
-            this.panelUpdaterFinance.Size = new System.Drawing.Size(72, 133);
+            this.panelUpdaterFinance.Size = new System.Drawing.Size(72, 155);
             this.panelUpdaterFinance.TabIndex = 3;
+            // 
+            // checkBoxHeCar
+            // 
+            this.checkBoxHeCar.AutoSize = true;
+            this.checkBoxHeCar.Location = new System.Drawing.Point(8, 128);
+            this.checkBoxHeCar.Name = "checkBoxHeCar";
+            this.checkBoxHeCar.Size = new System.Drawing.Size(56, 17);
+            this.checkBoxHeCar.TabIndex = 6;
+            this.checkBoxHeCar.Text = "HeCar";
+            this.checkBoxHeCar.UseVisualStyleBackColor = true;
+            this.checkBoxHeCar.CheckedChanged += new System.EventHandler(this.checkBoxHeCar_CheckedChanged);
             // 
             // checkBoxHeGifts
             // 
@@ -391,7 +404,6 @@
             this.запуститьДокументациюToolStripMenuItem.Name = "запуститьДокументациюToolStripMenuItem";
             this.запуститьДокументациюToolStripMenuItem.Size = new System.Drawing.Size(292, 22);
             this.запуститьДокументациюToolStripMenuItem.Text = "Запустить документацию";
-            this.запуститьДокументациюToolStripMenuItem.Click += new System.EventHandler(this.запуститьДокументациюToolStripMenuItem_Click);
             // 
             // панельЗапускаАналитиковToolStripMenuItem
             // 
@@ -441,7 +453,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
-            this.ClientSize = new System.Drawing.Size(351, 549);
+            this.ClientSize = new System.Drawing.Size(351, 555);
             this.Controls.Add(this.textBoxStatus);
             this.Controls.Add(this.labelHeaderUpdater);
             this.Controls.Add(this.panelUpdater);
@@ -506,5 +518,6 @@
         private System.Windows.Forms.ToolStripMenuItem запускПервойВерсииПриложенияToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem панельЗапускаАналитиковToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem финансовыйМенеджерToolStripMenuItem;
+        private System.Windows.Forms.CheckBox checkBoxHeCar;
     }
 }

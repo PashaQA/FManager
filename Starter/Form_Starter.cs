@@ -14,65 +14,23 @@ using Libs;
 
 namespace Starter
 {
-    /// FManager---------------------------------------------------------------------------------------
-    /// Формирование программы 16h
-    /// Доработка над модулями:
-    ///     Работа над обновление LatestHe - 7h
-    ///     Обработка с добавлением возможности сохранения ошибки при запуске драйвера - 1.5h
-    ///     Работа над переносом обновления под Git - 7h
-    ///     
-    ///  Разработка version 2.0: 
-    ///     Работа над модулем считывания и записи данных из файла в БД: 12h
-    ///     Проектирование интерфейса и часть первичной логики: 1h
-    ///     Реализация интерфейса: 6h
-    ///     Реализация первичной логики и доработка по интерфейсу: 8h
-    ///     Реализация модуля аналитики: 12h
-    ///     Реализация модуля администратора: 7h
-    ///     Реализация модуля обновления: 12.5h
-    ///     Реализация аналитики по таблицам He: 12h
-    ///     Реализация модуля дополнительных возможностей: 2h
-    ///     Реализоция перехода на SQLite: 3h
-    /// 
-    ///  Исправление багов:
-    ///     Если первый символ в строке название месяца не равен '-', тогда этот месяц игнорировался 1h
-    ///     Разделитель даты в случае разных БД 0.5h
-    
-    /// Starter------------------------------------------------------------------------------------------
-    /// Проектировка дизайна 2h
-    /// Реализация лаунчеров 9.5h
-    ///  
-    /// 
-    ///--------------------------------------------------------------------------------------------------
-    
-    /// Chart--------------------------------------------------------------------------------------------
-    /// Работа над интерфейсом: 0.5h
-    /// Работа над back-end: 1h
-    /// ------------------------------------------------------------------------------------------------
-    
-    ///------
-    ///FManager
-    /// -Добавить возможность запуска FManager'a без проверки на обновление, чтение данных с файла. Вынести данные настройки в стартер.
-    ///     Подумать о том, какие еще настройки можно вынести в стартер.
-    ///------
-
-    ///--------------------------------------------------------------------------------------------------
-    ///     Версия 3.0
-    ///     Аналитика одежды.
-    ///         /// CManager-----------------------------------------------------------------------------------------
-    /// 
-                ///--------------------------------------------------------------------------------------------------
-    ///-------------------------------------------------------------------------------------------------
-
     public partial class Form_Start_Apps : Form
     {
         private const string _he = "Он.txt";
         private const string _he_eng = "he.txt";
+
         private const string _heBig = "ОнКрупный.txt";
         private const string _heBig_eng = "hebig.txt";
+
         private const string _heGifts = "ОнШмот.txt";
         private const string _heGifts_eng = "hegifts.txt";
+
+        private const string _heCar = "ОнКар.txt";
+        private const string _heCar_eng = "hecar.txt";
+
         private const string _she = "Она.txt";
         private const string _she_eng = "she.txt";
+
         private const string _sheBig = "ОнаКрупный.txt";
         private const string _sheBig_eng = "shebig.txt";
 
@@ -130,6 +88,7 @@ namespace Starter
                 checkBoxHe.Checked = true;
                 checkBoxHeBig.Checked = true;
                 checkBoxHeGifts.Checked = true;
+                checkBoxHeCar.Checked = true;
             }
             else
             {
@@ -138,6 +97,8 @@ namespace Starter
                 checkBoxHe.Checked = false;
                 checkBoxHeBig.Checked = false;
                 checkBoxHeGifts.Checked = false;
+                checkBoxHeBig.Checked = false;
+                checkBoxHeCar.Checked = false;
             }
 
         }
@@ -264,11 +225,34 @@ namespace Starter
             }
         }
 
+        private void checkBoxHeCar_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxHeCar.Checked)
+            {
+                if (!checkChoosedFile(_heCar))
+                {
+                    checkBoxHeGifts.Checked = false;
+                }
+                else
+                {
+                    RenameFileIntoWorkFolder(_heCar, _heCar_eng);
+                    uploadFiles.Add(_heCar_eng);
+                }
+                CalibrationFinanaceCBChecked();
+            }
+            else
+            {
+                uploadFiles.Remove(_heCar_eng);
+                RenameFileIntoWorkFolder(_heCar_eng, _heCar);
+                CalibrationFinanceCBUnchecked();
+            }
+        }
 
         private void buttonUploadUpdate_Click(object sender, EventArgs e)
         {
             if (!checkBoxHe.Checked && !checkBoxHeBig.Checked && !checkBoxHeGifts.Checked &&
-                !checkBoxShe.Checked && !checkBoxSheBig.Checked && !checkBoxFinanceAll.Checked && !checkBoxCheckroom.Checked)
+                !checkBoxHeBig.Checked && !checkBoxHeCar.Checked && !checkBoxShe.Checked &&
+                !checkBoxSheBig.Checked && !checkBoxFinanceAll.Checked && !checkBoxCheckroom.Checked)
             {
                 MessageBox.Show("Необходимо выбрать таблицу для обновления.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -349,6 +333,11 @@ namespace Starter
                     count_exists++;
                     AppendTextInStatus("Для загрузки на сервер обнаружен файл: HeGifts.sys");
                 }
+                else if (backupFiles[i].EndsWith("HeCar.sys"))
+                {
+                    count_exists++;
+                    AppendTextInStatus("Для загрузки на сервер не ображен файл: HeCar.sys");
+                }
                 else if (backupFiles[i].EndsWith("stats.mdf"))
                 {
                     count_exists++;
@@ -366,7 +355,7 @@ namespace Starter
                 }
             }
 
-            if (count_exists < 6)
+            if (count_exists < 7)
             {
                 DialogResult result = MessageBox.Show("Не все файлы файлы статистики были обнаружены. Загрузить существующие?", "Уязвимость целостности",
                      MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -462,10 +451,6 @@ namespace Starter
                     "возможностей выберите 'Перейти к системным папкам' и удалите папку 'Files'.");
         }
 
-        private void запуститьДокументациюToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void перейтиКСистемнымПапкаToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -506,7 +491,8 @@ namespace Starter
         private void CalibrationFinanaceCBChecked()
         {
             if (checkBoxShe.Checked && checkBoxSheBig.Checked && checkBoxHe.Checked &&
-                checkBoxHeBig.Checked && checkBoxHeGifts.Checked)
+                checkBoxHeBig.Checked && checkBoxHeGifts.Checked && checkBoxHeBig.Checked &&
+                checkBoxHeCar.Checked)
                 checkBoxFinanceAll.Checked = true;
         }
 
@@ -517,7 +503,8 @@ namespace Starter
         {
             calibrate = true;
             if (!checkBoxShe.Checked || !checkBoxSheBig.Checked || !checkBoxHe.Checked ||
-                !checkBoxHeBig.Checked || !checkBoxHeGifts.Checked)
+                !checkBoxHeBig.Checked || !checkBoxHeGifts.Checked || !checkBoxHeBig.Checked ||
+                !checkBoxHeCar.Checked)
                 checkBoxFinanceAll.Checked = false;
             calibrate = false;
         }
@@ -563,10 +550,14 @@ namespace Starter
         /// <param name="message"></param>
         private void CommitUpdate(string fullpathdirectory, string message)
         {
-            Process.Start("cmd.exe", @"/c cd \ & cd " + fullpathdirectory +
+            ProcessStartInfo info = new ProcessStartInfo("cmd.exe", @"/c cd \ & cd " + fullpathdirectory +
                 @"& git add ." +
                 @"& git commit -m '" + message + "'" +
                 @"& git push origin -u");
+            Process gitExec = Process.Start(info);
+            gitExec.EnableRaisingEvents = true;
+            gitExec.WaitForExit();
+            gitExec.Close();
         }
 
         /// <summary>
@@ -614,5 +605,6 @@ namespace Starter
             buttonUploadUpdate.Enabled = value;
             checkBoxFinanceAll.Enabled = value;
         }
+
     }
 }

@@ -111,6 +111,14 @@ namespace Libs
             }
         }
 
+        public string locationHeCar
+        {
+            get
+            {
+                return locationWorkFolder + @"\HeCar.sys";
+            }
+        }
+
         public string locationSheBig
         {
             get
@@ -132,6 +140,14 @@ namespace Libs
             get
             {
                 return locationUpdateFolder + @"\Updater_FManager\hebig.txt";
+            }
+        }
+
+        public string locationNewFileHeCar
+        {
+            get
+            {
+                return locationUpdateFolder + @"\Updater_FManager\hecar.txt";
             }
         }
 
@@ -227,6 +243,8 @@ namespace Libs
                     ready_tables.Add("hebig.txt");
                 else if (file.EndsWith("hegifts.txt"))
                     ready_tables.Add("hegifts.txt");
+                else if (file.EndsWith("hecar.txt"))
+                    ready_tables.Add("hecar.txt");
                 else if (file.EndsWith("she.txt"))
                     ready_tables.Add("she.txt");
                 else if (file.EndsWith("shebig.txt"))

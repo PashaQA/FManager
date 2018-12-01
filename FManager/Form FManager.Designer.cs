@@ -51,6 +51,8 @@
             this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.full_line = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelModuleADM = new System.Windows.Forms.Panel();
+            this.checkBoxHeCarADM = new System.Windows.Forms.CheckBox();
+            this.buttonChart = new System.Windows.Forms.Button();
             this.checkBoxSheBigADM = new System.Windows.Forms.CheckBox();
             this.checkBoxPasha = new System.Windows.Forms.CheckBox();
             this.checkBoxHeBigADM = new System.Windows.Forms.CheckBox();
@@ -147,6 +149,8 @@
             this.textBoxResultPreviusMonth = new System.Windows.Forms.TextBox();
             this.labelHeaderModuleAnalitics = new System.Windows.Forms.Label();
             this.panelMode = new System.Windows.Forms.Panel();
+            this.radioButtonModeHeCar = new System.Windows.Forms.RadioButton();
+            this.radioButtonModeHeAll = new System.Windows.Forms.RadioButton();
             this.radioButtonModeSheBig = new System.Windows.Forms.RadioButton();
             this.radioButtonModeHeBig = new System.Windows.Forms.RadioButton();
             this.radioButtonModeShe = new System.Windows.Forms.RadioButton();
@@ -168,7 +172,12 @@
             this.labelHeaderModuleDopInstrumental = new System.Windows.Forms.Label();
             this.labelHeaderModuleAdm = new System.Windows.Forms.Label();
             this.textBoxList = new System.Windows.Forms.TextBox();
-            this.buttonChart = new System.Windows.Forms.Button();
+            this.checkBoxBenz = new System.Windows.Forms.CheckBox();
+            this.checkBoxSH = new System.Windows.Forms.CheckBox();
+            this.checkBoxKr = new System.Windows.Forms.CheckBox();
+            this.checkBoxTun = new System.Windows.Forms.CheckBox();
+            this.checkBoxR = new System.Windows.Forms.CheckBox();
+            this.checkBoxRem = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericYears)).BeginInit();
             this.panelChooseData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.statsDataSetBindingSource)).BeginInit();
@@ -352,6 +361,7 @@
             // 
             this.panelModuleADM.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.panelModuleADM.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelModuleADM.Controls.Add(this.checkBoxHeCarADM);
             this.panelModuleADM.Controls.Add(this.buttonChart);
             this.panelModuleADM.Controls.Add(this.checkBoxSheBigADM);
             this.panelModuleADM.Controls.Add(this.checkBoxPasha);
@@ -370,13 +380,33 @@
             this.panelModuleADM.Controls.Add(this.textBoxSQLQuery);
             this.panelModuleADM.Location = new System.Drawing.Point(1389, 13);
             this.panelModuleADM.Name = "panelModuleADM";
-            this.panelModuleADM.Size = new System.Drawing.Size(273, 375);
+            this.panelModuleADM.Size = new System.Drawing.Size(273, 380);
             this.panelModuleADM.TabIndex = 43;
+            // 
+            // checkBoxHeCarADM
+            // 
+            this.checkBoxHeCarADM.AutoSize = true;
+            this.checkBoxHeCarADM.Location = new System.Drawing.Point(85, 331);
+            this.checkBoxHeCarADM.Name = "checkBoxHeCarADM";
+            this.checkBoxHeCarADM.Size = new System.Drawing.Size(56, 17);
+            this.checkBoxHeCarADM.TabIndex = 17;
+            this.checkBoxHeCarADM.Text = "HeCar";
+            this.checkBoxHeCarADM.UseVisualStyleBackColor = true;
+            // 
+            // buttonChart
+            // 
+            this.buttonChart.Location = new System.Drawing.Point(171, 141);
+            this.buttonChart.Name = "buttonChart";
+            this.buttonChart.Size = new System.Drawing.Size(95, 23);
+            this.buttonChart.TabIndex = 15;
+            this.buttonChart.Text = "Графики";
+            this.buttonChart.UseVisualStyleBackColor = true;
+            this.buttonChart.Click += new System.EventHandler(this.buttonChart_Click);
             // 
             // checkBoxSheBigADM
             // 
             this.checkBoxSheBigADM.AutoSize = true;
-            this.checkBoxSheBigADM.Location = new System.Drawing.Point(147, 305);
+            this.checkBoxSheBigADM.Location = new System.Drawing.Point(151, 331);
             this.checkBoxSheBigADM.Name = "checkBoxSheBigADM";
             this.checkBoxSheBigADM.Size = new System.Drawing.Size(60, 17);
             this.checkBoxSheBigADM.TabIndex = 14;
@@ -427,7 +457,7 @@
             // checkBoxSheADM
             // 
             this.checkBoxSheADM.AutoSize = true;
-            this.checkBoxSheADM.Location = new System.Drawing.Point(86, 328);
+            this.checkBoxSheADM.Location = new System.Drawing.Point(151, 304);
             this.checkBoxSheADM.Name = "checkBoxSheADM";
             this.checkBoxSheADM.Size = new System.Drawing.Size(45, 17);
             this.checkBoxSheADM.TabIndex = 9;
@@ -628,7 +658,7 @@
             this.panelModuleUpdate.Controls.Add(this.textBoxUpdate);
             this.panelModuleUpdate.Location = new System.Drawing.Point(930, 12);
             this.panelModuleUpdate.Name = "panelModuleUpdate";
-            this.panelModuleUpdate.Size = new System.Drawing.Size(453, 382);
+            this.panelModuleUpdate.Size = new System.Drawing.Size(497, 382);
             this.panelModuleUpdate.TabIndex = 45;
             // 
             // checkBoxAutoExport
@@ -1495,15 +1525,42 @@
             // 
             this.panelMode.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.panelMode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelMode.Controls.Add(this.radioButtonModeHeCar);
+            this.panelMode.Controls.Add(this.radioButtonModeHeAll);
             this.panelMode.Controls.Add(this.radioButtonModeSheBig);
             this.panelMode.Controls.Add(this.radioButtonModeHeBig);
             this.panelMode.Controls.Add(this.radioButtonModeShe);
             this.panelMode.Controls.Add(this.radioButtonModeHeGifts);
             this.panelMode.Controls.Add(this.radioButtonModeHe);
-            this.panelMode.Location = new System.Drawing.Point(776, 13);
+            this.panelMode.Location = new System.Drawing.Point(755, 13);
             this.panelMode.Name = "panelMode";
-            this.panelMode.Size = new System.Drawing.Size(148, 106);
+            this.panelMode.Size = new System.Drawing.Size(169, 106);
             this.panelMode.TabIndex = 49;
+            // 
+            // radioButtonModeHeCar
+            // 
+            this.radioButtonModeHeCar.AutoSize = true;
+            this.radioButtonModeHeCar.Font = new System.Drawing.Font("MV Boli", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.radioButtonModeHeCar.Location = new System.Drawing.Point(89, 26);
+            this.radioButtonModeHeCar.Name = "radioButtonModeHeCar";
+            this.radioButtonModeHeCar.Size = new System.Drawing.Size(66, 20);
+            this.radioButtonModeHeCar.TabIndex = 7;
+            this.radioButtonModeHeCar.TabStop = true;
+            this.radioButtonModeHeCar.Text = "HeCar";
+            this.radioButtonModeHeCar.UseVisualStyleBackColor = true;
+            this.radioButtonModeHeCar.CheckedChanged += new System.EventHandler(this.radioButtonModeHeCar_CheckedChanged);
+            // 
+            // radioButtonModeHeAll
+            // 
+            this.radioButtonModeHeAll.AutoSize = true;
+            this.radioButtonModeHeAll.Font = new System.Drawing.Font("MV Boli", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.radioButtonModeHeAll.Location = new System.Drawing.Point(89, 10);
+            this.radioButtonModeHeAll.Name = "radioButtonModeHeAll";
+            this.radioButtonModeHeAll.Size = new System.Drawing.Size(58, 20);
+            this.radioButtonModeHeAll.TabIndex = 5;
+            this.radioButtonModeHeAll.TabStop = true;
+            this.radioButtonModeHeAll.Text = "HeAll";
+            this.radioButtonModeHeAll.UseVisualStyleBackColor = true;
             // 
             // radioButtonModeSheBig
             // 
@@ -1576,7 +1633,7 @@
             this.labelHeaderMode.BackColor = System.Drawing.Color.Ivory;
             this.labelHeaderMode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelHeaderMode.Font = new System.Drawing.Font("MV Boli", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
-            this.labelHeaderMode.Location = new System.Drawing.Point(788, 6);
+            this.labelHeaderMode.Location = new System.Drawing.Point(765, 6);
             this.labelHeaderMode.Name = "labelHeaderMode";
             this.labelHeaderMode.Size = new System.Drawing.Size(44, 13);
             this.labelHeaderMode.TabIndex = 50;
@@ -1586,6 +1643,12 @@
             // 
             this.panelSpecial.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.panelSpecial.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelSpecial.Controls.Add(this.checkBoxRem);
+            this.panelSpecial.Controls.Add(this.checkBoxR);
+            this.panelSpecial.Controls.Add(this.checkBoxTun);
+            this.panelSpecial.Controls.Add(this.checkBoxKr);
+            this.panelSpecial.Controls.Add(this.checkBoxSH);
+            this.panelSpecial.Controls.Add(this.checkBoxBenz);
             this.panelSpecial.Controls.Add(this.checkBoxK);
             this.panelSpecial.Controls.Add(this.checkBoxB);
             this.panelSpecial.Controls.Add(this.buttonInfoInSpesialParams);
@@ -1595,14 +1658,14 @@
             this.panelSpecial.Controls.Add(this.checkBoxT);
             this.panelSpecial.Location = new System.Drawing.Point(335, 13);
             this.panelSpecial.Name = "panelSpecial";
-            this.panelSpecial.Size = new System.Drawing.Size(435, 106);
+            this.panelSpecial.Size = new System.Drawing.Size(414, 106);
             this.panelSpecial.TabIndex = 31;
             // 
             // checkBoxK
             // 
             this.checkBoxK.AutoSize = true;
             this.checkBoxK.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBoxK.Location = new System.Drawing.Point(150, 8);
+            this.checkBoxK.Location = new System.Drawing.Point(160, 8);
             this.checkBoxK.Name = "checkBoxK";
             this.checkBoxK.Size = new System.Drawing.Size(34, 19);
             this.checkBoxK.TabIndex = 7;
@@ -1715,6 +1778,7 @@
             "Экспортировать He",
             "Экспортировать HeGifts",
             "Экспортировать HeBig",
+            "Экспортировать HeCar",
             "Экспортировать все данные"});
             this.comboBoxDopInstrumental.Location = new System.Drawing.Point(19, 12);
             this.comboBoxDopInstrumental.Name = "comboBoxDopInstrumental";
@@ -1766,20 +1830,83 @@
             this.textBoxList.Size = new System.Drawing.Size(225, 580);
             this.textBoxList.TabIndex = 54;
             // 
-            // buttonChart
+            // checkBoxBenz
             // 
-            this.buttonChart.Location = new System.Drawing.Point(171, 141);
-            this.buttonChart.Name = "buttonChart";
-            this.buttonChart.Size = new System.Drawing.Size(95, 23);
-            this.buttonChart.TabIndex = 15;
-            this.buttonChart.Text = "Графики";
-            this.buttonChart.UseVisualStyleBackColor = true;
-            this.buttonChart.Click += new System.EventHandler(this.buttonChart_Click);
+            this.checkBoxBenz.AutoSize = true;
+            this.checkBoxBenz.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxBenz.Location = new System.Drawing.Point(160, 24);
+            this.checkBoxBenz.Name = "checkBoxBenz";
+            this.checkBoxBenz.Size = new System.Drawing.Size(58, 19);
+            this.checkBoxBenz.TabIndex = 8;
+            this.checkBoxBenz.Text = "БЕНЗ";
+            this.checkBoxBenz.UseVisualStyleBackColor = true;
+            this.checkBoxBenz.CheckedChanged += new System.EventHandler(this.checkBoxBenz_CheckedChanged);
+            // 
+            // checkBoxSH
+            // 
+            this.checkBoxSH.AutoSize = true;
+            this.checkBoxSH.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxSH.Location = new System.Drawing.Point(160, 40);
+            this.checkBoxSH.Name = "checkBoxSH";
+            this.checkBoxSH.Size = new System.Drawing.Size(37, 19);
+            this.checkBoxSH.TabIndex = 9;
+            this.checkBoxSH.Text = "Ш";
+            this.checkBoxSH.UseVisualStyleBackColor = true;
+            this.checkBoxSH.CheckedChanged += new System.EventHandler(this.checkBoxSH_CheckedChanged);
+            // 
+            // checkBoxKr
+            // 
+            this.checkBoxKr.AutoSize = true;
+            this.checkBoxKr.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxKr.Location = new System.Drawing.Point(160, 57);
+            this.checkBoxKr.Name = "checkBoxKr";
+            this.checkBoxKr.Size = new System.Drawing.Size(41, 19);
+            this.checkBoxKr.TabIndex = 10;
+            this.checkBoxKr.Text = "КР";
+            this.checkBoxKr.UseVisualStyleBackColor = true;
+            this.checkBoxKr.CheckedChanged += new System.EventHandler(this.checkBoxKr_CheckedChanged);
+            // 
+            // checkBoxTun
+            // 
+            this.checkBoxTun.AutoSize = true;
+            this.checkBoxTun.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxTun.Location = new System.Drawing.Point(160, 74);
+            this.checkBoxTun.Name = "checkBoxTun";
+            this.checkBoxTun.Size = new System.Drawing.Size(54, 19);
+            this.checkBoxTun.TabIndex = 11;
+            this.checkBoxTun.Text = "ТЮН";
+            this.checkBoxTun.UseVisualStyleBackColor = true;
+            this.checkBoxTun.CheckedChanged += new System.EventHandler(this.checkBoxTun_CheckedChanged);
+            // 
+            // checkBoxR
+            // 
+            this.checkBoxR.AutoSize = true;
+            this.checkBoxR.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxR.Location = new System.Drawing.Point(224, 8);
+            this.checkBoxR.Name = "checkBoxR";
+            this.checkBoxR.Size = new System.Drawing.Size(34, 19);
+            this.checkBoxR.TabIndex = 12;
+            this.checkBoxR.Text = "Р";
+            this.checkBoxR.UseVisualStyleBackColor = true;
+            this.checkBoxR.CheckedChanged += new System.EventHandler(this.checkBoxR_CheckedChanged);
+            // 
+            // checkBoxRem
+            // 
+            this.checkBoxRem.AutoSize = true;
+            this.checkBoxRem.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxRem.Location = new System.Drawing.Point(224, 24);
+            this.checkBoxRem.Name = "checkBoxRem";
+            this.checkBoxRem.Size = new System.Drawing.Size(51, 19);
+            this.checkBoxRem.TabIndex = 13;
+            this.checkBoxRem.Text = "РЕМ";
+            this.checkBoxRem.UseVisualStyleBackColor = true;
+            this.checkBoxRem.CheckedChanged += new System.EventHandler(this.checkBoxRem_CheckedChanged);
             // 
             // FManager
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1668, 909);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(1366, 745);
             this.Controls.Add(this.textBoxList);
             this.Controls.Add(this.labelHeaderModuleDopInstrumental);
             this.Controls.Add(this.panelDopInstrumental);
@@ -1995,6 +2122,15 @@
         private System.Windows.Forms.CheckBox checkBoxSheBigADM;
         private System.Windows.Forms.CheckBox checkBoxK;
         private System.Windows.Forms.Button buttonChart;
+        private System.Windows.Forms.RadioButton radioButtonModeHeAll;
+        private System.Windows.Forms.RadioButton radioButtonModeHeCar;
+        private System.Windows.Forms.CheckBox checkBoxHeCarADM;
+        private System.Windows.Forms.CheckBox checkBoxBenz;
+        private System.Windows.Forms.CheckBox checkBoxSH;
+        private System.Windows.Forms.CheckBox checkBoxKr;
+        private System.Windows.Forms.CheckBox checkBoxRem;
+        private System.Windows.Forms.CheckBox checkBoxR;
+        private System.Windows.Forms.CheckBox checkBoxTun;
     }
 }
 

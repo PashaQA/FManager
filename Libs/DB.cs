@@ -11,6 +11,13 @@ namespace Libs
 {
     public class DB
     {
+        public const string _he = "He";
+        public const string _hebig = "HeBig";
+        public const string _hegifts = "HeGifts";
+        public const string _hecar = "HeCar";
+        public const string _she = "She";
+        public const string _shebig = "SheBig";
+
         public enum Tables
         {
             She,
@@ -18,9 +25,11 @@ namespace Libs
             He,
             HeGifts,
             HeBig,
+            HeCar,
             AbstractCASUAL,
             AbstractBIG
         }
+
     }
 
     public class DB_mssql
@@ -460,7 +469,7 @@ namespace Libs
             Open();
             if (table == DB.Tables.He)
             {
-                cmd.CommandText = "create table He(" +
+                cmd.CommandText = string.Format("create table {0}(" +
                                     "id integer primary key autoincrement, " +
                                      "date_expense date not null," +
                                      "event_type nvarchar(2) not null, " +
@@ -468,11 +477,11 @@ namespace Libs
                                      "count_expenses int, " +
                                      "description nvarchar(255) default null," +
                                      "type nvarchar(3) default null, " +
-                                     "full_line nvarchar(255) not null);\n";
+                                     "full_line nvarchar(255) not null);\n", DB._he);
             }
             if (table == DB.Tables.She)
             {
-                cmd.CommandText += "create table She(" +
+                cmd.CommandText += string.Format("create table {0}(" +
                                     "id integer primary key autoincrement, " +
                                      "date_expense date not null," +
                                      "event_type nvarchar(2) not null, " +
@@ -480,38 +489,50 @@ namespace Libs
                                       "count_expenses int, " +
                                      "description nvarchar(255) default null," +
                                      "type nvarchar(3) default null, " +
-                                     "full_line nvarchar(255) not null);\n";
+                                     "full_line nvarchar(255) not null);\n", DB._she);
             }
             if (table == DB.Tables.HeGifts)
             {
-                cmd.CommandText += "create table HeGifts(" +
+                cmd.CommandText += string.Format("create table {0}(" +
                                      "id integer primary key autoincrement, " +
                                      "date_expense date not null," +
                                      "description nvarchar(255) not null," +
                                       "expenses nvarchar(100) not null," +
                                        "type nvarchar(3) not null," +
                                        "param nvarchar(1)," +
-                                       "full_line nvarchar(100));\n";
+                                       "full_line nvarchar(100));\n", DB._hegifts);
             }
             if (table == DB.Tables.HeBig)
             {
-                cmd.CommandText += "create table HeBig(" +
+                cmd.CommandText += string.Format("create table {0}(" +
                                      "id integer primary key autoincrement, " +
                                      "date_expense date not null," +
                                      "description nvarchar(255) not null," +
                                      "expenses nvarchar(100) not null," +
                                        "type nvarchar(3) not null," +
-                                       "full_line nvarchar(100));\n";
+                                       "full_line nvarchar(100));\n", DB._hebig);
+            }
+            if (table == DB.Tables.HeCar)
+            {
+                cmd.CommandText = string.Format("create table {0}(" +
+                                    "id integer primary key autoincrement, " +
+                                     "date_expense date not null," +
+                                     "event_type nvarchar(2) not null, " +
+                                     "count int not null, " +
+                                     "count_expenses int, " +
+                                     "description nvarchar(255) default null," +
+                                     "type nvarchar(3) default null, " +
+                                     "full_line nvarchar(255) not null);\n", DB._hecar);
             }
             if (table == DB.Tables.SheBig)
             {
-                cmd.CommandText += "create table SheBig(" +
+                cmd.CommandText += string.Format("create table {0}" +
                                      "id integer primary key autoincrement, " +
                                      "date_expense date not null," +
                                      "description nvarchar(255) not null," +
                                      "expenses nvarchar(100) not null," +
                                        "type nvarchar(3) not null," +
-                                       "full_line nvarchar(100));\n";
+                                       "full_line nvarchar(100));\n", DB._shebig);
             }
             try
             {
@@ -537,15 +558,17 @@ namespace Libs
             {
                 string nameTable = string.Empty;
                 if (table == DB.Tables.He)
-                    nameTable = "He";
+                    nameTable = DB._he;
                 if (table == DB.Tables.HeBig)
-                    nameTable = "HeBig";
+                    nameTable = DB._hebig;
                 if (table == DB.Tables.HeGifts)
-                    nameTable = "HeGifts";
+                    nameTable = DB._hegifts;
+                if (table == DB.Tables.HeCar)
+                    nameTable = DB._hecar;
                 if (table == DB.Tables.She)
-                    nameTable = "She";
+                    nameTable = DB._she;
                 if (table == DB.Tables.SheBig)
-                    nameTable = "SheBig";
+                    nameTable = DB._shebig;
                 Open();
                 cmd.CommandText = "drop table " + nameTable;
                 cmd.ExecuteReader();
@@ -580,18 +603,19 @@ namespace Libs
                 Open();
                 string nameTable = "";
                 if (table == DB.Tables.He)
-                    nameTable = "He";
+                    nameTable = DB._he;
                 else if (table == DB.Tables.She)
-                    nameTable = "She";
+                    nameTable = DB._she;
+                else if (table == DB.Tables.HeCar)
+                    nameTable = DB._hecar;
                 else
                 {
                     MessageBox.Show("Выбранная таблциа не поддерживется для записи из этой функции.", "Ошибкочка",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                cmd.CommandText = string.Format("insert into " + nameTable +
-                    "(date_expense, event_type, count, count_expenses, description, type, full_line) values('{0}', '{1}', {2}, {3}, '{4}', '{5}', '{6}')",
-                    date_expense, event_type, count, count_expenses, description, type, full_line);
+                cmd.CommandText = string.Format("insert into {7} (date_expense, event_type, count, count_expenses, description, type, full_line) values('{0}', '{1}', {2}, {3}, '{4}', '{5}', '{6}')",
+                    date_expense, event_type, count, count_expenses, description, type, full_line, nameTable);
                 //cmd.CommandText = "insert into she(date_expense, event_type, count, count_expenses, description, type, full_line) values('2016-01-05', '-', 10, 2, 'asda', 'н', 'dsfsdfsfs');";
                 cmd.ExecuteReader();
             }
@@ -620,25 +644,25 @@ namespace Libs
                 Open();
                 string nameTable = "";
                 if (table == DB.Tables.HeBig)
-                    nameTable = "HeBig";
+                    nameTable = DB._hebig;
                 else if (table == DB.Tables.HeGifts)
-                    nameTable = "HeGifts";
+                    nameTable = DB._hegifts;
                 else if (table == DB.Tables.SheBig)
-                    nameTable = "SheBig";
+                    nameTable = DB._shebig;
                 else
                 {
-                    MessageBox.Show("Выбранная табоица не поддерживается для записи из этой функции.", "Ошибочка",
+                    MessageBox.Show("Выбранная таблица не поддерживается для записи из этой функции.", "Ошибочка",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                if (table == DB.Tables.HeBig || table == DB.Tables.SheBig)
-                    cmd.CommandText += string.Format("insert into " + nameTable + "(date_expense, description, expenses, type, full_line)" +
+                if (table != DB.Tables.HeGifts)
+                    cmd.CommandText += string.Format("insert into {5}(date_expense, description, expenses, type, full_line)" +
                     " values ('{0}', '{1}', '{2}', '{3}', '{4}')",
-                    date_expenses, description, expenses, type, full_line);
+                    date_expenses, description, expenses, type, full_line, nameTable);
                 else
-                    cmd.CommandText += string.Format("insert into " + nameTable + "(date_expense, description, expenses, type, param, full_line)" +
+                    cmd.CommandText += string.Format("insert into {6}(date_expense, description, expenses, type, param, full_line)" +
                         " values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')",
-                        date_expenses, description, expenses, type, param, full_line);
+                        date_expenses, description, expenses, type, param, full_line, nameTable);
                 cmd.ExecuteReader();
             }
             catch (Exception ex)
@@ -659,15 +683,17 @@ namespace Libs
         {
             string nameTable = string.Empty;
             if (table == DB.Tables.She)
-                nameTable = "She";
+                nameTable = DB._she;
             if (table == DB.Tables.He)
-                nameTable = "He";
+                nameTable = DB._he;
             if (table == DB.Tables.HeGifts)
-                nameTable = "HeGifts";
+                nameTable = DB._hegifts;
             if (table == DB.Tables.HeBig)
-                nameTable = "HeBig";
+                nameTable = DB._hebig;
+            if (table == DB.Tables.HeCar)
+                nameTable = DB._hecar;
             if (table == DB.Tables.SheBig)
-                nameTable = "SheBig";
+                nameTable = DB._shebig;
             try
             {
                 Open();
@@ -713,15 +739,17 @@ namespace Libs
             }
             for (int i = 0; i < names.Count; i++)
             {
-                if (names[i] == "He")
+                if (names[i] == DB._he)
                     tables.Add(DB.Tables.He);
-                if (names[i] == "HeBig")
+                if (names[i] == DB._hebig)
                     tables.Add(DB.Tables.HeBig);
-                if (names[i] == "HeGifts")
+                if (names[i] == DB._hegifts)
                     tables.Add(DB.Tables.HeGifts);
-                if (names[i] == "She")
+                if (names[i] == DB._hecar)
+                    tables.Add(DB.Tables.HeCar);
+                if (names[i] == DB._she)
                     tables.Add(DB.Tables.She);
-                if (names[i] == "SheBig")
+                if (names[i] == DB._shebig)
                     tables.Add(DB.Tables.SheBig);
             }
             return tables;
@@ -773,15 +801,17 @@ namespace Libs
                 Open();
                 string tableName = "";
                 if (table == DB.Tables.He)
-                    tableName = "He";
+                    tableName = DB._he;
                 else if (table == DB.Tables.She)
-                    tableName = "She";
+                    tableName = DB._she;
                 else if (table == DB.Tables.HeGifts)
-                    tableName = "HeGifts";
+                    tableName = DB._hegifts;
                 else if (table == DB.Tables.HeBig)
-                    tableName = "HeBig";
+                    tableName = DB._hebig;
+                else if (table == DB.Tables.HeCar)
+                    tableName = DB._hecar;
                 else if (table == DB.Tables.SheBig)
-                    tableName = "SheBig";
+                    tableName = DB._shebig;
                 cmd.CommandText = "select * from " + tableName;
                 reader = cmd.ExecuteReader();
                 int counter = 0;

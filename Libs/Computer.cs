@@ -91,6 +91,12 @@ namespace Libs
                 if (update)
                     path = assis.locationNewFile;
             }
+            else if (table == DB.Tables.HeCar)
+            {
+                path = assis.locationHeCar;
+                if (update)
+                    path = assis.locationNewFileHeCar;
+            }
             else
             {
                 MessageBox.Show("Выбранная табоица не поддерживается для записи из этой функции.", "Ошибочка",
@@ -309,10 +315,12 @@ namespace Libs
                 path = assis.locationHeBig;
             else if (table == DB.Tables.HeGifts)
                 path = assis.locationHeGifts;
+            else if (table == DB.Tables.HeCar)
+                path = assis.locationHeCar;
             else throw new Exception("Выбрананя таблица не поддерживается в данной функции.");
 
             List<string> fullList = new List<string>();
-            if (table == DB.Tables.He || table == DB.Tables.She)
+            if (table == DB.Tables.He || table == DB.Tables.She || table == DB.Tables.HeCar)
             {
                 string dateAdded = string.Empty;
                 for (int i = 0; i < data.Count; i++)
@@ -694,8 +702,8 @@ namespace Libs
         /// <returns></returns>
         public Dictionary<string, string[]> getExpensesAllTime(List<string> spezialParams)
         {
-            int expenses = 0;
-            int expensesPerson = 0;
+            double expenses = 0;
+            double expensesPerson = 0;
             ClearLists();
             for (int i = 0; i < data.Count; i++)
             {
@@ -730,8 +738,8 @@ namespace Libs
         /// <returns></returns>
         public Dictionary<string, string[]> getExpensesYear(List<string> spezialParams, string year)
         {
-            int expenses = 0;
-            int personExpenses = 0;
+            double expenses = 0;
+            double personExpenses = 0;
             int profit = 0;
             ClearLists();
             for (int i = 0; i < data.Count; i++)
@@ -782,8 +790,8 @@ namespace Libs
         /// <returns></returns>
         public Dictionary<string, string[]> getExpensesMonth(List<string> spezialParams, string year, string month)
         {
-            int expenses = 0;
-            int personExpenses = 0;
+            double expenses = 0;
+            double personExpenses = 0;
             int profit = 0;
             ClearLists();
             string date = ParseDBAssistant.getIntMonthFromString(month) + "." + year;
@@ -834,8 +842,8 @@ namespace Libs
         /// <returns></returns>
         public Dictionary<string, string[]> getAVGExpenses(List<string> spezialParams)
         {
-            int expenses = 0;
-            int personExpenses = 0;
+            double expenses = 0;
+            double personExpenses = 0;
             ClearLists();
             for (int i = 0; i < data.Count; i++)
             {
@@ -860,8 +868,8 @@ namespace Libs
             }
             try
             {
-                expenses = expenses / getMonths().Count;
-                personExpenses = personExpenses / getMonths().Count;
+                expenses = Math.Round(expenses / getMonths().Count, 2);
+                personExpenses = Math.Round(personExpenses / getMonths().Count, 2);
                 resultDic["-"] = new string[1] { expenses.ToString() };
                 resultDic["--"] = new string[1] { personExpenses.ToString() };
             }
@@ -882,8 +890,8 @@ namespace Libs
         public Dictionary<string, string[]> getCigarettesAllTime()
         {
             int count = 0;
-            int expenses = 0;
-            int personExpenses = 0;
+            double expenses = 0;
+            double personExpenses = 0;
             ClearLists();
             for (int i = 0; i < data.Count; i++)
             {
@@ -918,8 +926,8 @@ namespace Libs
         /// <returns></returns>
         public Dictionary<string, string[]> getCigarettesAVG()
         {
-            int expenses = 0;
-            int personExpenses = 0;
+            double expenses = 0;
+            double personExpenses = 0;
             int count = 0;
             ClearLists();
             for (int i = 0; i < data.Count; i++)
@@ -967,8 +975,8 @@ namespace Libs
         public Dictionary<string, string[]> getCigarettesYear(string year)
         {
             int count = 0;
-            int expenses = 0;
-            int personExpenses = 0;
+            double expenses = 0;
+            double personExpenses = 0;
             ClearLists();
             for (int i = 0; i < data.Count; i++)
             {
@@ -1009,8 +1017,8 @@ namespace Libs
         public Dictionary<string, string[]> getCigarettesMonth(string year, string month)
         {
             int count = 0;
-            int expenses = 0;
-            int personExpenses = 0;
+            double expenses = 0;
+            double personExpenses = 0;
             ClearLists();
             string date = ParseDBAssistant.getIntMonthFromString(month) + "/" + year;
             for (int i = 0; i < data.Count; i++)
@@ -1050,7 +1058,7 @@ namespace Libs
         /// <returns></returns>
         public Dictionary<string, string[]> getCandles()
         {
-            int expenses = 0;
+            double expenses = 0;
             int count = 0;
             ClearLists();
             for (int i = 0; i < data.Count; i++)
@@ -1058,13 +1066,18 @@ namespace Libs
                 if (data[i][_description].IndexOf("свечи") != -1)
                 {
                     expenses += getExpensesFromDay(data[i]);
-                    listDescExpenses.Add(data[i][_full_line]);
+
+                    int idx = data[i][_date_expense].IndexOf(' ');
+                    string date = data[i][_date_expense].Remove(idx);
+                    listDescExpenses.Add(date + " - " + data[i][_count]);
+
                     count += getCount(data[i][_count_expenses]);
                 }
             }
             resultDic["expenses"] = new string[1] { expenses.ToString() };
             resultDic["count"] = new string[1] { count.ToString() };
             resultDic["descExpenses"] = getResDesc(listDescExpenses);
+            resultDic["descPersonExpenses"] = new string[0];
             return resultDic;
         }
 
@@ -1075,7 +1088,7 @@ namespace Libs
         /// <returns></returns>
         public Dictionary<string, string[]> getRelax()
         {
-            int expenses = 0;
+            double expenses = 0;
             int count = 0;
             ClearLists();
             for (int i = 0; i < data.Count; i++)
@@ -1095,16 +1108,17 @@ namespace Libs
             resultDic["expenses"] = new string[1] { expenses.ToString() };
             resultDic["count"] = new string[1] { count.ToString() };
             resultDic["descExpenses"] = getResDesc(listDescExpenses);
+            resultDic["descPersonExpenses"] = new string[1];
             return resultDic;
         }
 
 
-        private Int32 getExpensesFromDay(Dictionary<string, string> day)
+        private Double getExpensesFromDay(Dictionary<string, string> day)
         {
             if (day[_count_expenses] == "0")
-                return Convert.ToInt32(day[_count]);
+                return Convert.ToDouble(day[_count]);
             else
-                return Convert.ToInt32(day[_count]) * Convert.ToInt32(day[_count_expenses]);
+                return Convert.ToDouble(day[_count]) * Convert.ToDouble(day[_count_expenses]);
         }
 
         private String[] getResDesc(List<string> listDesc)
