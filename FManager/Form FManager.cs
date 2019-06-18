@@ -23,6 +23,7 @@ namespace FManager
         private const string _export_shebig = "Экспортировать SheBig";
         private const string _export_hecar = "Экспортировать HeCar";
         private const string _export_all = "Экспортировать все данные";
+        private const string _show_chart = "Отобразить диаграмму";
 
         private bool helpSql = false;
         private string lastUpdate = string.Empty;
@@ -151,6 +152,16 @@ namespace FManager
 
             if (File.Exists(assistant.locationNeedExport))
                 NeedExport();
+
+            //Добавляем команды дополнительного инструментария
+            comboBoxDopInstrumental.Items.Add(_export_he);
+            comboBoxDopInstrumental.Items.Add(_export_hebig);
+            comboBoxDopInstrumental.Items.Add(_export_hegifts);
+            comboBoxDopInstrumental.Items.Add(_export_hecar);
+            comboBoxDopInstrumental.Items.Add(_export_she);
+            comboBoxDopInstrumental.Items.Add(_export_shebig);
+            comboBoxDopInstrumental.Items.Add(_export_all);
+            comboBoxDopInstrumental.Items.Add(_show_chart);
         }
 
         private void btnChooseData_Click(object sender, EventArgs e)
@@ -1224,6 +1235,14 @@ namespace FManager
 
                 textBoxInfoMessage.Text += "Экспортировка таблиц(ы) завершена." + Environment.NewLine;
             }
+            else if (comboBoxDopInstrumental.SelectedItem.ToString() == _show_chart)
+            {
+                int _mode = 0;
+                if (getMode == Mode.Big)
+                    _mode = 1;
+                Form_Chart form = new Form_Chart(pdbCasual, pdbBig, _mode, spezailParams, numericYears.Value);
+                form.Show();
+            }
         }
 
         private void textBoxSQLQuery_MouseMove(object sender, MouseEventArgs e)
@@ -1252,20 +1271,6 @@ namespace FManager
                 else
                  if (File.Exists(assistant.locationPermissionAutoExport))
                     File.Delete(assistant.locationPermissionAutoExport);
-        }
-
-
-        private void buttonChart_Click(object sender, EventArgs e)
-        {
-            DB.Tables table;
-            if (radioButtonModeHe.Checked) table = DB.Tables.He;
-            else if (radioButtonModeHeBig.Checked) table = DB.Tables.HeBig;
-            else if (radioButtonModeHeGifts.Checked) table = DB.Tables.HeGifts;
-            else if (radioButtonModeHeCar.Checked) table = DB.Tables.HeCar;
-            else if (radioButtonModeShe.Checked) table = DB.Tables.She;
-            else table = DB.Tables.SheBig;
-            Form_Chart form = new Form_Chart(spezailParams, table);
-            form.Show();
         }
 
 

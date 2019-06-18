@@ -812,7 +812,7 @@ namespace Libs
                     tableName = DB._hecar;
                 else if (table == DB.Tables.SheBig)
                     tableName = DB._shebig;
-                cmd.CommandText = "select * from " + tableName;
+                cmd.CommandText = "select * from " + tableName + ";";
                 reader = cmd.ExecuteReader();
                 int counter = 0;
                 while (reader.Read())

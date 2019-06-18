@@ -10,83 +10,105 @@ using Libs;
 
 namespace Chart
 {
-    /// <summary>
-    /// 1. По дефолту пишем мин дату старта и макс дату завершения
-    /// 2. расчет идет по месяцам
-    /// 3. если запросы тяжелые, делаем кеширование
-    /// </summary>
     public partial class Form_Chart : Form
     {
-        private DB_sqlite db = new DB_sqlite();
+        private Mode mode;
         private ParseDBCasualTables pdbCasual;
         private ParseDBBigTables pdbBig;
-
-        private DB.Tables activeTable;
         private List<string> spezialParams;
-        
-        public Form_Chart(List<string> _spezialParams, DB.Tables _activeTable)
+        private int year;
+
+        private enum Mode
         {
+            Casual,
+            Big
+        }
+
+
+        public Form_Chart(ParseDBCasualTables _pdbCasual, ParseDBBigTables _pdbBig, int _mode, List<string> _spezialParams, decimal _year)
+        {
+            //Настройка для вычесления затрат
+            pdbCasual = _pdbCasual;
+            pdbBig = _pdbBig;
+            if (_mode == 0)
+                mode = Mode.Casual;
+            else
+                mode = Mode.Big;
             spezialParams = _spezialParams;
-            activeTable = _activeTable;
+            year = Convert.ToInt32(_year);
+
             InitializeComponent();
+
+            //Настройка для панели диаграммы
+            chartCurrentYear.ChartAreas[0].AxisX.ScaleView.Zoom(0, 12);
+            chartCurrentYear.ChartAreas[0].CursorX.IsUserEnabled = true;
+            chartCurrentYear.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
+            chartCurrentYear.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
+            chartCurrentYear.ChartAreas[0].AxisX.ScrollBar.IsPositionedInside = true;
+            chartCurrentYear.ChartAreas[0].CursorY.IsUserEnabled = true;
+            chartCurrentYear.ChartAreas[0].CursorY.IsUserSelectionEnabled = true;
+            chartCurrentYear.ChartAreas[0].AxisY.ScaleView.Zoomable = true;
+            chartCurrentYear.ChartAreas[0].AxisY.ScrollBar.IsPositionedInside = true;
+
+            chartAllYears.ChartAreas[0].AxisX.ScaleView.Zoom(0, 12);
+            chartAllYears.ChartAreas[0].CursorX.IsUserEnabled = true;
+            chartAllYears.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
+            chartAllYears.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
+            chartAllYears.ChartAreas[0].AxisX.ScrollBar.IsPositionedInside = true;
+
+            chartAllYears.ChartAreas[0].CursorY.IsUserEnabled = true;
+            chartAllYears.ChartAreas[0].CursorY.IsUserSelectionEnabled = true;
+            chartAllYears.ChartAreas[0].AxisY.ScaleView.Zoomable = true;
+            chartAllYears.ChartAreas[0].AxisY.ScrollBar.IsPositionedInside = true;
+
+            textBoxListMonths.ReadOnly = true;
         }
 
         private void Form_Chart_Load(object sender, EventArgs e)
         {
-            //Инициализируем пришедшие с другой формы параметры
-            foreach (string param in spezialParams)
+            if (mode == Mode.Casual)
             {
-                if (param == "") checkBoxWithoutParams.Checked = true;
-                if (param == "т") checkBoxT.Checked = true;
-                if (param == "н") checkBoxN.Checked = true;
-                if (param == "б") checkBoxB.Checked = true;
-                if (param == "она") checkBoxShe.Checked = true;
-                if (param == "к") checkBoxK.Checked = true;
-            }
-            if (activeTable == DB.Tables.He) radioButtonModeHe.Checked = true;
-            else if (activeTable == DB.Tables.HeBig) radioButtonModeHeBig.Checked = true;
-            else if (activeTable == DB.Tables.HeGifts) radioButtonModeHeGifts.Checked = true;
-            else if (activeTable == DB.Tables.She) radioButtonModeShe.Checked = true;
-            else if (activeTable == DB.Tables.SheBig) radioButtonModeSheBig.Checked = true;
-
-            //Задаем рамки временного запроса 
-            cbMonthsStart.Items.Clear();
-            List<string> months = new List<string>();
-            if (radioButtonModeHe.Checked || radioButtonModeShe.Checked)
-            {
-                pdbCasual = new ParseDBCasualTables(db.GetData(activeTable));
                 List<int> years = pdbCasual.getYears();
-                numericYearsStart.Minimum = years[0];
-                numericYearsStart.Maximum = years[years.Count - 1];
-                numericYearsStop.Minimum = years[0];
-                numericYearsStop.Maximum = years[years.Count - 1];
-                months = pdbCasual.getMonths(Convert.ToInt32(numericYearsStart.Value));   
+                for(int i =0;i<years.Count;i++)
+                {
+                    List<string> months = pdbCasual.getMonths(years[i]);
+                    for(int j=0;j<months.Count;j++)
+                    {
+                        if(years[i] == year)
+                        {
+                            textBoxListMonths.Text += months[j] + Environment.NewLine;
+                            chartCurrentYear.Series[0].Points.AddXY(months[j], pdbCasual.getExpensesMonth(spezialParams, year.ToString(), months[j])["-"][0]);
+                        }
+                        textBoxListMonthsAll.Text += months[j] + years[i].ToString() + Environment.NewLine;
+                        chartAllYears.Series[0].Points.AddXY(months[j] + years[i].ToString(), pdbCasual.getExpensesMonth(spezialParams, years[i].ToString(), months[j])["-"][0]);
+                    }
+                }
             }
             else
             {
-                pdbBig = new ParseDBBigTables(db.GetData(activeTable));
-                numericYearsStart.Minimum = pdbBig.getFirstYear;
-                numericYearsStart.Maximum = pdbBig.getLastYear;
-                numericYearsStop.Minimum = pdbBig.getFirstYear;
-                numericYearsStop.Maximum = pdbBig.getLastYear;
-                months = pdbBig.getMonths(numericYearsStart.Value.ToString());
+                int first_year = pdbBig.getFirstYear;
+                int last_year = pdbBig.getLastYear;
+                List<int> years = new List<int>();
+                while(first_year <= last_year)
+                {
+                    years.Add(first_year);
+                    first_year++;
+                }
+                for (int i = 0; i < years.Count; i++)
+                {
+                    List<string> months = pdbBig.getMonths(years[i].ToString());
+                    for (int j = 0; j < months.Count; j++)
+                    {
+                        if (years[i] == year)
+                        {
+                            textBoxListMonths.Text += months[j] + Environment.NewLine;
+                            chartCurrentYear.Series[0].Points.AddXY(months[j], pdbBig.Month(year.ToString(), months[j])["-"][0]);
+                        }
+                        textBoxListMonthsAll.Text += months[j] + years[i].ToString() + Environment.NewLine;
+                        chartAllYears.Series[0].Points.AddXY(months[j], pdbBig.Month(years[j].ToString(), months[j])["-"][0]);
+                    }
+                }
             }
-            for (int i = 0; i < months.Count; i++)
-            {
-                cbMonthsStart.Items.Add(months[i]);
-            }
-            cbMonthsStart.SelectedItem = months[0];
-            if (months.Count > 0) cbMonthsStop.SelectedItem = months[1];
-            else cbMonthsStop.SelectedItem = months[1];
-        }
-
-        private void buttonExecute_Click(object sender, EventArgs e)
-        {
-            //1. Убедиться, что при загрузке отобразились правильные периоды запроса 
-            //2. Подтягиваем временной период и расчитываем по месяцам
-            //3. Добавить возможность расчета по годам
-            //4. Продумать на количеством диаграм, попробовать програмно задавать тип диаграммы.
-            //
         }
     }
 }

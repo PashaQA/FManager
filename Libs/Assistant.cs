@@ -363,8 +363,9 @@ namespace Libs
             }
             else
             {
-                CreateDirectory(numericFolder + folders.Length);
-                return locationRepository = numericFolder + folders.Length;
+                int length = folders.Length + 1;
+                CreateDirectory(numericFolder + length);
+                return locationRepository = numericFolder + length;
             }
         }
 
