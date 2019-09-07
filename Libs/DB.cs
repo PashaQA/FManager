@@ -518,7 +518,7 @@ namespace Libs
                                     "id integer primary key autoincrement, " +
                                      "date_expense date not null," +
                                      "event_type nvarchar(2) not null, " +
-                                     "count int not null, " +
+                                     "count real not null, " +
                                      "count_expenses int, " +
                                      "description nvarchar(255) default null," +
                                      "type nvarchar(3) default null, " +

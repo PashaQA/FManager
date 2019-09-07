@@ -95,10 +95,9 @@ namespace FManager
             }
 
             //Задает внешние значения параметров панелей
-            this.Height = Screen.PrimaryScreen.Bounds.Height - 100;
-            eventAssis.SetPositionBottomControl(this, dataOsn);
-            eventAssis.SetPositionBottomControl(this, textBoxList);
-            eventAssis.SetPositionBottomControl(this, dataDop);
+            //eventAssis.SetPositionBottomControl(this, dataOsn);
+            //eventAssis.SetPositionBottomControl(this, textBoxList);
+            //eventAssis.SetPositionBottomControl(this, dataDop);
             //Задает дефолтные параметры статистики
             spezailParams.Add("");
             spezailParams.Add("т");
@@ -1121,10 +1120,10 @@ namespace FManager
                     checkBoxTun.Checked = true;
                     checkBoxR.Checked = true;
                     checkBoxRem.Checked = true;
+                    checkBoxWithoutParams.Checked = true;
 
                     checkBoxT.Checked = false;
                     checkBoxN.Checked = false;
-                    checkBoxWithoutParams.Checked = false;
                     checkBoxB.Checked = false;
                     checkBoxShe.Checked = false;
                     checkBoxK.Checked = false;
@@ -2046,6 +2045,5 @@ namespace FManager
                 }
             }
         }
-
     }
 }

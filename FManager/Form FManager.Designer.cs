@@ -309,9 +309,9 @@
             this.description,
             this.type,
             this.full_line});
-            this.dataDop.Location = new System.Drawing.Point(953, 399);
+            this.dataDop.Location = new System.Drawing.Point(1063, 400);
             this.dataDop.Name = "dataDop";
-            this.dataDop.Size = new System.Drawing.Size(709, 580);
+            this.dataDop.Size = new System.Drawing.Size(845, 546);
             this.dataDop.TabIndex = 42;
             // 
             // id
@@ -376,9 +376,9 @@
             this.panelModuleADM.Controls.Add(this.radioButtonOutputInDop);
             this.panelModuleADM.Controls.Add(this.labelHeaderSQLQuery);
             this.panelModuleADM.Controls.Add(this.textBoxSQLQuery);
-            this.panelModuleADM.Location = new System.Drawing.Point(1389, 13);
+            this.panelModuleADM.Location = new System.Drawing.Point(1553, 13);
             this.panelModuleADM.Name = "panelModuleADM";
-            this.panelModuleADM.Size = new System.Drawing.Size(273, 380);
+            this.panelModuleADM.Size = new System.Drawing.Size(355, 380);
             this.panelModuleADM.TabIndex = 43;
             // 
             // checkBoxHeCarADM
@@ -579,7 +579,7 @@
             this.dataOsn.Location = new System.Drawing.Point(6, 399);
             this.dataOsn.Name = "dataOsn";
             this.dataOsn.ReadOnly = true;
-            this.dataOsn.Size = new System.Drawing.Size(709, 580);
+            this.dataOsn.Size = new System.Drawing.Size(700, 547);
             this.dataOsn.TabIndex = 44;
             // 
             // dataGridViewTextBoxColumn1
@@ -644,9 +644,9 @@
             this.panelModuleUpdate.Controls.Add(this.textBoxIsUpdate);
             this.panelModuleUpdate.Controls.Add(this.labelHeaderWindowTextBoxUpdate);
             this.panelModuleUpdate.Controls.Add(this.textBoxUpdate);
-            this.panelModuleUpdate.Location = new System.Drawing.Point(930, 12);
+            this.panelModuleUpdate.Location = new System.Drawing.Point(1063, 12);
             this.panelModuleUpdate.Name = "panelModuleUpdate";
-            this.panelModuleUpdate.Size = new System.Drawing.Size(497, 382);
+            this.panelModuleUpdate.Size = new System.Drawing.Size(484, 382);
             this.panelModuleUpdate.TabIndex = 45;
             // 
             // checkBoxAutoExport
@@ -723,7 +723,7 @@
             this.labelHeaderModuleUpdate.BackColor = System.Drawing.Color.Ivory;
             this.labelHeaderModuleUpdate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelHeaderModuleUpdate.Font = new System.Drawing.Font("MV Boli", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
-            this.labelHeaderModuleUpdate.Location = new System.Drawing.Point(947, 6);
+            this.labelHeaderModuleUpdate.Location = new System.Drawing.Point(1141, 4);
             this.labelHeaderModuleUpdate.Name = "labelHeaderModuleUpdate";
             this.labelHeaderModuleUpdate.Size = new System.Drawing.Size(108, 14);
             this.labelHeaderModuleUpdate.TabIndex = 41;
@@ -738,7 +738,7 @@
             this.panelInfo.Controls.Add(this.textBoxInfoErrors);
             this.panelInfo.Location = new System.Drawing.Point(335, 213);
             this.panelInfo.Name = "panelInfo";
-            this.panelInfo.Size = new System.Drawing.Size(589, 181);
+            this.panelInfo.Size = new System.Drawing.Size(722, 181);
             this.panelInfo.TabIndex = 30;
             // 
             // labelHeaderWindowErrors
@@ -761,7 +761,7 @@
             this.textBoxInfoMessage.Name = "textBoxInfoMessage";
             this.textBoxInfoMessage.ReadOnly = true;
             this.textBoxInfoMessage.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxInfoMessage.Size = new System.Drawing.Size(579, 101);
+            this.textBoxInfoMessage.Size = new System.Drawing.Size(712, 101);
             this.textBoxInfoMessage.TabIndex = 0;
             // 
             // textBoxInfoErrors
@@ -773,7 +773,7 @@
             this.textBoxInfoErrors.Name = "textBoxInfoErrors";
             this.textBoxInfoErrors.ReadOnly = true;
             this.textBoxInfoErrors.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxInfoErrors.Size = new System.Drawing.Size(579, 60);
+            this.textBoxInfoErrors.Size = new System.Drawing.Size(712, 60);
             this.textBoxInfoErrors.TabIndex = 54;
             // 
             // textBoxWindowExpensesAll
@@ -1522,7 +1522,7 @@
             this.panelMode.Controls.Add(this.radioButtonModeHe);
             this.panelMode.Location = new System.Drawing.Point(755, 13);
             this.panelMode.Name = "panelMode";
-            this.panelMode.Size = new System.Drawing.Size(169, 106);
+            this.panelMode.Size = new System.Drawing.Size(302, 106);
             this.panelMode.TabIndex = 49;
             // 
             // radioButtonModeHeCar
@@ -1825,7 +1825,7 @@
             this.panelDopInstrumental.Controls.Add(this.buttonExecuteDopInstrumental);
             this.panelDopInstrumental.Location = new System.Drawing.Point(335, 127);
             this.panelDopInstrumental.Name = "panelDopInstrumental";
-            this.panelDopInstrumental.Size = new System.Drawing.Size(589, 77);
+            this.panelDopInstrumental.Size = new System.Drawing.Size(722, 77);
             this.panelDopInstrumental.TabIndex = 31;
             this.panelDopInstrumental.DoubleClick += new System.EventHandler(this.panelDopInstrumental_DoubleClick);
             // 
@@ -1866,7 +1866,7 @@
             this.labelHeaderModuleAdm.BackColor = System.Drawing.Color.Ivory;
             this.labelHeaderModuleAdm.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelHeaderModuleAdm.Font = new System.Drawing.Font("MV Boli", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
-            this.labelHeaderModuleAdm.Location = new System.Drawing.Point(1404, 8);
+            this.labelHeaderModuleAdm.Location = new System.Drawing.Point(1600, 4);
             this.labelHeaderModuleAdm.Name = "labelHeaderModuleAdm";
             this.labelHeaderModuleAdm.Size = new System.Drawing.Size(128, 14);
             this.labelHeaderModuleAdm.TabIndex = 0;
@@ -1875,19 +1875,19 @@
             // textBoxList
             // 
             this.textBoxList.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            this.textBoxList.Location = new System.Drawing.Point(722, 399);
+            this.textBoxList.Location = new System.Drawing.Point(723, 399);
             this.textBoxList.Multiline = true;
             this.textBoxList.Name = "textBoxList";
             this.textBoxList.ReadOnly = true;
             this.textBoxList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxList.Size = new System.Drawing.Size(225, 580);
+            this.textBoxList.Size = new System.Drawing.Size(334, 547);
             this.textBoxList.TabIndex = 54;
             // 
             // FManager
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1366, 745);
+            this.ClientSize = new System.Drawing.Size(1920, 957);
             this.Controls.Add(this.textBoxList);
             this.Controls.Add(this.labelHeaderModuleDopInstrumental);
             this.Controls.Add(this.panelDopInstrumental);

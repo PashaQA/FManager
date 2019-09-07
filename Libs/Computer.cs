@@ -26,26 +26,36 @@ namespace Libs
         /// <returns></returns>
         public string[] GetParsedList(string path)
         {
-            List<string> deletedSpace = new List<string>();
             StreamReader sr = null;
-            try
+            string[] splited = null;
+            Encoding[] encoding = new Encoding[] { Encoding.UTF8, Encoding.Default};
+            List<string> deletedSpace = new List<string>();
+            for (int i = 0; i < 2; i++)
             {
-                if (path.IndexOf("Latest") != -1 || path.ToLower().IndexOf("he") != -1)
-                    sr = new StreamReader(path, Encoding.Default);
-                else if (path.IndexOf("she") != -1)
-                    sr = new StreamReader(path, Encoding.UTF8);
+                try
+                {
+                    sr = new StreamReader(path, encoding[i]);
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                    // Обходим ошибку из-за того, что в коммите придет сообщение об изменении 5 файлов, т.к. мы удаляем все 5 и можем залить всего 3,
+                    // но система попытается изменить все 5 файлов согласно сообщению из коммита, но 2 файлов будет не хватать в репозитории,
+                    // поэтому выскочит ошибка о том, что файла по данному пути нет.
+                }
+                string allText = sr.ReadToEnd();
+                sr.Close();
+                splited = allText.Split('\n');
+                bool hierogliph = assis.IsHierogliph(splited);
+                if (hierogliph && i == 1)
+                {
+                    throw new Exception("Не удалось подобрать кодировку");
+                }
+                else
+                {
+                    continue;
+                }
             }
-            catch (Exception ex)
-            {
-                return null;
-                // Обходим ошибку из-за того, что в коммите придет сообщение об изменении 5 файлов, т.к. мы удаляем все 5 и можем залить всего 3,
-                // но система попытается изменить все 5 файлов согласно сообщению из коммита, но 2 файлов будет не хватать в репозитории,
-                // поэтому выскочит ошибка о том, что файла по данному пути нет.
-            }
-            string allText = sr.ReadToEnd();
-            sr.Close();
-            string[] splited = allText.Split('\n');
-
             //удаление последнего симлова '\r'
             while (splited[0].LastIndexOf('\r') != -1)
             {

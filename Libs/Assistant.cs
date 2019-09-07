@@ -309,21 +309,50 @@ namespace Libs
         }
 
         /// <summary>
-        /// Првоеряет на наличае иероглифов в файле 
+        /// Првоеряет на наличае иероглифов в файле и прочих недоустимых символов
         /// </summary>
         /// <param name="fullList"></param>
         /// <returns></returns>
         public Boolean IsHierogliph(string[] fullList)
         {
-            char[] array = fullList[2].ToCharArray();
+            char[] numbers = new char[] {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' ', '-' };
+            char[] russian_symbols = new char[] { 'а','б','й','ц','у','к','е','н','г','ш','щ','з','х','ъ','ф','ы','в','а','п','р','о','л','д','ж','э','я','ч','с','м','и','т','ь','б','ю','я'};
+            char[] array = fullList[1].ToCharArray();
             foreach (var symbol in array)
             {
                 if (symbol == 1035 ||
                     symbol == 1034 ||
                     symbol == 1105 ||
                     symbol == 1038 ||
-                    symbol == 1027)
+                    symbol == 1027 || 
+                    symbol == 65533)
                     return true;
+            }
+            foreach(var symbol in array)
+            {
+                bool is_number = false;
+                bool validate = false;
+                foreach(var number in numbers)
+                {
+                    if (symbol == number)
+                    {
+                        is_number = true;
+                        break;
+                    }
+                }
+
+                if (is_number) continue;
+
+                foreach(var russian_symbol in russian_symbols)
+                {
+                    if (symbol == russian_symbol)
+                    {
+                        validate = true;
+                        break;
+                    }
+                }
+                if (!validate) return true;
+                else return false;
             }
             return false;
         }
